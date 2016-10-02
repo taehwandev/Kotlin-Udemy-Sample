@@ -38,7 +38,6 @@ master에서는 전체 코드를 살펴볼 수 있고, 각각 Branch를 통해�
     - Kotlin version = 1.0.4
 - [Android support library](https://developer.android.com/topic/libraries/support-library/revisions.html)
     - support libraryVersion = 24.2.1
-    - constraint layout version = 1.0.0-alpha8
 - Image library
     - [Glide](https://github.com/bumptech/glide) version = 3.7.0
 - Network library
