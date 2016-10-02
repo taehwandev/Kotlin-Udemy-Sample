@@ -40,7 +40,7 @@ master에서는 전체 코드를 살펴볼 수 있고, 각각 Branch를 통해�
     - support libraryVersion = 24.2.1
     - constraint layout version = 1.0.0-alpha8
 - Image library
-    - [Glide]((https://github.com/bumptech/glide) version = 3.7.0
+    - [Glide](https://github.com/bumptech/glide) version = 3.7.0
 - Network library
     - [retrofit](https://square.github.io/retrofit/) version = 2.1.0
     - [okhttp](http://square.github.io/okhttp/) version = 3.3.1
