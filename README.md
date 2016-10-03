@@ -68,4 +68,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-[sample_image_0]: images/01-base-init.png
+[01-base-init]: images/01-base-init.png
