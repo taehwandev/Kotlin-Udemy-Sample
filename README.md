@@ -21,6 +21,8 @@ master에서는 전체 코드를 살펴볼 수 있고, 각각 Branch를 통해�
 
 ## Preview
 
+![01-base-init]
+
 
 
 ## 개발 버전에 대한 정보
@@ -66,4 +68,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-[sample_image_0]: images/sample_image_0.png
+[sample_image_0]: images/01-base-init.png

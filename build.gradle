@@ -2,6 +2,8 @@
 
 buildscript {
     ext.kotlin_version = '1.0.4'
+    ext.supportLibraryVersion = '24.2.1'
+
     repositories {
         jcenter()
     }
