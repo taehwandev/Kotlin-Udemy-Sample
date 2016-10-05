@@ -4,14 +4,14 @@
 
 다음 자료는 Udemy에서 진행하는 Kotlin Android 샘플 자료입니다
 
-각각 branch를 이용하여 샘플 코드를 비교해볼 수 있습니다.
+각각의 브런치에서 샘플 코드를 확인할 수 있습니다.
 
-master에서는 전체 코드를 살펴볼 수 있고, 각각 Branch를 통해서 Udemy 강의에 따른 내용을 정리합니다.
+## Branch 소개
 
-### Flickr의 API를 이용해야 합니다.
-
-
-## API Key
+- [01. Kotlin base init](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/01-base-init)
+  - 코틀린으로 Activity/Fragment/Util 클래스에 대해서 다룹니다.
+  
+## Flickr API Key 발급 받기
 
 - Flickr API키를 생성합니다.
     - [Flickr web page](https://www.flickr.com/services/apps/create/)
@@ -19,18 +19,11 @@ master에서는 전체 코드를 살펴볼 수 있고, 각각 Branch를 통해�
     - flickrApiKey="Flickr api key"
 
 
-## 강의 자료
-
-- [01. Kotlin base init](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/01-base-init)
-  - 코틀린으로 Activity/Fragment/Util 클래스에 대해서 다룹니다.
-
-
 ## Preview
 
 
-
 ## 개발 버전에 대한 정보
-- buildToolsVersion = 24.0.2
+- buildToolsVersion = 24.0.3
 - compile sdk version = 24
 - Target sdk version = 24
 - Min sdk version = 16
@@ -38,8 +31,6 @@ master에서는 전체 코드를 살펴볼 수 있고, 각각 Branch를 통해�
 
 
 ## 사용한 라이브러리 현황
-- Base library
-    - thdev support base version = 1.0.4
 - Kotlin library
     - Kotlin version = 1.0.4
 - [Android support library](https://developer.android.com/topic/libraries/support-library/revisions.html)
