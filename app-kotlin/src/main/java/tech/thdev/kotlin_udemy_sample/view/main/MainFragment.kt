@@ -20,9 +20,7 @@ class MainFragment : Fragment() {
         view?.findViewById(R.id.number_one) as EditText
     }
 
-    private val etNumberTwo by lazy {
-        view?.findViewById(R.id.number_two) as EditText
-    }
+    private var etNumberTwo: EditText? = null
 
     // Java 식의 static instance
     companion object {
@@ -35,22 +33,22 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        etNumberTwo = view?.findViewById(R.id.number_two) as EditText
+
         // TODO Text Message 변경
         val textView = view?.findViewById(R.id.text) as TextView
-
         val button = view?.findViewById(R.id.button) as Button
         button.setOnClickListener {
-            val sum = getSum()
-            textView.text = sum.toString()
+            textView.text = getSum().toString()
         }
     }
 
     /**
      * 단순 TextUtils.isEmpty를 통한 값 체크하기
      */
-    private fun getSumOld() = {
+    private fun getSumOld(): Int {
         val one = etNumberOne.text
-        val two = etNumberTwo.text
+        val two = etNumberTwo?.text
 
         var oneNumber = 0
         if (!TextUtils.isEmpty(one)) {
@@ -61,26 +59,45 @@ class MainFragment : Fragment() {
             twoNumber = two.toString().toInt()
         }
 
-        oneNumber + twoNumber
+        return oneNumber + twoNumber
     }
 
-    /**
-     * 입력 받은 2개의 수를 더하여 return
-     */
     private fun getSum(): Int {
-        // try catch를 이용하여 처리
         val one = try {
             etNumberOne.text.toString().toInt()
+
         } catch (e: Exception) {
             0
         }
 
-        // when을 이용한 예외처리
+        /*
+         * Two의 경우 etNumberTwo가 NULL이 될 수 있습니다.
+         * 그래서 다음과 같이 NULL 체크가 포함된 when을 사용할 수 있습니다
+         * NULL이 포함되기 때문에 return은 null 이루어집니다
+         * ?: 을 사용하여 null 대신 0을 리턴 할 수 있습니다
+         *
+         * 5, 6강에서 배우는 안전한 널처리 부분을 참고하시면 되겠습니다
+         */
         val two = when {
-            etNumberTwo.text.isEmpty() -> 0
-            else -> etNumberTwo.text.toString().toInt()
-        }
+            etNumberTwo?.text?.isNullOrEmpty() as Boolean -> 0
+            else -> etNumberTwo?.text?.toString()?.toInt()
+        } ?: 0
 
-        return one.plus(two)
+        /*
+         * EX) 안전한 NULL 처리를 위한 코드 살펴보기
+         *
+         * Java에서는 아래와 같이 처리 가능
+         *  etNubmerTwo != null ? etNumberTwo.text : ""
+         *
+         * Kotlin에서는 다음과 같이 처리 가능
+         * etNumber?.text
+         *
+         * 하지만 이 경우 result는 null
+         *
+         * null을 제거하기 위해서는 다음과 같이 처리 가능
+         *  etNumber?.text ?: ""
+         */
+
+        return one + two
     }
 }
