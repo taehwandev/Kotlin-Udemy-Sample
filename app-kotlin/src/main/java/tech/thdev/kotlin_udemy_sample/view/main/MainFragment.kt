@@ -2,6 +2,7 @@ package tech.thdev.kotlin_udemy_sample.view.main
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,29 @@ class MainFragment : Fragment() {
         val textView = view?.findViewById(R.id.text) as TextView
 
         val button = view?.findViewById(R.id.button) as Button
-        button.setOnClickListener { textView.text = getSum().toString() }
+        button.setOnClickListener {
+            val sum = getSum()
+            textView.text = sum.toString()
+        }
+    }
+
+    /**
+     * 단순 TextUtils.isEmpty를 통한 값 체크하기
+     */
+    private fun getSumOld() = {
+        val one = etNumberOne.text
+        val two = etNumberTwo.text
+
+        var oneNumber = 0
+        if (!TextUtils.isEmpty(one)) {
+            oneNumber = one.toString().toInt()
+        }
+        var twoNumber = 0
+        if (two != null && two.length > 0) {
+            twoNumber = two.toString().toInt()
+        }
+
+        oneNumber + twoNumber
     }
 
     /**
@@ -58,6 +81,6 @@ class MainFragment : Fragment() {
             else -> etNumberTwo.text.toString().toInt()
         }
 
-        return one + two
+        return one.plus(two)
     }
 }
