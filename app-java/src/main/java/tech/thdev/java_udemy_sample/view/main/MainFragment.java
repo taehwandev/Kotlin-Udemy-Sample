@@ -56,7 +56,7 @@ public class MainFragment extends Fragment {
     }
 
     /**
-     * 2개의 수를 받아서 더하여 return.
+     * 입력 받은 2개의 수를 더하여 return
      * <p>
      * 오류가 있습니다. 디버깅하여 수정하세요.
      */
