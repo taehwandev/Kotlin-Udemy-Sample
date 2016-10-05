@@ -19,6 +19,12 @@ master에서는 전체 코드를 살펴볼 수 있고, 각각 Branch를 통해�
     - flickrApiKey="Flickr api key"
 
 
+## 강의 자료
+
+- [01. Kotlin base init](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/01-base-init)
+  - 코틀린으로 Activity/Fragment/Util 클래스에 대해서 다룹니다.
+
+
 ## Preview
 
 
