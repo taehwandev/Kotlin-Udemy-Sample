@@ -13,6 +13,12 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 - Java 코드는 [app-java](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/01-base-init/app-java)
 - Kotlin 코드는 [app-kotlin](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/01-base-init/app-kotlin)
 
+## 강의 자료
+
+- [01. Kotlin base init](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/01-base-init)
+  - 코틀린으로 Activity/Fragment/Util 클래스에 대해서 다룹니다.
+
+
 ## Preview
 
 ![01-base-init]
