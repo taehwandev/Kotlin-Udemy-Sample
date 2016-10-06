@@ -10,7 +10,6 @@ import android.view.View;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
-import tech.thdev.java_udemy_sample.util.ActivityUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,13 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        // static Util을 이용하여 replace 처리
-        ActivityUtil
-                .replaceFragmentToActivity(
-                        getSupportFragmentManager(),
-                        MainFragment.getInstance(),
-                        R.id.frame_layout);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
