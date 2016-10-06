@@ -35,7 +35,7 @@ Null Safety 대한 자료입니다.
 
 다음 자료는 다음과 같은 방법으로 실행이 가능합니다.
 
-![tutorial]
+<iframe width="560" height="315" src="https://www.youtube.com/embed/N3OyywkAqwk" frameborder="0" allowfullscreen></iframe>
 
 ## License
 
@@ -54,5 +54,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
-[tutorial]: images/tutorial.gif
