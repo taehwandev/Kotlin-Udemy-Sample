@@ -4,10 +4,6 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
-다음 자료는 다음과 같은 방법으로 실행이 가능합니다.
-
-![tutorial]
-
 Null Safety 대한 자료입니다.
 
 ## 포함된 자료
@@ -34,6 +30,12 @@ Null Safety 대한 자료입니다.
     - [NullPointException try/catch 사용하기](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_02/_04_NullPointExceptionCatchTest.kt)
     - [안전한 형 변환](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_02/_05_NullSafetyCastTest.kt)
     - [List에서 Null 예외처리 추가](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_02/_06_ListFilterNotNullTest.kt)
+    
+## 샘플 테스트 방법
+
+다음 자료는 다음과 같은 방법으로 실행이 가능합니다.
+
+![tutorial]
 
 ## License
 
