@@ -4,6 +4,10 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
+다음 자료는 다음과 같은 방법으로 실행이 가능합니다.
+
+![tutorial]
+
 Null Safety 대한 자료입니다.
 
 ## 포함된 자료
@@ -49,4 +53,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-[01-base-init]: images/01-base-init.gif
+[tutorial]: images/tutorial.gif
