@@ -13,8 +13,8 @@ Null Safety 대한 자료입니다.
 
 ## SourceCode 위치
 
-- Java 코드는 [app-java](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety/app-java)
-- Kotlin 코드는 [app-kotlin](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety/app-kotlin)
+- Java 코드는 [app-java](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety/app-java/src/test/java/tech/thdev/java_udemy_sample)
+- Kotlin 코드는 [app-kotlin](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample)
 
 ## License
 
