@@ -35,7 +35,8 @@ Null Safety 대한 자료입니다.
 
 다음 자료는 다음과 같은 방법으로 실행이 가능합니다.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/N3OyywkAqwk" frameborder="0" allowfullscreen></iframe>
+[![Alt text for your video](http://img.youtube.com/vi/N3OyywkAqwk/0.jpg)](https://youtu.be/N3OyywkAqwk)
+
 
 ## License
 
