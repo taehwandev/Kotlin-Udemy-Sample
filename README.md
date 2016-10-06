@@ -35,7 +35,7 @@ Null Safety 대한 자료입니다.
 
 다음 자료는 다음과 같은 방법으로 실행이 가능합니다.
 
-[![Alt text for your video]![tutorial]](https://youtu.be/N3OyywkAqwk)
+[![tutorial]](https://youtu.be/N3OyywkAqwk)
 
 
 ## License
