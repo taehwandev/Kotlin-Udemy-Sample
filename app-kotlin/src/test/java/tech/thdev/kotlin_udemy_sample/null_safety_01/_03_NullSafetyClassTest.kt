@@ -1,4 +1,4 @@
-package tech.thdev.kotlin_udemy_sample
+package tech.thdev.kotlin_udemy_sample.null_safety_01
 
 import org.junit.Test
 
@@ -9,7 +9,7 @@ import org.junit.Test
  *
  * @Test가 포함된 함수의 오른쪽 마우스를 누른 상태에서 Run을 하시면 됩니다
  */
-class NullSafetyClassTest {
+class _03_NullSafetyClassTest {
     internal inner class A(var b: B?)
     internal inner class B(var c: C?)
     internal inner class C {

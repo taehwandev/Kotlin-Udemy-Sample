@@ -1,4 +1,4 @@
-package tech.thdev.java_udemy_sample;
+package tech.thdev.java_udemy_sample.null_safety_01;
 
 import android.support.annotation.Nullable;
 
@@ -12,7 +12,7 @@ import org.junit.Test;
  * @Test가 포함된 함수의 오른쪽 마우스를 누른 상태에서 Run을 하시면 됩니다
  */
 
-public class NullSafetyTest {
+public class _02_NullSafetyTest {
 
     /**
      * 일반적인 null 처리 방법을 소개합니다
