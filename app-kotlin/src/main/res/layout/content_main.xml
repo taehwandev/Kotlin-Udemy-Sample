@@ -9,9 +9,7 @@
     tools:context="tech.thdev.kotlin_udemy_sample.view.main.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <!-- Fragment view -->
-    <FrameLayout
-        android:id="@+id/frame_layout"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>
