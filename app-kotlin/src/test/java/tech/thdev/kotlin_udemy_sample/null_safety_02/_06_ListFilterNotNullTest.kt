@@ -23,5 +23,8 @@ class _06_ListFilterNotNullTest {
         for (i in intList) {
             print("${i} ")
         }
+
+        // stream을 이용하는 방버
+        intList.forEach(::print)
     }
 }

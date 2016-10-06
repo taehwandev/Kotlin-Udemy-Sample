@@ -32,9 +32,15 @@ class _01_NullListTest {
     fun testListLet() {
         val listWithNulls: List<String?> = listOf("A", null, "B")
         for (item in listWithNulls) {
-            item?.let {
-                println(item)
-            }
+            // 일반적인 방법
+            item?.let { print(item )}
+
+            // it 키워드를 사용할 경우
+            // let 블락 함수 이후에는 it 키워드를 사용할 수 있음.(단, 1개의 변수만 있을 경우)
+            item?.let { print(it) }
+
+            // Lambda 식으로 대체
+//            item?.let(::println)
         }
     }
 }
