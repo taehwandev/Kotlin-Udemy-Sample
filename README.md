@@ -17,6 +17,10 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
 - [01. Kotlin base init](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/01-base-init)
   - 코틀린으로 Activity/Fragment/Util 클래스에 대해서 다룹니다.
+- [02. Kotlin Null Safety](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety)
+  - 코틀린의 안전한 null 처리에 대해서 정리한 자료입니다.
+- [03. Kotlin class](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/03-class)
+  - 코틀린 Class에 대하여 일부 일부 정리하였습니다.
 
 
 ## Preview
@@ -29,7 +33,7 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 - compile sdk version = 24
 - Target sdk version = 24
 - Min sdk version = 16
-- Android studio 2.2
+- Android studio 2.2.1
 
 ## 사용한 라이브러리 현황
 - Kotlin library
