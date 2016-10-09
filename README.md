@@ -4,36 +4,25 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
-Null Safety 대한 자료입니다.
+part 7/part 8의 class 관련 소스코드가 포함되어 있습니다.
 
 ## 포함된 자료
 
-- 안전한 NULL 처리 1 번째 자료
- - Java : [null_safety_01](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety/app-java/src/test/java/tech/thdev/java_udemy_sample/null_safety_01)
-    - [NULL 처리 기본](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-java/src/test/java/tech/thdev/java_udemy_sample/null_safety_01/_01_NullTest.java)
-    - [NULL 처리 예외처리](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-java/src/test/java/tech/thdev/java_udemy_sample/null_safety_01/_02_NullSafetyTest.java)
-    - [Class NULL 처리](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-java/src/test/java/tech/thdev/java_udemy_sample/null_safety_01/_03_NullSafetyClassTest.java)
+- Class 1 번째
+ - Java : [null_safety_01](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/03-class/app-java/src/test/java/tech/thdev/java_udemy_sample/class_01)
+    - [기본 클래스 및 생성자](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/03-class/app-java/src/test/java/tech/thdev/java_udemy_sample/class_01/_01_Constructor.java)
+    - [다중 생성자](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/03-class/app-java/src/test/java/tech/thdev/java_udemy_sample/class_01/_02_MultiConstructor.java)
+    - [생성자 초기화](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/03-class/app-java/src/test/java/tech/thdev/java_udemy_sample/class_01/_03_ConstructorInit.java)
+    - [클래스 생성 및 사용하기](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/03-class/app-java/src/test/java/tech/thdev/java_udemy_sample/class_01/_04_ConstructorInitTest.java)
  - Kotlin : [null_safety_01](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_01)
-    - [NULL 처리 기본](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_01/_01_NullTest.kt)
-    - [NULL 처리 예외처리](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_01/_02_NullSafetyTest.kt)
-    - [Class NULL 처리](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_01/_03_NullSafetyClassTest.kt)
-- 안전한 NULL 처리 2 번째 자료
- - Java : [null_safety_02](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety/app-java/src/test/java/tech/thdev/java_udemy_sample/null_safety_02)
-    - [List에서 NULL 처리](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-java/src/test/java/tech/thdev/java_udemy_sample/null_safety_02/_01_NullListTest.java)
-    - [Return 처리](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-java/src/test/java/tech/thdev/java_udemy_sample/null_safety_02/_02_ReturnTest.java)
-    - [NullPointException 만들기](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-java/src/test/java/tech/thdev/java_udemy_sample/null_safety_02/_03_NullPointExceptionTest.java)
-    - [NullPointException try/catch 사용하기](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-java/src/test/java/tech/thdev/java_udemy_sample/null_safety_02/_04_NullPointExceptionCatchTest.java)
- - Kotlin : [null_safety_02](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_02)
-    - [List에서 NULL 처리](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_02/_01_NullListTest.kt)
-    - [Return 처리](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_02/_02_ReturnTest.kt)
-    - [NullPointException 만들기](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_02/_03_NullPointExceptionTest.kt)
-    - [NullPointException try/catch 사용하기](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_02/_04_NullPointExceptionCatchTest.kt)
-    - [안전한 형 변환](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_02/_05_NullSafetyCastTest.kt)
-    - [List에서 Null 예외처리 추가](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/02-null-safety/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/null_safety_02/_06_ListFilterNotNullTest.kt)
+    - [기본 클래스 및 생성자](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/03-class/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/class_01/_01_Constructor.kt)
+    - [다중 생성자](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/03-class/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/class_01/_02_MultiConstructor.kt)
+    - [생성자 초기화](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/03-class/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/class_01/_03_ConstructorInit.kt)
+    - [클래스 생성 및 사용하기](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/03-class/app-kotlin/src/test/java/tech/thdev/kotlin_udemy_sample/class_01/_04_ConstructorInitTest.kt)
 
 ## 샘플 테스트 방법
 
-다음 자료는 다음과 같은 방법으로 실행이 가능합니다.
+다음의 자료 중 @Test 어노테이션이 적용된 부분에서 아래 영상을 참고하셔서 실행해보실 수 있습니다.
 
 [![tutorial]](https://youtu.be/mEODXbAwOV4)
 
