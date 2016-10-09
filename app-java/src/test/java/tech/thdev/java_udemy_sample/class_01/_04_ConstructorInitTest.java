@@ -1,4 +1,4 @@
-package tech.thdev.java_udemy_sample._01_constructor;
+package tech.thdev.java_udemy_sample.class_01;
 
 import org.junit.Test;
 

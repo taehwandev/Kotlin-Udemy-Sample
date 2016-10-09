@@ -1,4 +1,4 @@
-package tech.thdev.kotlin_udemy_sample._01_constructor
+package tech.thdev.kotlin_udemy_sample.class_01
 
 /**
  * Created by tae-hwan on 09/10/2016.
