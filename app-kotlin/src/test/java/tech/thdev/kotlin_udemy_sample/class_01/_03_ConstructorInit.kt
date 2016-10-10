@@ -8,8 +8,8 @@ package tech.thdev.kotlin_udemy_sample.class_01
 
 class _03_ConstructorInit {
 
-    // inner로 클래스를 구현하고 외부에서 접근하려면 `internal`을 추가해야 함
-    internal class InitClass() {
+    class InitClass() {
+//        var name: String = "InitClass"
         var name: String
 
         // 생성자인 constructor에서는 초기화를 하지 못하고, init에서는 가능
@@ -23,7 +23,7 @@ class _03_ConstructorInit {
         }
     }
 
-    internal class ConstructorInit(val name: String) {
-
+    class ConstructorInit(val name: String) {
+        // ...
     }
 }
