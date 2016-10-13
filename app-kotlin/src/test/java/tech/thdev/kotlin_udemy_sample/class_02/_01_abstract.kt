@@ -14,7 +14,7 @@ abstract class _01_Abstract {
     abstract fun methodA()
 
     // 상속 후 재 정의를 하지 못함
-    fun methodB(): String {
+    /*open */fun methodB(): String {
         return attributeA
     }
 }
@@ -24,8 +24,17 @@ class AbstractSample : _01_Abstract() {
     override var attributeA: String = "AttributeA"
 
     override fun methodA() {
+        attributeB = "Sample"
+
         println("---------")
         println("methodA")
         println("---------")
     }
+
+    /**
+     * Method B에대해서 method 재정의를 허용하고 싶다면 `open` 키워드를 추가해야 합니다
+     */
+//    override fun methodB(): String {
+//        return super.methodB()
+//    }
 }

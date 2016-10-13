@@ -18,7 +18,7 @@ interface _02_Interface {
     fun methodB(): String
 }
 
-class InterfaceSample : _02_Interface {
+/*open*/ class InterfaceSample : _02_Interface {
 
     override var attributeA: String = "AttributeA"
 
@@ -30,5 +30,23 @@ class InterfaceSample : _02_Interface {
             field = value
         }
 
+    // methodA는 interface에서 이미 정의되어 있지만, 다음과 같이 함수 재정의가 가능합니다
+    override fun methodA() {
+        super.methodA()
+    }
+
     override fun methodB(): String = "methodB"
 }
+
+// TODO 아래의 Test 코드는 오류가 발생합니다
+// TODO 오류의 이유를 찾고 해결해보세요
+//class Test : InterfaceSample() {
+//
+//    override fun methodA() {
+//        super.methodA()
+//    }
+//
+//    override fun methodB(): String {
+//        return super.methodB()
+//    }
+//}

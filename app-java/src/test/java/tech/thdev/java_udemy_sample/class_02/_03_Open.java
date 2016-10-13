@@ -29,3 +29,10 @@ class FinalSample extends _03_Open {
         System.out.println("");
     }
 }
+
+class FinalSampe2 extends FinalSample {
+    @Override
+    public void methodA() {
+        super.methodA();
+    }
+}

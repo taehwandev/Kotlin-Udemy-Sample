@@ -22,10 +22,15 @@ public abstract class _01_Abstract {
     }
 }
 
-class AbstractSample extends _01_Abstract {
+/**
+ * final을 사용하였기에 다음의 클래스는 재정의가 불가능합니다
+ */
+final class AbstractSample extends _01_Abstract {
 
     @Override
     public void methodA() {
+        attributeA = "ABC";
+
         System.out.println("methodA");
     }
 

@@ -20,6 +20,7 @@ public interface _02_Interface {
 //    String methodB() {
 //        return attributeA;
 //    }
+
     String methodB();
 }
 
@@ -27,6 +28,8 @@ class InterfaceSample implements _02_Interface {
 
     @Override
     public void methodA() {
+//        attributeA = "ABC";
+
         System.out.println("methodA");
     }
 

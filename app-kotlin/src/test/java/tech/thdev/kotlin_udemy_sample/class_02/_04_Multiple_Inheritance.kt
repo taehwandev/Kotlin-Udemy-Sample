@@ -28,6 +28,8 @@ interface InterfaceBase {
         println("Interface methodA")
     }
 
+    fun methodB()
+
     fun methodC() {
         println("Interface methodB")
     }

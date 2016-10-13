@@ -26,3 +26,10 @@ class OpenSample : _03_Open() {
 //        // final and cannot be override
 //    }
 }
+
+/**
+ * OpenSample의 경우 final이기 때문에 클래스 재 정의가 불가능
+ */
+//class OpenSample2 : OpenSample() {
+//
+//}
