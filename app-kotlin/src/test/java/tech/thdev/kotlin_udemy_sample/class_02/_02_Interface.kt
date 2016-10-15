@@ -9,7 +9,7 @@ package tech.thdev.kotlin_udemy_sample.class_02
 interface _02_Interface {
 
     var attributeA: String
-    var attributeB: String
+    val attributeB: String/* = "ABC"*/
 
     fun methodA() {
         println("methodA")
@@ -31,9 +31,9 @@ interface _02_Interface {
         }
 
     // methodA는 interface에서 이미 정의되어 있지만, 다음과 같이 함수 재정의가 가능합니다
-    override fun methodA() {
-        super.methodA()
-    }
+//    override fun methodA() {
+//        super.methodA()
+//    }
 
     override fun methodB(): String = "methodB"
 }

@@ -28,7 +28,9 @@ interface InterfaceBase {
         println("Interface methodA")
     }
 
-    fun methodB()
+    fun methodB()/* {
+
+    }*/
 
     fun methodC() {
         println("Interface methodB")
@@ -36,6 +38,9 @@ interface InterfaceBase {
 }
 
 class Sample : OpenBase(), InterfaceBase {
+//    override fun methodB() {
+//
+//    }
 
     /**
      * open class의 open method와 interface의 methodA를 다중상속으로 받는다

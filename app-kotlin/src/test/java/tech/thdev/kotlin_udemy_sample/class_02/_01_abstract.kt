@@ -9,7 +9,7 @@ abstract class _01_Abstract {
     abstract var attributeA: String
 
     // 상속 후 재 정의를 하지 못함
-    var attributeB: String = "AttributeB"
+    val attributeB: String = "AttributeB"
 
     abstract fun methodA()
 
@@ -24,7 +24,7 @@ class AbstractSample : _01_Abstract() {
     override var attributeA: String = "AttributeA"
 
     override fun methodA() {
-        attributeB = "Sample"
+        attributeA = "Sample"
 
         println("---------")
         println("methodA")

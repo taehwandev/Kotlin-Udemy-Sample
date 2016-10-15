@@ -15,7 +15,7 @@ class _01_AbstractTest {
 
         sample.attributeA = "Test A"
         println(sample.attributeA)
-        sample.attributeB = "Test B"
+//        sample.attributeB = "Test B"
         println(sample.attributeB)
         sample.methodA()
         println(sample.methodB())
