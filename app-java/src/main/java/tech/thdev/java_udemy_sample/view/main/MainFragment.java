@@ -2,14 +2,12 @@ package tech.thdev.java_udemy_sample.view.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,11 +19,10 @@ import tech.thdev.java_udemy_sample.R;
 
 public class MainFragment extends Fragment {
 
-    @BindView(R.id.number_one)
-    EditText etNumberOne;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
 
-    @BindView(R.id.number_two)
-    EditText etNumberTwo;
+    private SampleAdapter sampleAdapter;
 
     // static instance 생성
     public static MainFragment getInstance() {
@@ -44,30 +41,31 @@ public class MainFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        final TextView textView = (TextView) view.findViewById(R.id.text);
+        sampleAdapter = new SampleAdapter(getContext());
+        recyclerView.setAdapter(sampleAdapter);
 
-        Button button = (Button) view.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        addItems(0, 0);
+        sampleAdapter.notifyDataSetChanged();
+
+        // Activity의 {@link FloatingActionButton}
+        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                textView.setText(getSum() + "");
+                if (sampleAdapter.getItemCount() < 50) {
+                    addItems(sampleAdapter.getItemCount(), sampleAdapter.getItemCount());
+                    sampleAdapter.notifyDataSetChanged();
+                }
             }
         });
     }
 
-    /**
-     * 입력 받은 2개의 수를 더하여 return
-     * <p>
-     * 오류가 있습니다. 디버깅하여 수정하세요.
-     */
-    private int getSum() {
-        int oneNumber = Integer.parseInt(etNumberOne.getText().toString());
-        String two = etNumberTwo.getText().toString();
-        if (!TextUtils.isEmpty(two)) {
-            int twoNumber = Integer.parseInt(two);
-
-            return oneNumber + twoNumber;
+    private void addItems(int size, int count) {
+        size = size + 1;
+        count = (count / 10) + 1;
+        for (int i = size; i < (10 * count); i++) {
+            sampleAdapter.addItem(i);
         }
-        return 0;
     }
 }

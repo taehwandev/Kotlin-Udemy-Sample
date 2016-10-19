@@ -1,13 +1,12 @@
 package tech.thdev.kotlin_udemy_sample.view.main
 
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import tech.thdev.kotlin_udemy_sample.R
 
 /**
@@ -15,16 +14,20 @@ import tech.thdev.kotlin_udemy_sample.R
  */
 class MainFragment : Fragment() {
 
-    private val etNumberOne by lazy {
-        view?.findViewById(R.id.number_one) as EditText
+    private val recyclerView by lazy {
+        view?.findViewById(R.id.recycler_view) as RecyclerView
     }
 
-    private var etNumberTwo: EditText? = null
+    private val fab by lazy {
+        activity.findViewById(R.id.fab) as FloatingActionButton
+    }
 
     // Java 식의 static instance
     companion object {
         fun getInstance() = MainFragment()
     }
+
+    private var sampleAdapter: SampleAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
             = inflater?.inflate(R.layout.fragment_main, container, false)
@@ -32,28 +35,30 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etNumberTwo = view?.findViewById(R.id.number_two) as EditText
+        sampleAdapter = SampleAdapter(context)
+        recyclerView.adapter = sampleAdapter
 
-        val textView = view?.findViewById(R.id.text) as TextView
-        val button = view?.findViewById(R.id.button) as Button
-        button.setOnClickListener {
-            textView.text = getSum().toString()
+        sampleAdapter?.let {
+            addItems(0, 0)
+            sampleAdapter?.notifyDataSetChanged()
+        }
+
+        fab.setOnClickListener {
+            // item을 500개보다 작은 동안 추가한다
+            sampleAdapter?.let {
+                if (it.itemCount < 50) {
+                    addItems(it.itemCount, it.itemCount)
+                    sampleAdapter?.notifyDataSetChanged()
+                }
+            }
         }
     }
 
-    private fun getSum(): Int {
-        val one = try {
-            etNumberOne.text.toString().toInt()
-
-        } catch (e: Exception) {
-            0
+    private fun addItems(size: Int, count: Int) {
+        val tempSize = size + 1
+        val tempCount = (count / 10) + 1
+        for (index in tempSize..(10 * tempCount)) {
+            sampleAdapter?.addItem(index)
         }
-
-        val two = when {
-            etNumberTwo?.text?.isNullOrEmpty() as Boolean -> 0
-            else -> etNumberTwo?.text?.toString()?.toInt()
-        } ?: 0
-
-        return one + two
     }
 }

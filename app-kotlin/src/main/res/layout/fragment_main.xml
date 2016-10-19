@@ -1,45 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="tech.thdev.kotlin_udemy_sample.view.main.MainFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/number_one"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:hint="1"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/number_two"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:hint="2"
-            android:inputType="number" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sum" />
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:text="Kotlin Sample!!!!" />
-
-</LinearLayout>
+        app:layoutManager="LinearLayoutManager"
+        app:spanCount="1" />
+</RelativeLayout>
