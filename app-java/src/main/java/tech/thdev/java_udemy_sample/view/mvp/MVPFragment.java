@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
 import tech.thdev.java_udemy_sample.view.mvp.presenter.MVPPresenter;
-import tech.thdev.java_udemy_sample.view.mvp.presenter.MVPImpl;
+import tech.thdev.java_udemy_sample.view.mvp.presenter.MVPPresenterImpl;
 
 /**
  * Created by tae-hwan on 10/5/16.
@@ -46,7 +46,7 @@ public class MVPFragment extends Fragment implements MVPPresenter.View {
 
         ButterKnife.bind(this, view);
 
-        mvpPresenter = new MVPImpl(this);
+        mvpPresenter = new MVPPresenterImpl(this);
 
         mvpAdapter = new MVPAdapter(getContext());
         recyclerView.setAdapter(mvpAdapter);

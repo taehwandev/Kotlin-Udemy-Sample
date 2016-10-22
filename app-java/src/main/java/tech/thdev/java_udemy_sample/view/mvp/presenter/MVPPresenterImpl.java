@@ -4,11 +4,11 @@ package tech.thdev.java_udemy_sample.view.mvp.presenter;
  * Created by tae-hwan on 10/22/16.
  */
 
-public class MVPImpl implements MVPPresenter {
+public class MVPPresenterImpl implements MVPPresenter {
 
     private MVPPresenter.View view;
 
-    public MVPImpl(MVPPresenter.View view) {
+    public MVPPresenterImpl(MVPPresenter.View view) {
         this.view = view;
     }
 
