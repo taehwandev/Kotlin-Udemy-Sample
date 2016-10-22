@@ -1,4 +1,4 @@
-package tech.thdev.java_udemy_sample.view.main;
+package tech.thdev.java_udemy_sample.view.mvp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,21 +12,26 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
+import tech.thdev.java_udemy_sample.view.mvp.presenter.MVPPresenter;
+import tech.thdev.java_udemy_sample.view.mvp.presenter.MVPImpl;
 
 /**
  * Created by tae-hwan on 10/5/16.
  */
 
-public class MainFragment extends Fragment {
+public class MVPFragment extends Fragment implements MVPPresenter.View {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
-    private SampleAdapter sampleAdapter;
+    // MVPPresenter 추가
+    private MVPPresenter mvpPresenter;
+
+    private MVPAdapter mvpAdapter;
 
     // static instance 생성
-    public static MainFragment getInstance() {
-        return new MainFragment();
+    public static MVPFragment getInstance() {
+        return new MVPFragment();
     }
 
     @Nullable
@@ -41,11 +46,13 @@ public class MainFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        sampleAdapter = new SampleAdapter(getContext());
-        recyclerView.setAdapter(sampleAdapter);
+        mvpPresenter = new MVPImpl(this);
 
-        addItems(0);
-        sampleAdapter.notifyDataSetChanged();
+        mvpAdapter = new MVPAdapter(getContext());
+        recyclerView.setAdapter(mvpAdapter);
+
+        mvpPresenter.getItems(0);
+        mvpAdapter.notifyDataSetChanged();
 
         // Activity의 {@link FloatingActionButton}
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
@@ -53,19 +60,18 @@ public class MainFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                if (sampleAdapter.getItemCount() < 50) {
-                    addItems(sampleAdapter.getItemCount());
-                    sampleAdapter.notifyDataSetChanged();
-                }
+                mvpPresenter.getItems(mvpAdapter.getItemCount());
             }
         });
     }
 
-    private void addItems(int size) {
-        size = size + 1;
-        int count = (size / 10) + 1;
-        for (int i = size; i < (10 * count); i++) {
-            sampleAdapter.addItem(i);
-        }
+    @Override
+    public void addItem(int index) {
+        mvpAdapter.addItem(index);
+    }
+
+    @Override
+    public void adapterNotify() {
+        mvpAdapter.notifyDataSetChanged();
     }
 }
