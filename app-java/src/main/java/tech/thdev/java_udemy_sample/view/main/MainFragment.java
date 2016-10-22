@@ -44,7 +44,7 @@ public class MainFragment extends Fragment {
         sampleAdapter = new SampleAdapter(getContext());
         recyclerView.setAdapter(sampleAdapter);
 
-        addItems(0, 0);
+        addItems(0);
         sampleAdapter.notifyDataSetChanged();
 
         // Activity의 {@link FloatingActionButton}
@@ -54,16 +54,16 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (sampleAdapter.getItemCount() < 50) {
-                    addItems(sampleAdapter.getItemCount(), sampleAdapter.getItemCount());
+                    addItems(sampleAdapter.getItemCount());
                     sampleAdapter.notifyDataSetChanged();
                 }
             }
         });
     }
 
-    private void addItems(int size, int count) {
+    private void addItems(int size) {
         size = size + 1;
-        count = (count / 10) + 1;
+        int count = (size / 10) + 1;
         for (int i = size; i < (10 * count); i++) {
             sampleAdapter.addItem(i);
         }

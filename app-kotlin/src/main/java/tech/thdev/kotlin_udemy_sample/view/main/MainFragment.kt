@@ -39,7 +39,7 @@ class MainFragment : Fragment() {
         recyclerView.adapter = sampleAdapter
 
         sampleAdapter?.let {
-            addItems(0, 0)
+            addItems(0)
             sampleAdapter?.notifyDataSetChanged()
         }
 
@@ -47,16 +47,16 @@ class MainFragment : Fragment() {
             // item을 500개보다 작은 동안 추가한다
             sampleAdapter?.let {
                 if (it.itemCount < 50) {
-                    addItems(it.itemCount, it.itemCount)
+                    addItems(it.itemCount)
                     sampleAdapter?.notifyDataSetChanged()
                 }
             }
         }
     }
 
-    private fun addItems(size: Int, count: Int) {
+    private fun addItems(size: Int) {
         val tempSize = size + 1
-        val tempCount = (count / 10) + 1
+        val tempCount = (size / 10) + 1
         for (index in tempSize..(10 * tempCount)) {
             sampleAdapter?.addItem(index)
         }
