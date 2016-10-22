@@ -9,7 +9,7 @@ part 9 Android MVC 패턴에 대한 자료입니다.
 ## 포함된 자료
 
  - Java : [Android MVC](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/master/app-java/src/main)
- - Kotlin : [Android_MVC](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/master/app-kotlin/src/main)
+ - Kotlin : [Android MVC](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/master/app-kotlin/src/main)
 
 ## License
 
