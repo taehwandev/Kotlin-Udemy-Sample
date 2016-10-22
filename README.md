@@ -4,7 +4,7 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
-Null Safety 대한 자료입니다.
+다음의 자료는 `Part 6/Part 7`의 Null Safety에 포함된 자료입니다.
 
 ## 포함된 자료
 
