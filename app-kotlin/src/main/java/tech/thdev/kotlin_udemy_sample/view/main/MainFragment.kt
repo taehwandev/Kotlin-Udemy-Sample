@@ -44,7 +44,7 @@ class MainFragment : Fragment() {
         }
 
         fab.setOnClickListener {
-            // item을 500개보다 작은 동안 추가한다
+            // item을 50개보다 작은 동안 추가한다
             sampleAdapter?.let {
                 if (it.itemCount < 50) {
                     addItems(it.itemCount)
