@@ -52,7 +52,6 @@ public class MVPFragment extends Fragment implements MVPPresenter.View {
         recyclerView.setAdapter(mvpAdapter);
 
         mvpPresenter.getItems(0);
-        mvpAdapter.notifyDataSetChanged();
 
         // Activity의 {@link FloatingActionButton}
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
