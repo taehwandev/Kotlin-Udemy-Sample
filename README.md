@@ -4,7 +4,7 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
-`part 10` Android MVP 패턴에 대한 자료입니다.
+`part 10` Android MVP 구조에 대한 자료입니다.
 
 ## 포함된 자료
 
