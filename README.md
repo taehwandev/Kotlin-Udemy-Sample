@@ -16,6 +16,8 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
   - `Part 10` : Android MVC 코드로 작성한 예제입니다. RecyclerView를 통한 리스트 뷰로 정리하였습니다.
 - [05. MVP](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/05-mvp)
   - `Part 11` : Android MVC 코드를 MVP로 변경한 예제입니다.
+- [06. MVP - Model](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/06-mvp-model)
+  - `Part 12` : Android MVP에 Model을 추가로 분환할 예제입니다.
 
 ## Preview
 
