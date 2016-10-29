@@ -4,12 +4,12 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
-`part 10` Android MVP 패턴에 대한 자료입니다.
+`part 11` Android MVP 구조의 Model을 추가한 예제입니다.
 
 ## 포함된 자료
 
-- Java : [Android MVP](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/05-mvp/app-java/src/main)
-- Kotlin : [Android MVP](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/05-mvp/app-kotlin/src/main)
+- Java : [Android MVP](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/06-mvp-model/app-java/src/main)
+- Kotlin : [Android MVP](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/06-mvp-model/app-kotlin/src/main)
 
 ## 참고자료
 
