@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="selectableItemBackgroundCompat">@android:drawable/list_selector_background</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

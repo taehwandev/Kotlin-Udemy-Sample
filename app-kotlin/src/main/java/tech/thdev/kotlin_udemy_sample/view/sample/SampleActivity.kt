@@ -1,4 +1,4 @@
-package tech.thdev.kotlin_udemy_sample.view.image
+package tech.thdev.kotlin_udemy_sample.view.sample
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.util.replaceFragmentToActivity
 
-class ImageSampleActivity : AppCompatActivity() {
+class SampleActivity : AppCompatActivity() {
 
     private val toolbar by lazy {
         findViewById(R.id.toolbar) as Toolbar
@@ -19,6 +19,6 @@ class ImageSampleActivity : AppCompatActivity() {
         toolbar.setTitle(R.string.app_name)
         setSupportActionBar(toolbar)
 
-        replaceFragmentToActivity(ImageSampleFragment.getInstance(), R.id.frame_layout)
+        replaceFragmentToActivity(SampleFragment.getInstance(), R.id.frame_layout)
     }
 }
