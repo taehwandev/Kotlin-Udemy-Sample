@@ -4,7 +4,8 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-import tech.thdev.java_udemy_sample.data.ImageItem;
+import tech.thdev.java_udemy_sample.data.SampleItem;
+
 
 /**
  * Created by tae-hwan on 10/29/16.
@@ -29,7 +30,7 @@ public class ImageSampleRepository implements ImageSampleSource {
     }
 
     @Override
-    public ArrayList<ImageItem> getImageItems(Context context, int size) {
+    public ArrayList<SampleItem> getImageItems(Context context, int size) {
         return sampleSourceData.getImageItems(context, size);
     }
 }

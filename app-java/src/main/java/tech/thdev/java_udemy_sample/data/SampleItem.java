@@ -4,12 +4,12 @@ package tech.thdev.java_udemy_sample.data;
  * Created by tae-hwan on 10/29/16.
  */
 
-public class ImageItem {
+public class SampleItem {
 
     private int imageRes;
     private String title;
 
-    public ImageItem(int imageRes, String title) {
+    public SampleItem(int imageRes, String title) {
         this.imageRes = imageRes;
         this.title = title;
     }

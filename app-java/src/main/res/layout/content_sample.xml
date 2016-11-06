@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".view.sample.SampleActivity"
-    tools:showIn="@layout/activity_image_sample">
+    tools:showIn="@layout/activity_sample">
 
     <!-- Fragment view -->
     <FrameLayout

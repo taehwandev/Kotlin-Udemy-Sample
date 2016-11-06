@@ -1,4 +1,4 @@
-package tech.thdev.java_udemy_sample.view.image;
+package tech.thdev.java_udemy_sample.view.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +13,7 @@ import tech.thdev.java_udemy_sample.util.ActivityUtil;
  * Created by tae-hwan on 10/29/16.
  */
 
-public class ImageSampleActivity extends AppCompatActivity {
+public class SampleActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -21,7 +21,7 @@ public class ImageSampleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_sample);
+        setContentView(R.layout.activity_sample);
 
         // ButterKnife 사용
         ButterKnife.bind(this);
@@ -29,6 +29,6 @@ public class ImageSampleActivity extends AppCompatActivity {
         toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
 
-        ActivityUtil.replaceFragmentToActivity(getSupportFragmentManager(), ImageSampleFragment.getInstance(), R.id.frame_layout);
+        ActivityUtil.replaceFragmentToActivity(getSupportFragmentManager(), SampleFragment.getInstance(), R.id.frame_layout);
     }
 }
