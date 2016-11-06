@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_image_sample.*
 import tech.thdev.kotlin_udemy_sample.R
-import tech.thdev.kotlin_udemy_sample.adapter.SampleOneAdapter
-import tech.thdev.kotlin_udemy_sample.adapter.SampleTwoAdapter
+import tech.thdev.kotlin_udemy_sample.adapter.sample_one.SampleOneAdapter
+import tech.thdev.kotlin_udemy_sample.adapter.sample_two.SampleTwoAdapter
 import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
 import tech.thdev.kotlin_udemy_sample.view.sample.presenter.SampleContract
 import tech.thdev.kotlin_udemy_sample.view.sample.presenter.SamplePresenter
@@ -84,8 +84,9 @@ class SampleFragment : Fragment(), SampleContract.View {
         sampleOneAdapter?.notifyDataSetChanged()
     }
 
-    override fun onSuccessAddItem() {
+    override fun onSuccessAddItem(position: Int) {
         Toast.makeText(context, "아이템 추가 완료", Toast.LENGTH_SHORT).show()
+        recycler_view_one.scrollToPosition(position)
     }
 
     override fun adapterTwoNotify() {

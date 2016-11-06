@@ -1,7 +1,7 @@
 package tech.thdev.kotlin_udemy_sample.view.sample.presenter
 
-import tech.thdev.kotlin_udemy_sample.adapter.model.SampleOneModel
-import tech.thdev.kotlin_udemy_sample.adapter.model.SampleTwoModel
+import tech.thdev.kotlin_udemy_sample.adapter.sample_one.model.SampleOneModel
+import tech.thdev.kotlin_udemy_sample.adapter.sample_two.model.SampleTwoModel
 
 /**
  * Created by tae-hwan on 10/23/16.
@@ -16,7 +16,7 @@ interface SampleContract {
          */
         fun adapterOneNotify()
 
-        fun onSuccessAddItem()
+        fun onSuccessAddItem(position: Int)
 
         /**
          * RecyclerView Two를 갱신한다

@@ -1,4 +1,4 @@
-package tech.thdev.kotlin_udemy_sample.adapter.model
+package tech.thdev.kotlin_udemy_sample.adapter.sample_two.model
 
 import tech.thdev.kotlin_udemy_sample.data.SampleItem
 import java.util.*
@@ -13,12 +13,10 @@ interface SampleTwoModel {
 
     fun getItem(position: Int): SampleItem?
 
-    fun addSelectItem(position: Int)
-
-    fun getSelectItem(): HashSet<Int>
-
     /**
      * Item을 제거한다
      */
     fun removeItem(sampleItem: SampleItem)
+
+    fun getItems(): MutableList<SampleItem>
 }

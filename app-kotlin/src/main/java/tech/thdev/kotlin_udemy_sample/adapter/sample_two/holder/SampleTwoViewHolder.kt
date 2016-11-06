@@ -1,8 +1,7 @@
-package tech.thdev.kotlin_udemy_sample.adapter.holder
+package tech.thdev.kotlin_udemy_sample.adapter.sample_two.holder
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.RelativeLayout
@@ -32,9 +31,14 @@ class SampleTwoViewHolder(val context: Context, parent: ViewGroup?, val onItemCl
             true
         }
 
-        // TODO View selected 해결
-        rlView.isSelected = sample?.isSelected ?: false
-        Log.d("TAG", "isSelected ${sample?.isSelected}")
+        /*
+         * item select에 따른 색상 변경
+         */
+        if (sample?.isSelected ?: false) {
+            rlView.setBackgroundResource(R.color.color_control_highlight)
+        } else {
+            rlView.setBackgroundResource(0)
+        }
         textView.text = sample?.message
     }
 }

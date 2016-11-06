@@ -1,10 +1,10 @@
-package tech.thdev.kotlin_udemy_sample.adapter
+package tech.thdev.kotlin_udemy_sample.adapter.sample_one
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import tech.thdev.kotlin_udemy_sample.adapter.holder.SampleOneViewHolder
-import tech.thdev.kotlin_udemy_sample.adapter.model.SampleOneModel
+import tech.thdev.kotlin_udemy_sample.adapter.sample_one.holder.SampleOneViewHolder
+import tech.thdev.kotlin_udemy_sample.adapter.sample_one.model.SampleOneModel
 import tech.thdev.kotlin_udemy_sample.data.SampleItem
 import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
 import java.util.*

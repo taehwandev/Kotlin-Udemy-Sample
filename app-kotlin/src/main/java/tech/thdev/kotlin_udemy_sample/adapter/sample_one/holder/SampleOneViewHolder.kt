@@ -1,4 +1,4 @@
-package tech.thdev.kotlin_udemy_sample.adapter.holder
+package tech.thdev.kotlin_udemy_sample.adapter.sample_one.holder
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

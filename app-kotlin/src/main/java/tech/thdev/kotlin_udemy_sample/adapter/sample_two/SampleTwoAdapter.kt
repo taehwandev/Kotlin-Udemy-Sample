@@ -1,10 +1,10 @@
-package tech.thdev.kotlin_udemy_sample.adapter
+package tech.thdev.kotlin_udemy_sample.adapter.sample_two
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import tech.thdev.kotlin_udemy_sample.adapter.holder.SampleTwoViewHolder
-import tech.thdev.kotlin_udemy_sample.adapter.model.SampleTwoModel
+import tech.thdev.kotlin_udemy_sample.adapter.sample_two.holder.SampleTwoViewHolder
+import tech.thdev.kotlin_udemy_sample.adapter.sample_two.model.SampleTwoModel
 import tech.thdev.kotlin_udemy_sample.data.SampleItem
 import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
 import java.util.*
@@ -16,11 +16,6 @@ import java.util.*
 class SampleTwoAdapter(private val context: Context) : RecyclerView.Adapter<SampleTwoViewHolder>(), SampleTwoModel {
 
     val itemList: MutableList<SampleItem> = ArrayList()
-
-    /**
-     * Item 선택 리스트
-     */
-    val selectItemList = HashSet<Int>()
 
     var onItemClickListener: OnItemClickListener? = null
 
@@ -44,13 +39,9 @@ class SampleTwoAdapter(private val context: Context) : RecyclerView.Adapter<Samp
         itemList.add(sampleItem)
     }
 
-    override fun addSelectItem(position: Int) {
-        selectItemList.add(position)
-    }
-
-    override fun getSelectItem() = selectItemList
-
     override fun removeItem(sampleItem: SampleItem) {
         itemList.remove(sampleItem)
     }
+
+    override fun getItems() = itemList
 }

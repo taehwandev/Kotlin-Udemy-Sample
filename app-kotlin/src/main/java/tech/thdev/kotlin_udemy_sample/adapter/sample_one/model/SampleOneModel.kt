@@ -1,4 +1,4 @@
-package tech.thdev.kotlin_udemy_sample.adapter.model
+package tech.thdev.kotlin_udemy_sample.adapter.sample_one.model
 
 import tech.thdev.kotlin_udemy_sample.data.SampleItem
 

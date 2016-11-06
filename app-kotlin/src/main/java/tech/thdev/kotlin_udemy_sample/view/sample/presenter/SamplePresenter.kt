@@ -1,7 +1,7 @@
 package tech.thdev.kotlin_udemy_sample.view.sample.presenter
 
-import tech.thdev.kotlin_udemy_sample.adapter.model.SampleOneModel
-import tech.thdev.kotlin_udemy_sample.adapter.model.SampleTwoModel
+import tech.thdev.kotlin_udemy_sample.adapter.sample_one.model.SampleOneModel
+import tech.thdev.kotlin_udemy_sample.adapter.sample_two.model.SampleTwoModel
 import tech.thdev.kotlin_udemy_sample.data.SampleItem
 
 /**
@@ -28,7 +28,7 @@ class SamplePresenter : SampleContract.Presenter {
 
     override fun adapterOneAddItem() {
         sampleOneModel?.addItem(SampleItem("Item ${++count}"))
-        view?.onSuccessAddItem()
+        view?.onSuccessAddItem(sampleOneModel?.getItemCount()?.let { it - 1 } ?: 0)
         view?.adapterOneNotify()
     }
 
@@ -42,35 +42,27 @@ class SamplePresenter : SampleContract.Presenter {
         }
     }
 
+    /**
+     * Adapter Two의 선택 목록을 불러오고
+     */
     override fun adapterTwoRemoveItem() {
-        val selectItem = sampleTwoModel?.getSelectItem()
-        selectItem?.let {
-            it.iterator().forEach {
-
-                // TODO 오류 해결
-                sampleTwoModel?.getItem(it)?.let {
-                    sampleTwoModel?.removeItem(it)
+        sampleTwoModel?.
+                getItems()?.
+                filter { it.isSelected }?.
+                map {
+                    it.isSelected = false
                     sampleOneModel?.addItem(it)
+                    sampleTwoModel?.removeItem(it)
                 }
-            }
 
-            view?.adapterOneNotify()
-            view?.adapterTwoNotify()
-            view?.onSuccessRemoveItem()
-        }
+        view?.adapterOneNotify()
+        view?.adapterTwoNotify()
+        view?.onSuccessRemoveItem()
     }
 
     override fun adapterTwoItemClick(position: Int) {
         sampleTwoModel?.getItem(position)?.let {
-            val selectItem = sampleTwoModel?.getSelectItem()
-            if (selectItem?.contains(position) ?: false) {
-                selectItem?.remove(position)
-                it.isSelected = false
-
-            } else {
-                selectItem?.add(position)
-                it.isSelected = true
-            }
+            it.isSelected = !it.isSelected
 
             view?.adapterTwoNotify()
         }
