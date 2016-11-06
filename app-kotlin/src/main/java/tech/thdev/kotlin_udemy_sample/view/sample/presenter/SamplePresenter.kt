@@ -1,5 +1,6 @@
 package tech.thdev.kotlin_udemy_sample.view.sample.presenter
 
+import tech.thdev.kotlin_udemy_sample.adapter.sample_one.SampleOneAdapter
 import tech.thdev.kotlin_udemy_sample.adapter.sample_one.model.SampleOneModel
 import tech.thdev.kotlin_udemy_sample.adapter.sample_two.model.SampleTwoModel
 import tech.thdev.kotlin_udemy_sample.data.SampleItem
@@ -20,14 +21,14 @@ class SamplePresenter : SampleContract.Presenter {
 
     override fun loadDefaultItems() {
         for (position in 0..5) {
-            sampleOneModel?.addItem(SampleItem("Item ${++count}"))
+            sampleOneModel?.addItem(SampleItem("Item ${++count}", SampleOneAdapter.VIEW_TYPE_TEXT))
         }
 
         view?.adapterOneNotify()
     }
 
     override fun adapterOneAddItem() {
-        sampleOneModel?.addItem(SampleItem("Item ${++count}"))
+        sampleOneModel?.addItem(SampleItem("Item ${++count}", SampleOneAdapter.VIEW_TYPE_TEXT))
         view?.onSuccessAddItem(sampleOneModel?.getItemCount()?.let { it - 1 } ?: 0)
         view?.adapterOneNotify()
     }
@@ -66,5 +67,11 @@ class SamplePresenter : SampleContract.Presenter {
 
             view?.adapterTwoNotify()
         }
+    }
+
+    override fun addSampleImageItem() {
+        sampleOneModel?.addItem(SampleItem("", SampleOneAdapter.VIEW_TYPE_IMAGE))
+        view?.onSuccessImageSample(sampleOneModel?.getItemCount()?.let { it - 1 } ?: 0)
+        view?.adapterOneNotify()
     }
 }

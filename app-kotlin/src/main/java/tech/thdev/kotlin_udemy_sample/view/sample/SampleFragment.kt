@@ -1,12 +1,9 @@
 package tech.thdev.kotlin_udemy_sample.view.sample
 
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_image_sample.*
 import tech.thdev.kotlin_udemy_sample.R
@@ -35,6 +32,12 @@ class SampleFragment : Fragment(), SampleContract.View {
 
     private var presenter: SampleContract.Presenter? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
             = inflater?.inflate(R.layout.fragment_image_sample, container, false)
 
@@ -49,7 +52,7 @@ class SampleFragment : Fragment(), SampleContract.View {
         sampleOneAdapter = SampleOneAdapter(context)
 
         // Kotlin SAM OnClick lambda
-        sampleOneAdapter?.setOnItemClickListner {
+        sampleOneAdapter?.setOnItemClickListener {
             presenter?.adapterOneItemClick(it)
         }
 
@@ -95,5 +98,19 @@ class SampleFragment : Fragment(), SampleContract.View {
 
     override fun onSuccessRemoveItem() {
         Toast.makeText(context, "Remove success", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.menu_main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        presenter?.addSampleImageItem()
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onSuccessImageSample(position: Int) {
+        recycler_view_one.scrollToPosition(position)
     }
 }

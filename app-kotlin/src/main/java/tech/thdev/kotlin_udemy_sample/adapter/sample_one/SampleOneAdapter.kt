@@ -3,6 +3,7 @@ package tech.thdev.kotlin_udemy_sample.adapter.sample_one
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import tech.thdev.kotlin_udemy_sample.adapter.sample_one.holder.SampleImageViewHolder
 import tech.thdev.kotlin_udemy_sample.adapter.sample_one.holder.SampleOneViewHolder
 import tech.thdev.kotlin_udemy_sample.adapter.sample_one.model.SampleOneModel
 import tech.thdev.kotlin_udemy_sample.data.SampleItem
@@ -13,7 +14,12 @@ import java.util.*
  * Created by tae-hwan on 10/29/16.
  */
 
-class SampleOneAdapter(private val context: Context) : RecyclerView.Adapter<SampleOneViewHolder>(), SampleOneModel {
+class SampleOneAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), SampleOneModel {
+
+    companion object {
+        val VIEW_TYPE_TEXT = 1
+        val VIEW_TYPE_IMAGE = 2
+    }
 
     val itemList: MutableList<SampleItem> = ArrayList()
 
@@ -21,7 +27,7 @@ class SampleOneAdapter(private val context: Context) : RecyclerView.Adapter<Samp
     var onItemClickListener: OnItemClickListener? = null
         private set
 
-    fun setOnItemClickListner(listener: (Int) -> Unit) {
+    fun setOnItemClickListener(listener: (Int) -> Unit) {
 
         this.onItemClickListener = object : OnItemClickListener {
 
@@ -31,12 +37,19 @@ class SampleOneAdapter(private val context: Context) : RecyclerView.Adapter<Samp
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SampleOneViewHolder {
-        return SampleOneViewHolder(context, parent, onItemClickListener)
+    override fun getItemViewType(position: Int): Int {
+        return getItem(position).viewType
     }
 
-    override fun onBindViewHolder(holderSample: SampleOneViewHolder?, position: Int) {
-        holderSample?.bindView(getItem(position), position)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+        when (getItemViewType(position)) {
+            VIEW_TYPE_TEXT -> (holder as? SampleOneViewHolder)?.bindView(getItem(position), position)
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = when (viewType) {
+        VIEW_TYPE_IMAGE -> SampleImageViewHolder(context, parent)
+        else -> SampleOneViewHolder(context, parent, onItemClickListener)
     }
 
     /**

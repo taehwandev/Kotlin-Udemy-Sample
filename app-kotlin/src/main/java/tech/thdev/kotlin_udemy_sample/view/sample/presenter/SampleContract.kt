@@ -24,6 +24,11 @@ interface SampleContract {
         fun adapterTwoNotify()
 
         fun onSuccessRemoveItem()
+
+        /**
+         * Image sample 추가 완료
+         */
+        fun  onSuccessImageSample(position: Int)
     }
 
     interface Presenter {
@@ -64,5 +69,10 @@ interface SampleContract {
          * Adapter Two의 아이템을 클릭한다
          */
         fun adapterTwoItemClick(position: Int)
+
+        /**
+         * Sample image을 추가한다
+         */
+        fun addSampleImageItem()
     }
 }
