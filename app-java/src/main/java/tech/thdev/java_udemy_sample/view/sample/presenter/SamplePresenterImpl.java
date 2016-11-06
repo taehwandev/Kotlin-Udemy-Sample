@@ -30,3 +30,4 @@ public class SamplePresenterImpl implements SamplePresenter {
 
         view.notifyAdapter();
     }
+}
