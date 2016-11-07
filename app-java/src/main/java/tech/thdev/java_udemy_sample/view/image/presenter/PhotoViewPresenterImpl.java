@@ -36,6 +36,11 @@ public class PhotoViewPresenterImpl implements PhotoViewPresenter {
             public void onDataNotAvailable() {
                 view.showFailLoaded();
             }
+
+            @Override
+            public void onLoadFail(int code, String message) {
+                view.showLoadFailMessage(code, message);
+            }
         });
     }
 }

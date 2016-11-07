@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.util.replaceFragmentToActivity
 
-class ImageSampleActivity : AppCompatActivity() {
+class ImageActivity : AppCompatActivity() {
 
     private val toolbar by lazy {
         findViewById(R.id.toolbar) as Toolbar

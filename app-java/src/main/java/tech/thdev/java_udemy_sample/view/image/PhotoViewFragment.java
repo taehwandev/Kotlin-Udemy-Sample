@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +76,12 @@ public class PhotoViewFragment extends Fragment implements PhotoViewPresenter.Vi
 
     @Override
     public void showFailLoaded() {
-        Toast.makeText(getContext(), "Load fail success", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Load fail", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showLoadFailMessage(int code, String message) {
+        Toast.makeText(getContext(), "Code " + code + ", message " + message, Toast.LENGTH_LONG).show();
+        Log.e("TAG", "Code " + code + ", message " + message);
     }
 }

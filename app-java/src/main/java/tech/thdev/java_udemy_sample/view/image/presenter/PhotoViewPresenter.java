@@ -13,5 +13,7 @@ public interface PhotoViewPresenter {
         void showLoaded();
 
         void showFailLoaded();
+
+        void showLoadFailMessage(int code, String message);
     }
 }

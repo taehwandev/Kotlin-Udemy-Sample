@@ -17,12 +17,12 @@ public class RetrofitCreator {
                 .build();
     }
 
-//    /**
-//     * TODO Http 로그가 궁금하다면 다음을 확인하세요.
-//     * OkHttp에 HttpLoggingInterceptor을 추가하여 Log을 출력한다
-//     * <a href="http://square.github.io/okhttp/">OkHttp</a>
-//     * <a href="https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor">Okhttp</a>
-//     */
+    /**
+     * TODO Http 로그가 궁금하다면 다음을 확인하세요.
+     * OkHttp에 HttpLoggingInterceptor을 추가하여 Log을 출력한다
+     * <a href="http://square.github.io/okhttp/">OkHttp</a>
+     * <a href="https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor">Okhttp</a>
+     */
 //    private static OkHttpClient createOkHttpClient() {
 //        OkHttpClient.Builder builder = new OkHttpClient.Builder();
 //        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

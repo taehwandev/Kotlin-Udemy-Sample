@@ -21,6 +21,11 @@ public interface ImageSource {
          * 로드 실패시
          */
         void onDataNotAvailable();
+
+        /**
+         * 로드 실패에 대한 메시지
+         */
+        void onLoadFail(int code, String message);
     }
 
     /**
