@@ -64,7 +64,6 @@ class ImageSampleFragment : Fragment(), ImageContract.View {
     override fun showLoadFailMessage(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
         Log.e("TAG", "Exception : " + message)
-        throw Exception()
     }
 
     override fun showLoadSuccess() {
