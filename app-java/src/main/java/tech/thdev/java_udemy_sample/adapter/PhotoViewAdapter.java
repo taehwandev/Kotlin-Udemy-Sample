@@ -7,13 +7,15 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import tech.thdev.java_udemy_sample.adapter.holder.PhotoViewViewHolder;
+import tech.thdev.java_udemy_sample.adapter.model.PhotoViewAdapterContract;
 import tech.thdev.java_udemy_sample.data.PhotoItem;
 
 /**
  * Created by tae-hwan on 10/29/16.
  */
 
-public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewViewHolder> {
+public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewViewHolder>
+        implements PhotoViewAdapterContract.Model, PhotoViewAdapterContract.View {
 
     private final Context context;
     private ArrayList<PhotoItem> imageItems = new ArrayList<>();
@@ -37,7 +39,13 @@ public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewViewHolder> 
         return imageItems.size();
     }
 
-    public void addItem(PhotoItem imageItem) {
-        imageItems.add(imageItem);
+    @Override
+    public void addItem(PhotoItem item) {
+        imageItems.add(item);
+    }
+
+    @Override
+    public void onReload() {
+        notifyDataSetChanged();
     }
 }

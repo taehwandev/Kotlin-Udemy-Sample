@@ -10,6 +10,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
+import tech.thdev.java_udemy_sample.async.ImageDownloadThread;
 import tech.thdev.java_udemy_sample.data.PhotoItem;
 
 /**
@@ -30,8 +31,8 @@ public class PhotoViewViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void onBindView(PhotoItem imageItem, int position) {
-//        imageView.setImageResource(imageItem.getImageRes());
-//        tvTitle.setText(imageItem.getTitle());
+    public void onBindView(PhotoItem photoItem, int position) {
+        tvTitle.setText(photoItem.getTitle());
+        ImageDownloadThread.getInstance().loadImage(R.drawable.loading, imageView, photoItem.getUrl());
     }
 }

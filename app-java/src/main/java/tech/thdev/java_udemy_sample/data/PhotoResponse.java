@@ -13,6 +13,7 @@ public class PhotoResponse {
 
     private int code;
     private String message;
+    private String stat;
 
     public PhotoPageInfo getPhotoPageInfo() {
         return photoPageInfo;
@@ -36,5 +37,9 @@ public class PhotoResponse {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getStat() {
+        return stat;
     }
 }

@@ -50,10 +50,15 @@ public class PhotoViewFragment extends Fragment implements PhotoViewPresenter.Vi
 
         ButterKnife.bind(this, view);
 
-        presenter = new PhotoViewPresenterImpl(this, ImageRepository.getInstance());
-
         adapter = new PhotoViewAdapter(getContext());
         recyclerView.setAdapter(adapter);
+
+        presenter = new PhotoViewPresenterImpl(this, ImageRepository.getInstance());
+
+        // Adapter의 View/Model을 셋팅한다
+        presenter.setAdapterModel(adapter);
+        presenter.setAdapterView(adapter);
+
 
         // Activity의 {@link FloatingActionButton}
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);

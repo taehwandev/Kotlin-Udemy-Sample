@@ -27,7 +27,7 @@ class ImagePresenter : ImageContract.Presenter {
                     override fun onResponse(call: Call<PhotoResponse>?, response: Response<PhotoResponse>?) {
                         response?.isSuccessful.apply {
                             val photoResponse = response?.body()
-                            if (photoResponse?.code == 200) {
+                            if (photoResponse?.stat === "ok") {
                                 Log.d("TAG", "response raw " + response?.raw())
                                 view?.showLoadSuccess()
 
