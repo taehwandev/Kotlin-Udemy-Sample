@@ -45,6 +45,7 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     // OK HTTP
     compile 'com.squareup.okhttp3:okhttp:3.4.2'
+    // TODO Http 로그가 궁금하다면 다음을 확인하세요.
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
 
     testCompile 'junit:junit:4.12'
