@@ -8,33 +8,33 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
-import tech.thdev.java_udemy_sample.adapter.ImageSampleAdapter;
-import tech.thdev.java_udemy_sample.data.ImageItem;
-import tech.thdev.java_udemy_sample.data.source.image.ImageSampleRepository;
-import tech.thdev.java_udemy_sample.view.image.presenter.ImageSamplePresenter;
-import tech.thdev.java_udemy_sample.view.image.presenter.ImageSamplePresenterImpl;
+import tech.thdev.java_udemy_sample.adapter.PhotoViewAdapter;
+import tech.thdev.java_udemy_sample.data.source.image.ImageRepository;
+import tech.thdev.java_udemy_sample.view.image.presenter.PhotoViewPresenter;
+import tech.thdev.java_udemy_sample.view.image.presenter.PhotoViewPresenterImpl;
 
 /**
  * Created by tae-hwan on 10/29/16.
  */
 
-public class ImageSampleFragment extends Fragment implements ImageSamplePresenter.View {
+public class PhotoViewFragment extends Fragment implements PhotoViewPresenter.View {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
     // MVPPresenter 추가
-    private ImageSamplePresenterImpl presenter;
+    private PhotoViewPresenterImpl presenter;
 
-    private ImageSampleAdapter adapter;
+    private PhotoViewAdapter adapter;
 
     // static instance 생성
-    public static ImageSampleFragment getInstance() {
-        return new ImageSampleFragment();
+    public static PhotoViewFragment getInstance() {
+        return new PhotoViewFragment();
     }
 
     @Nullable
@@ -49,9 +49,9 @@ public class ImageSampleFragment extends Fragment implements ImageSamplePresente
 
         ButterKnife.bind(this, view);
 
-        presenter = new ImageSamplePresenterImpl(this, ImageSampleRepository.getInstance());
+        presenter = new PhotoViewPresenterImpl(this, ImageRepository.getInstance());
 
-        adapter = new ImageSampleAdapter(getContext());
+        adapter = new PhotoViewAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
         // Activity의 {@link FloatingActionButton}
@@ -60,21 +60,21 @@ public class ImageSampleFragment extends Fragment implements ImageSamplePresente
 
             @Override
             public void onClick(View v) {
-                presenter.updateImageData(getContext());
+                presenter.recentPhotoData();
             }
         });
 
         // 새로운 데이터 불러오기
-        presenter.updateImageData(getContext());
+        presenter.recentPhotoData();
     }
 
     @Override
-    public void notifyAdapter() {
-        adapter.notifyDataSetChanged();
+    public void showLoaded() {
+        Toast.makeText(getContext(), "Load success", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void addItem(ImageItem imageItem) {
-        adapter.addItem(imageItem);
+    public void showFailLoaded() {
+        Toast.makeText(getContext(), "Load fail success", Toast.LENGTH_SHORT).show();
     }
 }

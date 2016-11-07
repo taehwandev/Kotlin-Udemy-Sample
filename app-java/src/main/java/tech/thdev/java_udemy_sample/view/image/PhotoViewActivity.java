@@ -13,7 +13,7 @@ import tech.thdev.java_udemy_sample.util.ActivityUtil;
  * Created by tae-hwan on 10/29/16.
  */
 
-public class ImageSampleActivity extends AppCompatActivity {
+public class PhotoViewActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -29,6 +29,6 @@ public class ImageSampleActivity extends AppCompatActivity {
         toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
 
-        ActivityUtil.replaceFragmentToActivity(getSupportFragmentManager(), ImageSampleFragment.getInstance(), R.id.frame_layout);
+        ActivityUtil.replaceFragmentToActivity(getSupportFragmentManager(), PhotoViewFragment.getInstance(), R.id.frame_layout);
     }
 }

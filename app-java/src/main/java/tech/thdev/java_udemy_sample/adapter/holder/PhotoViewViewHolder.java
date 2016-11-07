@@ -10,13 +10,13 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
-import tech.thdev.java_udemy_sample.data.ImageItem;
+import tech.thdev.java_udemy_sample.data.PhotoItem;
 
 /**
  * Created by tae-hwan on 10/29/16.
  */
 
-public class ImageSampleViewHolder extends RecyclerView.ViewHolder {
+public class PhotoViewViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.image)
     ImageView imageView;
@@ -24,14 +24,14 @@ public class ImageSampleViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tv_title)
     TextView tvTitle;
 
-    public ImageSampleViewHolder(Context context, ViewGroup parent) {
+    public PhotoViewViewHolder(Context context, ViewGroup parent) {
         super(LayoutInflater.from(context).inflate(R.layout.item_image_view, parent, false));
 
         ButterKnife.bind(this, itemView);
     }
 
-    public void onBindView(ImageItem imageItem, int position) {
-        imageView.setImageResource(imageItem.getImageRes());
-        tvTitle.setText(imageItem.getTitle());
+    public void onBindView(PhotoItem imageItem, int position) {
+//        imageView.setImageResource(imageItem.getImageRes());
+//        tvTitle.setText(imageItem.getTitle());
     }
 }

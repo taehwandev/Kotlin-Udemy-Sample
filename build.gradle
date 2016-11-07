@@ -24,3 +24,10 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+// FlickrAPI key는 local.properties에 "flickrApiKey="생성한 키""를 등록하면 됩니다
+ext {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    flickrApiKey = properties.getProperty('flickrApiKey', "\"\"")
+}
