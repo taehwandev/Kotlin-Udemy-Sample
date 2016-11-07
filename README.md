@@ -20,6 +20,10 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
   - `Part 11` : Android MVP에 Model을 추가로 분환할 예제입니다.
 - [07. RecyclerView](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/07-RecyclerView)
   - `Part 12` : RecyclerView를 소개합니다.
+- [08. Retrofit Intro](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/08-Retrofit-intro)
+  - `Part 13` : Retrofit 소개
+- [09. Retrofit과 RecyclerView 연결하기](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/09-Retrofit-RecyclerView)
+  - `Part 14` : Retrofit과 RecyclerView 연결하기
 
 ## Preview
 
