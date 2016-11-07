@@ -49,7 +49,7 @@ public class ImageRemoteDataSource implements ImageSource {
                         // Body를 불러온다. 이 때 이미 GSON에서 변환된 이후이다.
                         PhotoResponse photoResponse = response.body();
                         if (photoResponse != null) {
-                            if (photoResponse.getCode() == 200 && photoResponse.getPhotoPageInfo() != null) {
+                            if (photoResponse.getStat().equals("ok") && photoResponse.getPhotoPageInfo() != null) {
                                 loadImageCallback.onImageLoaded(photoResponse.getPhotoPageInfo().getPhotoList());
 
                             } else {

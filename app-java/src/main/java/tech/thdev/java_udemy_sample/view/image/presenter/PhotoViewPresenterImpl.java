@@ -15,13 +15,13 @@ public class PhotoViewPresenterImpl implements PhotoViewPresenter {
     private final View view;
     private final ImageRepository imageSampleRepository;
 
-    private int page = -1;
+    private int page = 0;
 
     public PhotoViewPresenterImpl(View view, ImageRepository imageSampleRepository) {
         this.view = view;
         this.imageSampleRepository = imageSampleRepository;
 
-        page = -1;
+        page = 0;
     }
 
     @Override
