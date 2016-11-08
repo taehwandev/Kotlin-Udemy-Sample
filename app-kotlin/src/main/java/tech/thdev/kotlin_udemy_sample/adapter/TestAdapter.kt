@@ -27,11 +27,6 @@ class TestAdapter(val context: Context) : RecyclerView.Adapter<TestAdapter.Holde
             holder.textView.setText(list?.get(position))
             holder.textView.setBackgroundColor(context.resources.getColor(R.color.color_selected))
         }
-
-//        holder?.textView?.apply {
-//            text = list?.get(position)
-//            setBackgroundColor(context.resources.getColor(R.color.color_selected))
-//        }
     }
 
     override fun getItemCount() = list?.size ?: 0

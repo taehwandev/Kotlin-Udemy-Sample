@@ -27,9 +27,9 @@ class BasicActivity : AppCompatActivity() {
         // TODO RecyclerView 어댑터 추가
         val adapter = TestAdapter(this)
         adapter.list = list
-//        recycler_view.adapter = adapter
+        // Kotlin extensions을 적용하여 recyclerView와 연결해보세요
 
         // TODO LayoutManager 정의
-//        recycler_view.layoutManager = GridLayoutManager(this, 3)
+        // XML을 통해서 하거나, recycler adapter을 이용하세요.
     }
 }
