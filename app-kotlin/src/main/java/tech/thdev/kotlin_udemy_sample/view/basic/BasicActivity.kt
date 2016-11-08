@@ -2,9 +2,6 @@ package tech.thdev.kotlin_udemy_sample.view.basic
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_basic.*
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.adapter.TestAdapter
 import java.util.*
