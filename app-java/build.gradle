@@ -51,6 +51,9 @@ dependencies {
     // https://github.com/bumptech/glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
 
+    // Thdev support base
+    compile 'tech.thdev.support:base:1.0.4'
+
     testCompile 'junit:junit:4.12'
 
     testCompile 'com.crittercism.dexmaker:dexmaker-mockito:1.4'

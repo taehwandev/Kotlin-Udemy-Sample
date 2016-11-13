@@ -1,5 +1,6 @@
 package tech.thdev.kotlin_udemy_sample.view.image.presenter
 
+import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.model.ImageViewAdapterContract
 
@@ -22,6 +23,16 @@ interface ImageContract {
         fun showLoadFail()
 
         fun showLoadFailMessage(message: String)
+
+        /**
+         * PhotoId만 넘겨서 처리
+         */
+        fun showDetail(photoId: String)
+
+        /**
+         * Android Parcelable 예제
+         */
+        fun showParcelableDetail(item: RecentPhotoItem)
     }
 
     interface Presenter {

@@ -21,4 +21,9 @@ object PhotoDataSource {
      * Flickr 아이템을 불러온다
      */
     fun getRecentPhoto(page: Int) = flickrServiceInterface.getFlickrRecentPhotos(page)
+
+    /**
+     * Flickr Photo의 상세 정보를 불러온다
+     */
+    fun getPhotoInfo(photoId: String) = flickrServiceInterface.getPhotoInfo(photoId)
 }

@@ -19,6 +19,6 @@ class ImageActivity : AppCompatActivity() {
         toolbar.setTitle(R.string.app_name)
         setSupportActionBar(toolbar)
 
-        replaceFragmentToActivity(ImageSampleFragment.getInstance(), R.id.frame_layout)
+        replaceFragmentToActivity(ImageFragment.getInstance(), R.id.frame_layout)
     }
 }

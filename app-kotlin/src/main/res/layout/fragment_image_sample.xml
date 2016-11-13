@@ -10,6 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="GridLayoutManager"
-        app:spanCount="3"
+        app:spanCount="2"
         tools:listitem="@layout/item_image_view" />
 </RelativeLayout>

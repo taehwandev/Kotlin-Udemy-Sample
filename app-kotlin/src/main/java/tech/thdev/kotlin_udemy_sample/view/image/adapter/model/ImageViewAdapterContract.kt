@@ -1,6 +1,7 @@
 package tech.thdev.kotlin_udemy_sample.view.image.adapter.model
 
-import tech.thdev.kotlin_udemy_sample.data.PhotoItem
+import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
+import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
 
 /**
  * Created by tae-hwan on 11/13/16.
@@ -9,6 +10,9 @@ import tech.thdev.kotlin_udemy_sample.data.PhotoItem
 interface ImageViewAdapterContract {
 
     interface View {
+
+        var onItemClickListener: OnItemClickListener?
+
         fun reload()
     }
 
@@ -16,7 +20,10 @@ interface ImageViewAdapterContract {
      * Adapter에서 사용할 Model에 대한 interface 정의
      */
     interface Model {
-        fun addItem(item: PhotoItem)
+
+        fun addItem(item: RecentPhotoItem)
+
+        fun getItem(position: Int): RecentPhotoItem
 
         /**
          * Item clear 추가

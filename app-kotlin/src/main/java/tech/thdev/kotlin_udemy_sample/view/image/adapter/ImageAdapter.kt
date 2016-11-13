@@ -2,9 +2,11 @@ package tech.thdev.kotlin_udemy_sample.view.image.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.ViewGroup
 import tech.thdev.kotlin_udemy_sample.base.adapter.BaseViewHolder
-import tech.thdev.kotlin_udemy_sample.data.PhotoItem
+import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
+import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.holder.ImageAsyncViewHolder
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.holder.ImageGlideViewHolder
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.holder.ImageThreadViewHolder
@@ -16,7 +18,7 @@ import java.util.*
  */
 
 class ImageAdapter(private val context: Context) :
-        RecyclerView.Adapter<BaseViewHolder<PhotoItem>>(),
+        RecyclerView.Adapter<BaseViewHolder<RecentPhotoItem>>(),
         ImageViewAdapterContract.View, ImageViewAdapterContract.Model {
 
     companion object {
@@ -25,39 +27,42 @@ class ImageAdapter(private val context: Context) :
         val VIEW_TYPE_GLIDE = 300
     }
 
-    val itemList: MutableList<PhotoItem> = ArrayList()
+    val itemList: MutableList<RecentPhotoItem> = ArrayList()
+
+    override var onItemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = when (viewType) {
-        VIEW_TYPE_ASYNC -> ImageAsyncViewHolder(context, parent)
-        VIEW_TYPE_THREAD -> ImageThreadViewHolder(context, parent)
-        else -> ImageGlideViewHolder(context, parent)
+        VIEW_TYPE_ASYNC -> ImageAsyncViewHolder(context, parent, onItemClickListener)
+        VIEW_TYPE_THREAD -> ImageThreadViewHolder(context, parent, onItemClickListener)
+        else -> ImageGlideViewHolder(context, parent, onItemClickListener)
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder<PhotoItem>?, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolder<RecentPhotoItem>?, position: Int) {
         holder?.bindView(getItem(position), position)
     }
 
     override fun getItemViewType(position: Int) = getItem(position).viewType
 
     /**
-     * Item list의 item을 return
-     */
-    private fun getItem(position: Int) = itemList.get(position)
-
-    /**
      * Item size를 return
      */
     override fun getItemCount() = itemList.size
 
-    override fun addItem(item: PhotoItem) {
+    override fun addItem(item: RecentPhotoItem) {
         itemList.add(item)
     }
+
+    /**
+     * Item list의 item을 return
+     */
+    override fun getItem(position: Int) = itemList[position]
 
     override fun clear() {
         itemList.clear()
     }
 
     override fun reload() {
+        Log.d("TAg", "reload")
         notifyDataSetChanged()
     }
 }

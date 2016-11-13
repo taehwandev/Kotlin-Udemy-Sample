@@ -20,6 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.detail.DetailParcelableActivity" />
+        <activity android:name=".view.detail.DetailActivity"></activity>
     </application>
 
 </manifest>
