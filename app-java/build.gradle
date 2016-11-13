@@ -48,4 +48,7 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
 
     testCompile 'junit:junit:4.12'
+
+    testCompile 'com.crittercism.dexmaker:dexmaker-mockito:1.4'
+    testCompile 'com.jayway.awaitility:awaitility:1.7.0'
 }
