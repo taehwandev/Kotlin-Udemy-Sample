@@ -10,8 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import tech.thdev.kotlin_udemy_sample.R
-import tech.thdev.kotlin_udemy_sample.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
+import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageContract
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImagePresenter
 
@@ -21,7 +21,7 @@ import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImagePresenter
 class ImageSampleFragment : Fragment(), ImageContract.View {
 
     private val recyclerView by lazy {
-        view?.findViewById(R.id.recycler_view) as RecyclerView
+        view?.findViewById(R.id.recycler_image) as RecyclerView
     }
 
     private val fab by lazy {
@@ -46,13 +46,21 @@ class ImageSampleFragment : Fragment(), ImageContract.View {
         presenter = ImagePresenter()
         presenter?.view = this
 
+        imageAdapter = ImageAdapter(context)
+
         /**
          * Model을 생성하여 셋팅한다
          */
         presenter?.photoDataSample = PhotoDataSource
 
-        imageAdapter = ImageAdapter(context)
+        // TODO presenter에 Adapter model/View를 정의한다
+        presenter?.adapterModel = imageAdapter
+        presenter?.adapterView = imageAdapter
+
+
         recyclerView.adapter = imageAdapter
+        // TODO kotlin extensions 으로 변경해보기
+//        recycler_image.adapter = imageAdapter
 
         fab.setOnClickListener {
             presenter?.getRecentImageSample()

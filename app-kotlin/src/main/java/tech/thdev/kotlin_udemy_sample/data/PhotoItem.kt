@@ -12,4 +12,8 @@ data class PhotoItem(val id: String,
                      val title: String,
                      val ispublic: Long,
                      val isfriend: Long,
-                     val isfamily: Long)
+                     val isfamily: Long) {
+
+    fun getImageUrl()
+            = "https://farm$farm.staticflickr.com/$server/${id}_$secret.jpg"
+}

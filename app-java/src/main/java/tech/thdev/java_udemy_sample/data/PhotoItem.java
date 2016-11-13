@@ -24,6 +24,7 @@ public class PhotoItem {
 
     @SerializedName("isfamily")
     private long isFamily;
+    private String url;
 
     public String getId() {
         return id;
@@ -103,5 +104,9 @@ public class PhotoItem {
 
     public void setViewType(int viewType) {
         this.viewType = viewType;
+    }
+
+    public String getUrl() {
+        return String.format("https://farm%s.staticflickr.com/%s/%s_%s.jpg", farm, server, id, secret);
     }
 }

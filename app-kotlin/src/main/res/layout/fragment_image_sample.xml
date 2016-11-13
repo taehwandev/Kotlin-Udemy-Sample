@@ -6,9 +6,10 @@
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recycler_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutManager="LinearLayoutManager"
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="2"
         tools:listitem="@layout/item_image_view" />
 </RelativeLayout>
