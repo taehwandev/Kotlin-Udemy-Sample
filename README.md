@@ -4,12 +4,20 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
-`part 13` Retrofit을 이용하여 Flickr API을 호출하는 예제입니다.
+`part 14` Retrofit을 이용하여 Flickr을 호출하고, 이를 RecyclerView와 연결하는 예제입니다.
 
 ## 포함된 자료
 
-- Java : [Java Retrofit](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/08-Retrofit-intro/app-java/src/main)
-- Kotlin : [Kotlin Retrofit sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/08-Retrofit-intro/app-kotlin/src/main)
+- Java : [Java Retrofit-RecyclerView](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/09-Retrofit-RecyclerView/app-java/src/main)
+- Kotlin : [Kotlin Retrofit-RecyclerView](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/09-Retrofit-RecyclerView/app-kotlin/src/main)
+
+
+## Preview
+
+| Java Sample    | Kotlin Sample  |
+|:--------------:|:--------------:|
+| ![java_sample] |![kotlin_sample]|
+
 
 ## 이번 장에서 사용한 API
 
@@ -68,3 +76,6 @@ limitations under the License.
 [flickr_03]: images/flickr_03.png
 [flickr_04]: images/flickr_04.png
 [flickr_05]: images/flickr_05.png
+
+[java_sample]: images/java_sample.png
+[kotlin_sample]: images/kotlin_sample.png
