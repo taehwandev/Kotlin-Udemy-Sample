@@ -10,6 +10,9 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
  - Java : [Android MVC](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/04-mvc/app-java/src/main)
  - Kotlin : [Android MVC](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/04-mvc/app-kotlin/src/main)
+ 
+## 참고 자료
+ - [Android에 MVP 무작정 따라하기 - MVC 구조 이해하기](http://thdev.tech/androiddev/2016/10/23/Android-MVC-Architecture.html)
 
 ## License
 
