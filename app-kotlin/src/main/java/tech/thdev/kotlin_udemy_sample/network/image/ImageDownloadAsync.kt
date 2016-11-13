@@ -63,7 +63,7 @@ object ImageDownloadAsync {
                 connection?.connect()
 
                 inputStream = connection?.inputStream
-                bufferedInputStream = BufferedInputStream(inputStream!!)
+                bufferedInputStream = BufferedInputStream(inputStream)
 
                 cache.put(urlString, WeakReference(BitmapFactory.decodeStream(bufferedInputStream)))
                 return urlString
