@@ -41,7 +41,9 @@ class ImagePresenterTest {
             }
         }
 
+        // TODO 차례대로 테스트를 진행해보세요
         verify(view).showLoadSuccess()
+//        verify(view).showLoadFail()
+//        verify(view).showLoadFailMessage("Error")
     }
-
 }
