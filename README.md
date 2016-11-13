@@ -34,11 +34,11 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 - compile sdk version = 24
 - Target sdk version = 24
 - Min sdk version = 16
-- Android studio 2.2.2
+- Android studio = 2.2.2
 
 ## 사용한 라이브러리 현황
 - Kotlin library
-    - Kotlin version = 1.0.4
+    - Kotlin version = 1.0.5
 - [Android support library](https://developer.android.com/topic/libraries/support-library/revisions.html)
     - support libraryVersion = 24.2.1
 
