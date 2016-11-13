@@ -1,4 +1,4 @@
-package tech.thdev.java_udemy_sample.adapter.model;
+package tech.thdev.java_udemy_sample.view.image.adapter.model;
 
 import tech.thdev.java_udemy_sample.data.PhotoItem;
 

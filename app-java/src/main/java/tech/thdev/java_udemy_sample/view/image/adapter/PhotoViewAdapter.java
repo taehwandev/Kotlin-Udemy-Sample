@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import tech.thdev.java_udemy_sample.adapter.model.PhotoViewAdapterContract;
+import tech.thdev.java_udemy_sample.view.image.adapter.model.PhotoViewAdapterContract;
 import tech.thdev.java_udemy_sample.view.image.adapter.holder.PhotoViewViewHolder;
 import tech.thdev.java_udemy_sample.data.PhotoItem;
 

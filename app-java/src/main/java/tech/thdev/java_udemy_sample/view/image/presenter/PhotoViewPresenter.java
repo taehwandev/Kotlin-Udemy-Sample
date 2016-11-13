@@ -1,6 +1,6 @@
 package tech.thdev.java_udemy_sample.view.image.presenter;
 
-import tech.thdev.java_udemy_sample.adapter.model.PhotoViewAdapterContract;
+import tech.thdev.java_udemy_sample.view.image.adapter.model.PhotoViewAdapterContract;
 
 /**
  * Created by tae-hwan on 10/29/16.

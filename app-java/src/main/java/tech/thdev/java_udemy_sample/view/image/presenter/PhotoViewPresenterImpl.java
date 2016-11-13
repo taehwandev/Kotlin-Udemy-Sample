@@ -2,7 +2,7 @@ package tech.thdev.java_udemy_sample.view.image.presenter;
 
 import java.util.List;
 
-import tech.thdev.java_udemy_sample.adapter.model.PhotoViewAdapterContract;
+import tech.thdev.java_udemy_sample.view.image.adapter.model.PhotoViewAdapterContract;
 import tech.thdev.java_udemy_sample.data.PhotoItem;
 import tech.thdev.java_udemy_sample.data.source.image.ImageRepository;
 import tech.thdev.java_udemy_sample.data.source.image.ImageSource;

@@ -5,13 +5,16 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.holder.ImageViewHolder
 import tech.thdev.kotlin_udemy_sample.data.PhotoItem
+import tech.thdev.kotlin_udemy_sample.view.image.adapter.model.ImageViewAdapterContract
 import java.util.*
 
 /**
  * Created by tae-hwan on 10/29/16.
  */
 
-class ImageAdapter(private val context: Context) : RecyclerView.Adapter<ImageViewHolder>() {
+class ImageAdapter(private val context: Context) :
+        RecyclerView.Adapter<ImageViewHolder>(),
+        ImageViewAdapterContract.View, ImageViewAdapterContract.Model {
 
     val itemList: MutableList<PhotoItem> = ArrayList()
 
@@ -35,5 +38,9 @@ class ImageAdapter(private val context: Context) : RecyclerView.Adapter<ImageVie
 
     fun addItem(it: PhotoItem) {
         itemList.add(it)
+    }
+
+    override fun reload() {
+        notifyDataSetChanged()
     }
 }

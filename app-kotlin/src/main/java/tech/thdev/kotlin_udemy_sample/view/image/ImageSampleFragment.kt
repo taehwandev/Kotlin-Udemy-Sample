@@ -10,8 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import tech.thdev.kotlin_udemy_sample.R
-import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
+import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageContract
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImagePresenter
 
@@ -46,12 +46,18 @@ class ImageSampleFragment : Fragment(), ImageContract.View {
         presenter = ImagePresenter()
         presenter?.view = this
 
+        imageAdapter = ImageAdapter(context)
+
         /**
          * Model을 생성하여 셋팅한다
          */
         presenter?.photoDataSample = PhotoDataSource
 
-        imageAdapter = ImageAdapter(context)
+        // TODO presenter에 Adapter model/View를 정의한다
+//        presenter?.adapterModel = imageAdapter
+//        presenter?.adapterView = imageAdapter
+
+
         recyclerView.adapter = imageAdapter
 
         fab.setOnClickListener {
