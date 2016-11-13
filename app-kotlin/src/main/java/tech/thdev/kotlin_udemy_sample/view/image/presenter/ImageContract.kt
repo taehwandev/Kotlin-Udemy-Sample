@@ -42,6 +42,6 @@ interface ImageContract {
         /**
          * Flickr image을 불러온다
          */
-        fun getRecentImageSample()
+        fun getRecentImageSample(viewType: Int)
     }
 }

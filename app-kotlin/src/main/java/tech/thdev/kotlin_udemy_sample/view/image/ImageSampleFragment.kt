@@ -3,12 +3,10 @@ package tech.thdev.kotlin_udemy_sample.view.image
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
-import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_image_sample.*
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
@@ -19,10 +17,6 @@ import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImagePresenter
  * Created by tae-hwan on 10/3/16.
  */
 class ImageSampleFragment : Fragment(), ImageContract.View {
-
-    private val recyclerView by lazy {
-        view?.findViewById(R.id.recycler_image) as RecyclerView
-    }
 
     private val fab by lazy {
         activity.findViewById(R.id.fab) as FloatingActionButton
@@ -36,6 +30,16 @@ class ImageSampleFragment : Fragment(), ImageContract.View {
     private var imageAdapter: ImageAdapter? = null
 
     private var presenter: ImageContract.Presenter? = null
+
+    /**
+     * ViewType 정의
+     */
+    private var mViewType = ImageAdapter.VIEW_TYPE_GLIDE
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
             = inflater?.inflate(R.layout.fragment_image_sample, container, false)
@@ -53,20 +57,48 @@ class ImageSampleFragment : Fragment(), ImageContract.View {
          */
         presenter?.photoDataSample = PhotoDataSource
 
-        // TODO presenter에 Adapter model/View를 정의한다
         presenter?.adapterModel = imageAdapter
         presenter?.adapterView = imageAdapter
 
-
-        recyclerView.adapter = imageAdapter
-        // TODO kotlin extensions 으로 변경해보기
-//        recycler_image.adapter = imageAdapter
+        recycler_image.adapter = imageAdapter
 
         fab.setOnClickListener {
-            presenter?.getRecentImageSample()
+            presenter?.getRecentImageSample(mViewType)
         }
 
-        presenter?.getRecentImageSample()
+        presenter?.getRecentImageSample(mViewType)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.menu_main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.action_async -> {
+                changeViewType(ImageAdapter.VIEW_TYPE_ASYNC, item)
+                return true
+            }
+            R.id.action_thread -> {
+                changeViewType(ImageAdapter.VIEW_TYPE_THREAD, item)
+                return true
+            }
+            R.id.action_glide -> {
+                changeViewType(ImageAdapter.VIEW_TYPE_GLIDE, item)
+                return true
+            }
+            else -> {
+                return super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+    private fun changeViewType(viewType: Int, item: MenuItem?) {
+        mViewType = ImageAdapter.VIEW_TYPE_GLIDE
+        presenter?.getRecentImageSample(viewType)
+        if (item?.isChecked ?: false) item?.isChecked = false
+        else item?.isChecked = true
     }
 
     override fun showLoadFailMessage(message: String) {

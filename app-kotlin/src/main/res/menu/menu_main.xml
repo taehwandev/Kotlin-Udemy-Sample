@@ -1,10 +1,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="tech.thdev.kotlin_udemy_sample.MainActivity">
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+    <group
+        android:id="@+id/image_load_check_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_async"
+            android:orderInCategory="1"
+            android:title="AsyncTask" />
+        <item
+            android:id="@+id/action_thread"
+            android:orderInCategory="2"
+            android:title="Thread" />
+        <item
+            android:id="@+id/action_glide"
+            android:checked="true"
+            android:orderInCategory="3"
+            android:title="Glide" />
+    </group>
 </menu>

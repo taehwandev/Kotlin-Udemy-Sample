@@ -16,7 +16,11 @@ interface ImageViewAdapterContract {
      * Adapter에서 사용할 Model에 대한 interface 정의
      */
     interface Model {
-        // TODO 구현 필요
         fun addItem(item: PhotoItem)
+
+        /**
+         * Item clear 추가
+         */
+        fun clear()
     }
 }

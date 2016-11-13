@@ -5,6 +5,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import tech.thdev.kotlin_udemy_sample.data.PhotoResponse
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
+import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.model.ImageViewAdapterContract
 
 /**
@@ -21,8 +22,14 @@ class ImagePresenter : ImageContract.Presenter {
     override var adapterView: ImageViewAdapterContract.View? = null
 
     var page = 0
+    var mViewType: Int = ImageAdapter.VIEW_TYPE_GLIDE
 
-    override fun getRecentImageSample() {
+    override fun getRecentImageSample(viewType: Int) {
+        if (mViewType != viewType) {
+            adapterModel?.clear()
+        }
+        mViewType = viewType
+
         // object callback을 정의한다
         photoDataSample?.getRecentPhoto(++page)
                 ?.enqueue(object : Callback<PhotoResponse> {
@@ -33,9 +40,9 @@ class ImagePresenter : ImageContract.Presenter {
 
                             val photoResponse = response?.body()
                             if (photoResponse?.stat.equals("ok")) {
-                                photoResponse?.photos?.photo?.forEach {
-                                    // TODO adapter model 정의
-                                    adapterModel?.addItem(it)
+                                photoResponse?.photos?.photo?.forEachIndexed { i, photoItem ->
+                                    photoItem.viewType = mViewType
+                                    adapterModel?.addItem(photoItem)
                                 }
 
                                 // adapter의 reload
