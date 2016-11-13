@@ -1,4 +1,4 @@
-package tech.thdev.java_udemy_sample.adapter;
+package tech.thdev.java_udemy_sample.view.image.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import tech.thdev.java_udemy_sample.adapter.holder.PhotoViewViewHolder;
+import tech.thdev.java_udemy_sample.view.image.adapter.holder.PhotoViewViewHolder;
 import tech.thdev.java_udemy_sample.data.PhotoItem;
 
 /**

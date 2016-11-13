@@ -14,7 +14,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
-import tech.thdev.java_udemy_sample.adapter.PhotoViewAdapter;
+import tech.thdev.java_udemy_sample.view.image.adapter.PhotoViewAdapter;
 import tech.thdev.java_udemy_sample.data.source.image.ImageRepository;
 import tech.thdev.java_udemy_sample.view.image.presenter.PhotoViewPresenter;
 import tech.thdev.java_udemy_sample.view.image.presenter.PhotoViewPresenterImpl;

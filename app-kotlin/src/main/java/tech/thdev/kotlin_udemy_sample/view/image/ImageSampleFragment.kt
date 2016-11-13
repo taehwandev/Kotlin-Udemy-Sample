@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import tech.thdev.kotlin_udemy_sample.R
-import tech.thdev.kotlin_udemy_sample.adapter.ImageAdapter
+import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageContract
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImagePresenter

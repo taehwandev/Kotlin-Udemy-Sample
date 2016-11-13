@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -38,14 +37,14 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
 
     compile 'com.jakewharton:butterknife:8.4.0'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
     // Retrofit API
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
     // OK HTTP
     compile 'com.squareup.okhttp3:okhttp:3.4.2'
-    // TODO Http 로그가 궁금하다면 다음을 확인하세요.
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
 
     testCompile 'junit:junit:4.12'
