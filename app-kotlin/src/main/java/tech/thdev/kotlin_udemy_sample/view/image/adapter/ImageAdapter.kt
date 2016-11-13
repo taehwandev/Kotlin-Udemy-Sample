@@ -1,9 +1,9 @@
-package tech.thdev.kotlin_udemy_sample.adapter
+package tech.thdev.kotlin_udemy_sample.view.image.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import tech.thdev.kotlin_udemy_sample.adapter.holder.ImageViewHolder
+import tech.thdev.kotlin_udemy_sample.view.image.adapter.holder.ImageViewHolder
 import tech.thdev.kotlin_udemy_sample.data.PhotoItem
 import java.util.*
 

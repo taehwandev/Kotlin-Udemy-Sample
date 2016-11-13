@@ -1,6 +1,5 @@
 package tech.thdev.kotlin_udemy_sample.view.image.presenter
 
-import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,12 +25,11 @@ class ImagePresenter : ImageContract.Presenter {
 
                     override fun onResponse(call: Call<PhotoResponse>?, response: Response<PhotoResponse>?) {
                         if (response?.isSuccessful ?: false) {
-                            Log.d("TAG", "response raw " + response?.raw())
+//                            Log.d("TAG", "response raw " + response?.raw())
 
                             val photoResponse = response?.body()
-                            if (photoResponse?.stat === "ok") {
+                            if (photoResponse?.stat.equals("ok")) {
                                 view?.showLoadSuccess()
-
                             } else {
                                 view?.showLoadFailMessage("Code ${photoResponse?.code}, message ${photoResponse?.message}")
                             }

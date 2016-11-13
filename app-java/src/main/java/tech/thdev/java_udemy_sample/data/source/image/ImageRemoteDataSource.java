@@ -1,7 +1,5 @@
 package tech.thdev.java_udemy_sample.data.source.image;
 
-import android.util.Log;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,7 +42,7 @@ public class ImageRemoteDataSource implements ImageSource {
                             return;
                         }
 
-                        Log.d("TAG", "response raw " + response.raw());
+//                        Log.d("TAG", "response raw " + response.raw());
 
                         // Body를 불러온다. 이 때 이미 GSON에서 변환된 이후이다.
                         PhotoResponse photoResponse = response.body();

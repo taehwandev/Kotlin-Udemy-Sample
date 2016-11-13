@@ -8,5 +8,4 @@ data class PhotoPageInfo(val page: Int,
                          val pages: Int,
                          val perpage: Int,
                          val total: Int,
-                         val photo: List<PhotoItem>,
-                         val stat: String)
+                         val photo: List<PhotoItem>)
