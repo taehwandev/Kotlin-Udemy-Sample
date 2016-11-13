@@ -35,7 +35,7 @@ class ImagePresenter : ImageContract.Presenter {
                             if (photoResponse?.stat.equals("ok")) {
                                 photoResponse?.photos?.photo?.forEach {
                                     // TODO adapter model 정의
-                                    // adapterModel?.addItem(it)
+                                    adapterModel?.addItem(it)
                                 }
 
                                 // adapter의 reload
