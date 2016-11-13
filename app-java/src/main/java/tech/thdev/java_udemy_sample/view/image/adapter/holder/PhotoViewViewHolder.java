@@ -7,10 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
-import tech.thdev.java_udemy_sample.async.ImageDownloadThread;
 import tech.thdev.java_udemy_sample.data.PhotoItem;
 
 /**
@@ -25,14 +26,23 @@ public class PhotoViewViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tv_title)
     TextView tvTitle;
 
+    private Context context;
+
     public PhotoViewViewHolder(Context context, ViewGroup parent) {
         super(LayoutInflater.from(context).inflate(R.layout.item_image_view, parent, false));
+
+        this.context = context;
 
         ButterKnife.bind(this, itemView);
     }
 
     public void onBindView(PhotoItem photoItem, int position) {
         tvTitle.setText(photoItem.getTitle());
-        ImageDownloadThread.getInstance().loadImage(R.drawable.loading, imageView, photoItem.getUrl());
+
+        Glide.with(context)
+                .load(photoItem.getUrl())
+                .centerCrop()
+                .placeholder(R.drawable.loading)
+                .into(imageView);
     }
 }
