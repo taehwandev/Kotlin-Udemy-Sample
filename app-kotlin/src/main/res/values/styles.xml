@@ -17,4 +17,16 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- Black theme. -->
+    <style name="AppTheme.Black">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#66000000</item>
+        <item name="colorPrimaryDark">#66000000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Black.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

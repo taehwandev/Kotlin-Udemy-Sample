@@ -2,6 +2,7 @@ package tech.thdev.kotlin_udemy_sample.view.detail
 
 import android.os.Bundle
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_image_sample.*
 import tech.thdev.base.view.BasePresenterActivity
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.constant.Constant
@@ -19,6 +20,10 @@ class DetailActivity : BasePresenterActivity<DetailContract.View, DetailContract
         setContentView(R.layout.activity_detail_parcelable)
 
         presenter?.photoDataSource = PhotoDataSource
+
+        setSupportActionBar(toolbar)
+        title = "TEST"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val photoId = intent.getStringExtra(Constant.KEY_PHOTO_DATA)
         presenter?.loadPhotoInfo(photoId)

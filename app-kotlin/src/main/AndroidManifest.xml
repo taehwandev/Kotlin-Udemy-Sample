@@ -20,8 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.detail.DetailParcelableActivity" />
-        <activity android:name=".view.detail.DetailActivity"></activity>
+        <activity
+            android:name=".view.detail.DetailParcelableActivity"
+            android:theme="@style/AppTheme.Black.NoActionBar" />
+        <activity
+            android:name=".view.detail.DetailActivity"
+            android:theme="@style/AppTheme.Black.NoActionBar" />
     </application>
 
 </manifest>
