@@ -96,6 +96,6 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@id/rl_sheet_view"
         app:layout_anchorGravity="right"
-        app:srcCompat="@drawable/icon_info" />
+        app:srcCompat="@drawable/icon_info_large" />
 
 </android.support.design.widget.CoordinatorLayout>
