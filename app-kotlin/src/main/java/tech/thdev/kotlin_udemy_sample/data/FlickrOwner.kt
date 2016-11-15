@@ -10,4 +10,12 @@ data class FlickrOwner(val nsid: String,
                        val location: String,
                        val iconserver: String,
                        val iconfarm: Int,
-                       val path_alias: String)
+                       val path_alias: String) {
+
+    /**
+     * Buddyicons API : <a href="https://www.flickr.com/services/api/misc.buddyicons.html">api</a>
+     * http://farm{icon-farm}.staticflickr.com/{icon-server}/buddyicons/{nsid}.jpg
+     */
+    fun getBuddyIcons()
+        = "http://farm$iconfarm.staticflickr.com/$iconserver/buddyicons/$nsid.jpg"
+}

@@ -16,6 +16,10 @@ data class RecentPhotoItem(val id: String,
                             // ViewType 추가
                            var viewType: Int = 0) {
 
+    /**
+     * API : <a href="https://www.flickr.com/services/api/misc.urls.html">Photo source url</a>
+     * https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
+     */
     fun getImageUrl()
             = "https://farm$farm.staticflickr.com/$server/${id}_$secret.jpg"
 }

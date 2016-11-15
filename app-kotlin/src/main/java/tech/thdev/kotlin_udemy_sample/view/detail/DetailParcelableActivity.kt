@@ -16,6 +16,18 @@ class DetailParcelableActivity : BasePresenterActivity<DetailContract.View, Deta
         setContentView(R.layout.activity_detail_parcelable)
     }
 
+    override fun updateToolbarItem(buddyIcon: String, buddyName: String, imgUrl: String, imgTitle: String) {
+
+    }
+
+    override fun showShareUrl(photoPageUrl: String) {
+
+    }
+
+    override fun showDetailPage(photoPageUrl: String) {
+
+    }
+
     override fun updateItem(photo: FlickrPhoto) {
 
     }

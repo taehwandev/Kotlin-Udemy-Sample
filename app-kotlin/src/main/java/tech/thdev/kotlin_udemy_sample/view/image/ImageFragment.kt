@@ -111,11 +111,15 @@ class ImageFragment : Fragment(), ImageContract.View {
     }
 
     override fun showLoadSuccess() {
-        Toast.makeText(context, "Load success", Toast.LENGTH_SHORT).show()
+        if (!activity.isFinishing) {
+            Toast.makeText(context, "Load success", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun showLoadFail() {
-        Toast.makeText(context, "Load fail", Toast.LENGTH_SHORT).show()
+        if (!activity.isFinishing) {
+            Toast.makeText(context, "Load fail", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun showParcelableDetail(item: RecentPhotoItem) {

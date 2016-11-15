@@ -13,7 +13,13 @@ interface DetailContract {
 
     interface View : BaseView {
 
+        fun updateToolbarItem(buddyIcon: String, buddyName: String, imgUrl: String, imgTitle: String)
+
         fun updateItem(photo: FlickrPhoto)
+
+        fun showShareUrl(photoPageUrl: String)
+
+        fun showDetailPage(photoPageUrl: String)
     }
 
     interface Presenter : BasePresenter<View> {
@@ -21,5 +27,7 @@ interface DetailContract {
         var photoDataSource: PhotoDataSource?
 
         fun loadPhotoInfo(photoInfo: String)
+
+        fun shareUrl(type: Int)
     }
 }

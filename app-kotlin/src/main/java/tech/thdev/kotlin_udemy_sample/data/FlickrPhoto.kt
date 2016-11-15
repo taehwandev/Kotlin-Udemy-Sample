@@ -18,6 +18,10 @@ data class FlickrPhoto(val id: String,
                        val urls: FlickrUrls,
                        val media: String) {
 
+    /**
+     * API : <a href="https://www.flickr.com/services/api/misc.urls.html">Photo source url</a>
+     * https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
+     */
     fun getImageUrl()
             = "https://farm$farm.staticflickr.com/$server/${id}_$secret.jpg"
 }
