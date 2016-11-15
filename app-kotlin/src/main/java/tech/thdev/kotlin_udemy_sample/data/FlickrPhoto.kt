@@ -13,6 +13,11 @@ data class FlickrPhoto(val id: String,
                        val title: FlickrContent,
                        val description: FlickrContent,
                        val dates: FlickrDates,
+                       val comments: FlickrContent,
                        val views: String,
                        val urls: FlickrUrls,
-                       val media: String)
+                       val media: String) {
+
+    fun getImageUrl()
+            = "https://farm$farm.staticflickr.com/$server/${id}_$secret.jpg"
+}

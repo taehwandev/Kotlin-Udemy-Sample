@@ -10,20 +10,6 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:minHeight="100dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/sample_01" />
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -36,7 +22,8 @@
                 android:id="@+id/user_image"
                 android:layout_width="?attr/actionBarSize"
                 android:layout_height="?attr/actionBarSize"
-                android:scaleType="fitCenter"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/sample_03" />
 
             <TextView
@@ -46,41 +33,93 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="User Name"
-                android:textSize="16sp" />
+                android:text=""
+                android:textSize="20sp" />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <!-- TODO BOTTOM SHEET -->
-    <RelativeLayout
-        android:id="@+id/rl_bottom_view"
+    <ImageView
+        android:id="@+id/img_view"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_gravity="bottom"
-        android:background="@color/transparent_black_40">
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter" />
+
+    <!-- Bottom sheet -->
+    <RelativeLayout
+        android:id="@+id/rl_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="200dp"
+        app:layout_behavior="@string/bottom_sheet_behavior">
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="desires"
-            android:layout_marginRight="65dp"
-            android:lines="1"
-            android:ellipsize="end"
-            android:textColor="#fff"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:background="#DD000000"
+            android:gravity="center_vertical"
+            android:minHeight="60dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="80dp"
+            android:paddingTop="5dp"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/tv_description"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_title"
-            android:padding="5dp"
-            android:text="This is what I remember from my childhood, and the best thing is that my mom says that's her memory too. Yet, it's my 3-year-old- meaning that in 30 years's he'll remember this. It's remarkable how some things stay the same through generations."
-            android:textColor="#CCC"
-            android:textSize="12sp" />
+            android:background="#BB000000"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp">
+
+            <RelativeLayout
+                android:id="@+id/rl_etc_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#78909C"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_view_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_date"
+                    android:text=""
+                    android:textColor="#757575"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_comment_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_view_count"
+                    android:text=""
+                    android:textColor="#fff"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_etc_view"
+                android:text=""
+                android:textColor="#FFF"
+                android:textSize="16sp" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -88,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@id/rl_bottom_view"
+        app:layout_anchor="@id/rl_bottom_sheet"
         app:layout_anchorGravity="right"
         app:srcCompat="@android:drawable/ic_dialog_info" />
 
