@@ -38,75 +38,90 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp">
 
-            <ImageView
-                android:id="@+id/img_date"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="4dp"
-                android:src="@drawable/icon_clock" />
-
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/img_date"
-                android:layout_toRightOf="@id/img_date"
-                android:text=""
-                android:textColor="#fff"
-                android:textSize="12sp" />
-
             <RelativeLayout
+                android:id="@+id/rl_date_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_date"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="6dp"
+                    android:src="@drawable/icon_clock" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/img_date"
+                    android:layout_toRightOf="@id/img_date"
+                    android:text=""
+                    android:textColor="#fff"
+                    android:textSize="13sp" />
+
+            </RelativeLayout>
+
+            <!-- Right comment item -->
+            <RelativeLayout
+                android:id="@+id/rl_comment_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_toEndOf="@id/tv_date"
-                android:layout_toRightOf="@id/tv_date"
-                android:gravity="right|center_vertical">
-
-                <ImageView
-                    android:id="@+id/img_viewer"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginRight="4dp"
-                    android:src="@drawable/icon_viewer" />
-
-                <TextView
-                    android:id="@+id/tv_viewer_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@+id/img_viewer"
-                    android:layout_toRightOf="@+id/img_viewer"
-                    android:text=""
-                    android:textColor="#fff"
-                    android:textSize="12sp" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp">
 
                 <ImageView
                     android:id="@+id/img_comment"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@id/tv_viewer_count"
-                    android:layout_toRightOf="@id/tv_viewer_count"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginRight="6dp"
                     android:src="@drawable/icon_comment" />
 
                 <TextView
                     android:id="@+id/tv_comment_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_toEndOf="@id/img_comment"
                     android:layout_toRightOf="@id/img_comment"
                     android:text=""
                     android:textColor="#fff"
-                    android:textSize="12sp" />
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/rl_comment_view">
+
+                <ImageView
+                    android:id="@+id/img_viewer"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginRight="6dp"
+                    android:src="@drawable/icon_viewer" />
+
+                <TextView
+                    android:id="@+id/tv_viewer_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/img_viewer"
+                    android:layout_toRightOf="@+id/img_viewer"
+                    android:text=""
+                    android:textColor="#fff"
+                    android:textSize="13sp" />
             </RelativeLayout>
         </RelativeLayout>
+
 
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -120,7 +135,7 @@
                 android:paddingBottom="10dp"
                 android:text=""
                 android:textColor="#FFF"
-                android:textSize="14sp" />
+                android:textSize="15sp" />
         </android.support.v4.widget.NestedScrollView>
     </RelativeLayout>
 </RelativeLayout>

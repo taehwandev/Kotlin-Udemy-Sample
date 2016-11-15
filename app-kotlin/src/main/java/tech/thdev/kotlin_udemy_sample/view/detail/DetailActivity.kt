@@ -139,7 +139,7 @@ class DetailActivity : BasePresenterActivity<DetailContract.View, DetailContract
         mBottomSheet?.state = BottomSheetBehavior.STATE_COLLAPSED
         tv_title.text = photo.title.toString()
         tv_content.text = Html.fromHtml(photo.description._content)
-        tv_date.text = photo.dates.lastupdate.getDate("MM-dd-yyyy")
+        tv_date.text = photo.dates.lastupdate.getDate("MM-dd-yyyy hh:mm")
         tv_viewer_count.text = photo.views.decimalFormat()
         tv_comment_count.text = photo.comments._content.decimalFormat()
     }
