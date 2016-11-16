@@ -21,10 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.detail.DetailParcelableActivity"
-            android:theme="@style/AppTheme.Black.NoActionBar" />
-        <activity
             android:name=".view.detail.DetailActivity"
+            android:theme="@style/AppTheme.Black.NoActionBar" />
+
+        <activity
+            android:name=".view.detail_more.DetailMoreActivity"
             android:theme="@style/AppTheme.Black.NoActionBar" />
     </application>
 

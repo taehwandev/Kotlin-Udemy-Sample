@@ -3,6 +3,7 @@ package tech.thdev.kotlin_udemy_sample.view.image.presenter
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.model.ImageViewAdapterContract
+import java.util.*
 
 /**
  * Created by tae-hwan on 10/23/16.
@@ -32,7 +33,7 @@ interface ImageContract {
         /**
          * Android Parcelable 예제
          */
-        fun showParcelableDetail(item: RecentPhotoItem)
+        fun showDetailMore(item: ArrayList<RecentPhotoItem>, position: Int)
     }
 
     interface Presenter {

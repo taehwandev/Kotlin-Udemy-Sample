@@ -39,6 +39,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:customtabs:$rootProject.ext.supportLibraryVersion"
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.ext.kotlin_version"
 

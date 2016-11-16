@@ -2,6 +2,7 @@ package tech.thdev.kotlin_udemy_sample.view.image.adapter.model
 
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
+import java.util.*
 
 /**
  * Created by tae-hwan on 11/13/16.
@@ -22,6 +23,8 @@ interface ImageViewAdapterContract {
     interface Model {
 
         fun addItem(item: RecentPhotoItem)
+
+        fun getItems(): ArrayList<RecentPhotoItem>
 
         fun getItem(position: Int): RecentPhotoItem
 

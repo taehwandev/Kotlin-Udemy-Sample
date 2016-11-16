@@ -29,10 +29,12 @@ class ImagePresenter : ImageContract.Presenter {
             field?.onItemClickListener = object : OnItemClickListener {
 
                 override fun onItemClick(position: Int) {
-                    adapterModel?.getItem(position)?.let {
-                        view?.showDetail(it.id)
-                        Log.d("TAG", "onItemClic")
+                    adapterModel?.getItems()?.let {
+                        view?.showDetailMore(it, position)
                     }
+//                    adapterModel?.getItem(position)?.let {
+//                        Log.d("TAG", "onItemClic")
+//                    }
                 }
             }
         }

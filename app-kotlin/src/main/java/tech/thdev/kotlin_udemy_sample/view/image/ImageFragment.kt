@@ -13,9 +13,11 @@ import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
 import tech.thdev.kotlin_udemy_sample.view.detail.DetailActivity
+import tech.thdev.kotlin_udemy_sample.view.detail_more.DetailMoreActivity
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageContract
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImagePresenter
+import java.util.*
 
 /**
  * Created by tae-hwan on 10/3/16.
@@ -122,10 +124,11 @@ class ImageFragment : Fragment(), ImageContract.View {
         }
     }
 
-    override fun showParcelableDetail(item: RecentPhotoItem) {
-//        val intent = Intent(context, DetailParcelableActivity::class.java)
-//        intent.putExtra(Constant.KEY_PHOTO_DATA, item)
-//        startActivity(intent)
+    override fun showDetailMore(item: ArrayList<RecentPhotoItem>, position: Int) {
+        val intent = Intent(context, DetailMoreActivity::class.java)
+        intent.putParcelableArrayListExtra(Constant.KEY_PHOTO_DATA, item)
+        intent.putExtra(Constant.KEY_SHOW_POSITION, position)
+        startActivity(intent)
     }
 
     override fun showDetail(photoId: String) {

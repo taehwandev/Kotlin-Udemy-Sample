@@ -8,6 +8,8 @@ object Constant {
 
     val KEY_PHOTO_DATA = "key-photo_data"
 
+    val KEY_SHOW_POSITION = "key-show-position"
+
     /**
      * Detail page
      */

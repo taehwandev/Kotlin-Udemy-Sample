@@ -22,7 +22,6 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#66000000</item>
         <item name="colorPrimaryDark">#66000000</item>
-        <item name="colorAccent">@color/color_ffb300</item>
     </style>
 
     <style name="AppTheme.Black.NoActionBar">

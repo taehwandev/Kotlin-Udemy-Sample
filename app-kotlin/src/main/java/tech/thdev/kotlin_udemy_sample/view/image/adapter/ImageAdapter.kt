@@ -27,7 +27,7 @@ class ImageAdapter(private val context: Context) :
         val VIEW_TYPE_GLIDE = 300
     }
 
-    val itemList: MutableList<RecentPhotoItem> = ArrayList()
+    val itemList: ArrayList<RecentPhotoItem> = ArrayList()
 
     override var onItemClickListener: OnItemClickListener? = null
 
@@ -51,6 +51,8 @@ class ImageAdapter(private val context: Context) :
     override fun addItem(item: RecentPhotoItem) {
         itemList.add(item)
     }
+
+    override fun getItems() = itemList
 
     /**
      * Item list의 item을 return

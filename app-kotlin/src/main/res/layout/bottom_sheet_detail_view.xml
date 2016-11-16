@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:behavior_hideable="false"
+    app:behavior_hideable="true"
     app:behavior_peekHeight="160dp"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
@@ -30,7 +30,7 @@
         android:background="#CC222222"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="5dp">
+        android:paddingTop="15dp">
 
         <RelativeLayout
             android:id="@+id/rl_etc_view"
