@@ -1,11 +1,11 @@
-package tech.thdev.kotlin_udemy_sample.view.detail_more.adapter
+package tech.thdev.kotlin_udemy_sample.view.detail.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
-import tech.thdev.kotlin_udemy_sample.view.detail_more.DetailMoreFragment
-import tech.thdev.kotlin_udemy_sample.view.detail_more.adapter.model.SectionsPagerModel
+import tech.thdev.kotlin_udemy_sample.view.detail.DetailMoreFragment
+import tech.thdev.kotlin_udemy_sample.view.detail.adapter.model.SectionsPagerModel
 
 /**
  * Created by Tae-hwan on 16/11/2016.

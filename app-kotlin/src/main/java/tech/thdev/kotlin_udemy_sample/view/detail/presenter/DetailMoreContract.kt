@@ -1,15 +1,18 @@
 package tech.thdev.kotlin_udemy_sample.view.detail.presenter
 
+import android.content.Intent
 import tech.thdev.base.presenter.BasePresenter
 import tech.thdev.base.presenter.BaseView
+import tech.thdev.kotlin_udemy_sample.data.FlickrInfo
 import tech.thdev.kotlin_udemy_sample.data.FlickrPhoto
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
+import tech.thdev.kotlin_udemy_sample.view.detail.adapter.model.SectionsPagerModel
 
 /**
- * Created by tae-hwan on 11/13/16.
+ * Created by Tae-hwan on 16/11/2016.
  */
 
-interface DetailContract {
+interface DetailMoreContract {
 
     interface View : BaseView {
 
@@ -26,8 +29,14 @@ interface DetailContract {
 
         var photoDataSource: PhotoDataSource?
 
-        fun loadPhotoInfo(photoInfo: String)
+        var pagerModel: SectionsPagerModel?
 
-        fun shareUrl(type: Int)
+        var flickrInfo: FlickrInfo?
+
+        fun setRecentItemList(intent: Intent)
+
+        fun loadPhotoInfo(position: Int)
+
+        fun getPhotoDetailUrl(type: Int)
     }
 }

@@ -1,4 +1,4 @@
-package tech.thdev.kotlin_udemy_sample.view.detail_more
+package tech.thdev.kotlin_udemy_sample.view.detail
 
 import android.os.Bundle
 import android.view.View

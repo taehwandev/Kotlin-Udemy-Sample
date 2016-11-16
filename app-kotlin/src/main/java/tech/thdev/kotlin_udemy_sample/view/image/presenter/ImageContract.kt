@@ -28,7 +28,7 @@ interface ImageContract {
         /**
          * PhotoId만 넘겨서 처리
          */
-        fun showDetail(photoId: String)
+        fun showDetail(item: RecentPhotoItem)
 
         /**
          * Android Parcelable 예제
@@ -44,6 +44,8 @@ interface ImageContract {
          * Model
          */
         var photoDataSample: PhotoDataSource?
+
+        var itemSelectType: Int
 
         /**
          * Adapter에 대한 View/Model을 정의한다

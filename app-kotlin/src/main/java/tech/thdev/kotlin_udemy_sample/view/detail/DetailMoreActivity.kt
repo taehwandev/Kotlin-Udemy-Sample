@@ -1,4 +1,4 @@
-package tech.thdev.kotlin_udemy_sample.view.detail_more
+package tech.thdev.kotlin_udemy_sample.view.detail
 
 import android.content.Intent
 import android.net.Uri
@@ -20,9 +20,9 @@ import tech.thdev.kotlin_udemy_sample.data.FlickrPhoto
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
 import tech.thdev.kotlin_udemy_sample.util.decimalFormat
 import tech.thdev.kotlin_udemy_sample.util.getDate
-import tech.thdev.kotlin_udemy_sample.view.detail_more.adapter.SectionsPagerAdapter
-import tech.thdev.kotlin_udemy_sample.view.detail_more.presenter.DetailMoreContract
-import tech.thdev.kotlin_udemy_sample.view.detail_more.presenter.DetailMorePresenter
+import tech.thdev.kotlin_udemy_sample.view.detail.adapter.SectionsPagerAdapter
+import tech.thdev.kotlin_udemy_sample.view.detail.presenter.DetailMoreContract
+import tech.thdev.kotlin_udemy_sample.view.detail.presenter.DetailMorePresenter
 
 class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, DetailMoreContract.Presenter>(),
         ViewPager.OnPageChangeListener, DetailMoreContract.View {

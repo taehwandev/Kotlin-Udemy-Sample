@@ -1,4 +1,4 @@
-package tech.thdev.kotlin_udemy_sample.view.detail_more.adapter.model
+package tech.thdev.kotlin_udemy_sample.view.detail.adapter.model
 
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 

@@ -15,4 +15,10 @@ object Constant {
      */
     val TYPE_DETAIL_PAGE = 100
     val TYPE_SHARE_URL = 101
+
+    /**
+     * Detail page showing option
+     */
+    val TYPE_DETAIL_SINGLE = 1000
+    val TYPE_DETAIL_MULTI = 1001
 }

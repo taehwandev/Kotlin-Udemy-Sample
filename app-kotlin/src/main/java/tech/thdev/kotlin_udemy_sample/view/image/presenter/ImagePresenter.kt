@@ -4,6 +4,7 @@ import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoResponse
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
 import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
@@ -20,6 +21,8 @@ class ImagePresenter : ImageContract.Presenter {
 
     override var photoDataSample: PhotoDataSource? = null
 
+    override var itemSelectType: Int = Constant.TYPE_DETAIL_MULTI
+
     override var adapterModel: ImageViewAdapterContract.Model? = null
     override var adapterView: ImageViewAdapterContract.View? = null
         set(value) {
@@ -29,12 +32,18 @@ class ImagePresenter : ImageContract.Presenter {
             field?.onItemClickListener = object : OnItemClickListener {
 
                 override fun onItemClick(position: Int) {
-                    adapterModel?.getItems()?.let {
-                        view?.showDetailMore(it, position)
+                    when (itemSelectType) {
+                        Constant.TYPE_DETAIL_MULTI -> {
+                            adapterModel?.getItems()?.let {
+                                view?.showDetailMore(it, position)
+                            }
+                        }
+                        Constant.TYPE_DETAIL_SINGLE -> {
+                            adapterModel?.getItem(position)?.let {
+                                view?.showDetail(it)
+                            }
+                        }
                     }
-//                    adapterModel?.getItem(position)?.let {
-//                        Log.d("TAG", "onItemClic")
-//                    }
                 }
             }
         }

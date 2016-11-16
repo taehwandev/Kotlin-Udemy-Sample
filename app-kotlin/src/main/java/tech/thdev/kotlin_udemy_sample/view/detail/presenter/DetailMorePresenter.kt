@@ -1,4 +1,4 @@
-package tech.thdev.kotlin_udemy_sample.view.detail_more.presenter
+package tech.thdev.kotlin_udemy_sample.view.detail.presenter
 
 import android.content.Intent
 import retrofit2.Call
@@ -8,7 +8,7 @@ import tech.thdev.base.presenter.AbstractPresenter
 import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.FlickrInfo
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
-import tech.thdev.kotlin_udemy_sample.view.detail_more.adapter.model.SectionsPagerModel
+import tech.thdev.kotlin_udemy_sample.view.detail.adapter.model.SectionsPagerModel
 
 /**
  * Created by Tae-hwan on 16/11/2016.

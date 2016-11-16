@@ -25,7 +25,7 @@
             android:theme="@style/AppTheme.Black.NoActionBar" />
 
         <activity
-            android:name=".view.detail_more.DetailMoreActivity"
+            android:name=".view.detail.DetailMoreActivity"
             android:theme="@style/AppTheme.Black.NoActionBar" />
     </application>
 

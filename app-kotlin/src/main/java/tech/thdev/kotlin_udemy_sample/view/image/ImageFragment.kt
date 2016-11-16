@@ -1,6 +1,5 @@
 package tech.thdev.kotlin_udemy_sample.view.image
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
@@ -12,8 +11,7 @@ import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
-import tech.thdev.kotlin_udemy_sample.view.detail.DetailActivity
-import tech.thdev.kotlin_udemy_sample.view.detail_more.DetailMoreActivity
+import tech.thdev.kotlin_udemy_sample.util.createDetailIntent
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageContract
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImagePresenter
@@ -83,15 +81,28 @@ class ImageFragment : Fragment(), ImageContract.View {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.action_async -> {
-                changeViewType(ImageAdapter.VIEW_TYPE_ASYNC, item)
+                changeOptionItemSelected(item)
+                changeViewType(ImageAdapter.VIEW_TYPE_ASYNC)
                 return true
             }
             R.id.action_thread -> {
-                changeViewType(ImageAdapter.VIEW_TYPE_THREAD, item)
+                changeOptionItemSelected(item)
+                changeViewType(ImageAdapter.VIEW_TYPE_THREAD)
                 return true
             }
             R.id.action_glide -> {
-                changeViewType(ImageAdapter.VIEW_TYPE_GLIDE, item)
+                changeOptionItemSelected(item)
+                changeViewType(ImageAdapter.VIEW_TYPE_GLIDE)
+                return true
+            }
+            R.id.action_single -> {
+                changeOptionItemSelected(item)
+                presenter?.itemSelectType = Constant.TYPE_DETAIL_SINGLE
+                return true
+            }
+            R.id.action_multi -> {
+                changeOptionItemSelected(item)
+                presenter?.itemSelectType = Constant.TYPE_DETAIL_MULTI
                 return true
             }
             else -> {
@@ -100,9 +111,12 @@ class ImageFragment : Fragment(), ImageContract.View {
         }
     }
 
-    private fun changeViewType(viewType: Int, item: MenuItem?) {
+    private fun changeViewType(viewType: Int) {
         mViewType = ImageAdapter.VIEW_TYPE_GLIDE
         presenter?.getRecentImageSample(viewType)
+    }
+
+    private fun changeOptionItemSelected(item: MenuItem?) {
         if (item?.isChecked ?: false) item?.isChecked = false
         else item?.isChecked = true
     }
@@ -125,15 +139,10 @@ class ImageFragment : Fragment(), ImageContract.View {
     }
 
     override fun showDetailMore(item: ArrayList<RecentPhotoItem>, position: Int) {
-        val intent = Intent(context, DetailMoreActivity::class.java)
-        intent.putParcelableArrayListExtra(Constant.KEY_PHOTO_DATA, item)
-        intent.putExtra(Constant.KEY_SHOW_POSITION, position)
-        startActivity(intent)
+        startActivity(context.createDetailIntent(item, position))
     }
 
-    override fun showDetail(photoId: String) {
-        val intent = Intent(context, DetailActivity::class.java)
-        intent.putExtra(Constant.KEY_PHOTO_DATA, photoId)
-        startActivity(intent)
+    override fun showDetail(item: RecentPhotoItem) {
+        startActivity(context.createDetailIntent(item))
     }
 }
