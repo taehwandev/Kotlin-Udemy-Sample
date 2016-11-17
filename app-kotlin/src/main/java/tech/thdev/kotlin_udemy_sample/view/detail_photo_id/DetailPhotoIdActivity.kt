@@ -16,10 +16,6 @@ import tech.thdev.kotlin_udemy_sample.view.detail_photo_id.presenter.DetailPhoto
 
 class DetailPhotoIdActivity : BasePresenterActivity<DetailPhotoIdContract.View, DetailPhotoIdContract.Presenter>(), DetailPhotoIdContract.View {
 
-    private val tvTitle by lazy {
-        findViewById(R.id.tv_title) as TextView
-    }
-
     private val imgView by lazy {
         findViewById(R.id.img_view) as ImageView
     }
@@ -33,6 +29,7 @@ class DetailPhotoIdActivity : BasePresenterActivity<DetailPhotoIdContract.View, 
         presenter?.photoDataSource = PhotoDataSource
 
         setSupportActionBar(toolbar)
+        title = ""
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // TODO getString extra 정의
@@ -47,7 +44,7 @@ class DetailPhotoIdActivity : BasePresenterActivity<DetailPhotoIdContract.View, 
                 .crossFade()
                 .into(imgView)
 
-        tvTitle.text = photo.title.toString()
+        title = photo.title.toString()
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

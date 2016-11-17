@@ -47,6 +47,7 @@ public class DetailMoreActivity extends BasePresenterActivity<DetailMoreContract
         setContentView(R.layout.activity_detail_more);
 
         setSupportActionBar(toolbar);
+        setTitle("");
 
         String photoId = getIntent().getStringExtra(KEY_PHOTO_ID);
         getPresenter().onLoadPhotoInfo(photoId);
