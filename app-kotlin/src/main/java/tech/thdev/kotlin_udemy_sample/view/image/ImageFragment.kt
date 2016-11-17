@@ -1,5 +1,6 @@
 package tech.thdev.kotlin_udemy_sample.view.image
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
@@ -12,6 +13,7 @@ import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
 import tech.thdev.kotlin_udemy_sample.util.createDetailIntent
+import tech.thdev.kotlin_udemy_sample.view.detail_photo_id.DetailPhotoIdActivity
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageContract
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImagePresenter
@@ -95,6 +97,11 @@ class ImageFragment : Fragment(), ImageContract.View {
                 changeViewType(ImageAdapter.VIEW_TYPE_GLIDE)
                 return true
             }
+            R.id.action_extra -> {
+                changeOptionItemSelected(item)
+                presenter?.itemSelectType = Constant.TYPE_DETAIL_EXTRA
+                return true
+            }
             R.id.action_single -> {
                 changeOptionItemSelected(item)
                 presenter?.itemSelectType = Constant.TYPE_DETAIL_SINGLE
@@ -139,10 +146,18 @@ class ImageFragment : Fragment(), ImageContract.View {
     }
 
     override fun showDetailMore(item: ArrayList<RecentPhotoItem>, position: Int) {
+        // TODO put extra 구현
         startActivity(context.createDetailIntent(item, position))
     }
 
     override fun showDetail(item: RecentPhotoItem) {
         startActivity(context.createDetailIntent(item))
+    }
+
+    override fun showExtraDetail(id: String) {
+        // TODO put extra 구현
+        val intent = Intent(context, DetailPhotoIdActivity::class.java)
+        intent.putExtra(Constant.KEY_PHOTO_DATA, id)
+        startActivity(intent)
     }
 }

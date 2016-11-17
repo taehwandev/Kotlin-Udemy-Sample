@@ -21,4 +21,5 @@ object Constant {
      */
     val TYPE_DETAIL_SINGLE = 1000
     val TYPE_DETAIL_MULTI = 1001
+    val TYPE_DETAIL_EXTRA = 1002
 }

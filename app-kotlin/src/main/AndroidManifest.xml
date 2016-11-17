@@ -21,12 +21,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.detail.DetailActivity"
+            android:name=".view.detail.DetailMoreActivity"
             android:theme="@style/AppTheme.Black.NoActionBar" />
 
         <activity
-            android:name=".view.detail.DetailMoreActivity"
-            android:theme="@style/AppTheme.Black.NoActionBar" />
+            android:name=".view.detail_photo_id.DetailPhotoIdActivity"
+            android:theme="@style/AppTheme.Black.NoActionBar" />`
     </application>
 
 </manifest>

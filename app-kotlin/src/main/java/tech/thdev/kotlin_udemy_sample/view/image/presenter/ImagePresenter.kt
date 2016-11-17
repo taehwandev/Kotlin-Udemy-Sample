@@ -43,6 +43,11 @@ class ImagePresenter : ImageContract.Presenter {
                                 view?.showDetail(it)
                             }
                         }
+                        Constant.TYPE_DETAIL_EXTRA -> {
+                            adapterModel?.getItem(position)?.let {
+                                view?.showExtraDetail(it.id)
+                            }
+                        }
                     }
                 }
             }

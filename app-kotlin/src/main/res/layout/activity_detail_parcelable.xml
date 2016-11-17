@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#000"
     android:fitsSystemWindows="true"
-    tools:context=".view.detail.DetailActivity">
+    tools:context=".view.detail_photo_id.DetailPhotoIdActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -18,84 +18,34 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-            <RelativeLayout
-                android:id="@+id/rl_toolbar_user_info"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/img_buddy_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:scaleType="centerCrop" />
-
-                <TextView
-                    android:id="@+id/tv_buddy_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="?attr/actionBarSize"
-                    android:layout_toRightOf="@id/img_buddy_icon"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:lines="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text=""
-                    android:textColor="#fff"
-                    android:textSize="18sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_toolbar_image_info"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/img_small"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/sample_03" />
-
-                <TextView
-                    android:id="@+id/tv_toolbar_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:layout_toRightOf="@id/img_small"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:lines="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text=""
-                    android:textColor="#fff"
-                    android:textSize="18sp" />
-            </RelativeLayout>
-        </android.support.v7.widget.Toolbar>
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
     </android.support.design.widget.AppBarLayout>
 
-    <ImageView
-        android:id="@+id/img_view"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:scaleType="fitCenter" />
+        android:fitsSystemWindows="true">
 
-    <include
-        android:id="@+id/rl_sheet_view"
-        layout="@layout/bottom_sheet_detail_view" />
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:minHeight="40dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="adfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadf"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@id/rl_sheet_view"
-        app:layout_anchorGravity="right"
-        app:srcCompat="@drawable/icon_info_large" />
-
+        <ImageView
+            android:id="@+id/img_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tv_title"
+            android:scaleType="fitCenter" />
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -34,6 +34,11 @@ interface ImageContract {
          * Android Parcelable 예제
          */
         fun showDetailMore(item: ArrayList<RecentPhotoItem>, position: Int)
+
+        /**
+         * Extra string
+         */
+        fun  showExtraDetail(id: String)
     }
 
     interface Presenter {
