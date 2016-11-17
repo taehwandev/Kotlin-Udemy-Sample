@@ -1,10 +1,11 @@
 package tech.thdev.kotlin_udemy_sample.view.detail_photo_id
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_detail_parcelable.*
+import kotlinx.android.synthetic.main.activity_detail_photo_id.*
 import tech.thdev.base.view.BasePresenterActivity
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.constant.Constant
@@ -27,7 +28,7 @@ class DetailPhotoIdActivity : BasePresenterActivity<DetailPhotoIdContract.View, 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_parcelable)
+        setContentView(R.layout.activity_detail_photo_id)
 
         presenter?.photoDataSource = PhotoDataSource
 
@@ -47,5 +48,15 @@ class DetailPhotoIdActivity : BasePresenterActivity<DetailPhotoIdContract.View, 
                 .into(imgView)
 
         tvTitle.text = photo.title.toString()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

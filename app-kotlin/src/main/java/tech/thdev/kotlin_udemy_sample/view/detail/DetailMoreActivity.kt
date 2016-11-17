@@ -123,6 +123,10 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
             R.id.action_info -> {
                 presenter?.getPhotoDetailUrl(Constant.TYPE_DETAIL_PAGE)
             }
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
