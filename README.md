@@ -24,7 +24,6 @@ Intent를 넘길때 putExtra을 사용한 예제와 Kotlin에서 Parcelable을 �
 | Kotlin Sample       |                 |
 |:-------------------:|:-----------------:|
 | ![sample_kotlin_01] |![sample_kotlin_02]|
-|:-------------------:|:-----------------:|
 | ![sample_kotlin_03] |![sample_kotlin_04]|
 
 ## Kotlin image load library
