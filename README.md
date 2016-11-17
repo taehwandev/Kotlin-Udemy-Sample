@@ -4,12 +4,15 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
-`part 14` Retrofit을 이용하여 Flickr을 호출하고, 이를 RecyclerView와 연결하는 예제입니다.
+`part 15` Image load library을 다루는 예제입니다.
+직접 작성한 Thread, AsyncTask, Glide을 각각 예제로 작성하였습니다.
 
 ## 포함된 자료
 
-- Java : [Java Retrofit-RecyclerView](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/09-Retrofit-RecyclerView/app-java/src/main)
-- Kotlin : [Kotlin Retrofit-RecyclerView](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/09-Retrofit-RecyclerView/app-kotlin/src/main)
+- Java : [Java Glide sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/10-Image-Library/app-java/src/main)
+- Kotlin : [Kotlin sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/10-Image-Library/app-kotlin/src/main)
+- Kotlin - Thread : [Kotlin Thread](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/10-Image-Library/app-kotlin/src/main/java/tech/thdev/kotlin_udemy_sample/network/image/ImageDownloadThread.kt)
+- Kotlin - AsyncTask : [Kotlin AsyncTask](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/10-Image-Library/app-kotlin/src/main/java/tech/thdev/kotlin_udemy_sample/network/image/ImageDownloadAsync.kt)
 
 ## Preview
 
