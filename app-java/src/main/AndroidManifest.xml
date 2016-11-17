@@ -20,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.detail.DetailMoreActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

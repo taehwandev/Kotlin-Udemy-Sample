@@ -1,5 +1,6 @@
 package tech.thdev.java_udemy_sample.view.image;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -14,8 +15,10 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
-import tech.thdev.java_udemy_sample.view.image.adapter.PhotoViewAdapter;
+import tech.thdev.java_udemy_sample.data.PhotoItem;
 import tech.thdev.java_udemy_sample.data.source.image.ImageRepository;
+import tech.thdev.java_udemy_sample.view.detail.DetailMoreActivity;
+import tech.thdev.java_udemy_sample.view.image.adapter.PhotoViewAdapter;
 import tech.thdev.java_udemy_sample.view.image.presenter.PhotoViewPresenter;
 import tech.thdev.java_udemy_sample.view.image.presenter.PhotoViewPresenterImpl;
 
@@ -88,5 +91,12 @@ public class PhotoViewFragment extends Fragment implements PhotoViewPresenter.Vi
     public void showLoadFailMessage(int code, String message) {
         Toast.makeText(getContext(), "Code " + code + ", message " + message, Toast.LENGTH_LONG).show();
         Log.e("TAG", "Code " + code + ", message " + message);
+    }
+
+    @Override
+    public void showDetailPage(PhotoItem photoItem) {
+        Intent intent = new Intent(getContext(), DetailMoreActivity.class);
+        intent.putExtra(DetailMoreActivity.KEY_PHOTO_ID, photoItem.getId());
+        startActivity(intent);
     }
 }

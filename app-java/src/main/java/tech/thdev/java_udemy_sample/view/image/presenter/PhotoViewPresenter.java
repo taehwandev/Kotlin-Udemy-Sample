@@ -1,5 +1,6 @@
 package tech.thdev.java_udemy_sample.view.image.presenter;
 
+import tech.thdev.java_udemy_sample.data.PhotoItem;
 import tech.thdev.java_udemy_sample.view.image.adapter.model.PhotoViewAdapterContract;
 
 /**
@@ -27,5 +28,7 @@ public interface PhotoViewPresenter {
         void showFailLoaded();
 
         void showLoadFailMessage(int code, String message);
+
+        void showDetailPage(PhotoItem photoItem);
     }
 }

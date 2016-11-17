@@ -2,6 +2,7 @@ package tech.thdev.java_udemy_sample.view.image.presenter;
 
 import java.util.List;
 
+import tech.thdev.java_udemy_sample.listener.OnItemClickListener;
 import tech.thdev.java_udemy_sample.view.image.adapter.model.PhotoViewAdapterContract;
 import tech.thdev.java_udemy_sample.data.PhotoItem;
 import tech.thdev.java_udemy_sample.data.source.image.ImageRepository;
@@ -11,7 +12,7 @@ import tech.thdev.java_udemy_sample.data.source.image.ImageSource;
  * Created by tae-hwan on 10/29/16.
  */
 
-public class PhotoViewPresenterImpl implements PhotoViewPresenter {
+public class PhotoViewPresenterImpl implements PhotoViewPresenter, OnItemClickListener {
 
     private final View view;
     private final ImageRepository imageSampleRepository;
@@ -36,6 +37,7 @@ public class PhotoViewPresenterImpl implements PhotoViewPresenter {
     @Override
     public void setAdapterView(PhotoViewAdapterContract.View adapterView) {
         this.adapterView = adapterView;
+        this.adapterView.setOnItemClickListener(this);
     }
 
     @Override
@@ -63,5 +65,11 @@ public class PhotoViewPresenterImpl implements PhotoViewPresenter {
                 view.showLoadFailMessage(code, message);
             }
         });
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        PhotoItem photoItem = adapterModel.getItem(position);
+        view.showDetailPage(photoItem);
     }
 }

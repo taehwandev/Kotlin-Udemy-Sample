@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Bottom sheet -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DD222222"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="160dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DD222222"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lines="3"
+        android:minHeight="85dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="80dp"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:background="#CC222222"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp"
+            android:text=""
+            android:textColor="#FFF"
+            android:textSize="15sp" />
+    </RelativeLayout>
+</RelativeLayout>

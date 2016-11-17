@@ -53,6 +53,7 @@ dependencies {
 
     // Thdev support base
     compile 'tech.thdev.support:base:1.0.4'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.ext.kotlin_version"
 
     testCompile 'junit:junit:4.12'
 
