@@ -4,14 +4,30 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
-`part 16` 상세 페이지 추가하는 예제입니다.
+## 강의 자료
 
-Intent를 넘길때 putExtra을 사용한 예제와 Kotlin에서 Parcelable을 추가하는 예제입니다.
-
-## 포함된 자료
-
-- Java : [Java sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/11-Add-Detail-Page/app-java/src/main)
-- Kotlin : [Kotlin sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/11-Add-Detail-Page/app-kotlin/src/main)
+- [01. Kotlin base init](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/01-base-init)
+  - `Part 4` : 코틀린으로 Activity/Fragment/Util 클래스에 대해서 다룹니다.
+- [02. Kotlin Null Safety](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety)
+  - `Part 5/Part 6` : 코틀린의 안전한 null 처리에 대해서 정리한 자료입니다.
+- [03. Kotlin class](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/03-class)
+  - `Part 7/Part 8` : 코틀린 Class에 대하여 일부 일부 정리하였습니다.
+- [04. MVC](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/04-mvc)
+  - `Part 9` : Android MVC 코드로 작성한 예제입니다. RecyclerView를 통한 리스트 뷰로 정리하였습니다.
+- [05. MVP](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/05-mvp)
+  - `Part 10` : Android MVC 코드를 MVP로 변경한 예제입니다.
+- [06. MVP - Model](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/06-mvp-model)
+  - `Part 11` : Android MVP에 Model을 추가로 분환할 예제입니다.
+- [07. RecyclerView](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/07-RecyclerView)
+  - `Part 12` : RecyclerView를 소개합니다.
+- [08. Retrofit Intro](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/08-Retrofit-intro)
+  - `Part 13` : Retrofit 소개
+- [09. Retrofit과 RecyclerView 연결하기](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/09-Retrofit-RecyclerView)
+  - `Part 14` : Retrofit과 RecyclerView 연결하기
+- [10. Image Load Library Sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/10-Image-Library)
+  - `Part 15` : Image Load Library을 설명하고, AsyncTask, Thread, Glide을 다룬다.
+- [11. 추가 페이지 제작](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/11-Add-Detail-Page)
+  - `Part 15` : 새로운 페이지를 생성하고, Parcelable을 사용한 예제를 살펴본다.
 
 ## Preview Java
 
