@@ -111,4 +111,4 @@ limitations under the License.
 [sample_kotlin_02]: images/sample_kotlin_02.png
 [sample_kotlin_03]: images/sample_kotlin_03.png
 [sample_kotlin_04]: images/sample_kotlin_04.png
-[sample_kotlin_anim]: images/sample_kotlin.gif
+[sample_kotlin_anim]: images/sample_kotlin_anim.gif
