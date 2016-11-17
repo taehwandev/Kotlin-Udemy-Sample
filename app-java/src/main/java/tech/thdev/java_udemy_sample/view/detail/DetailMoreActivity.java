@@ -1,6 +1,7 @@
 package tech.thdev.java_udemy_sample.view.detail;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,9 @@ public class DetailMoreActivity extends BasePresenterActivity<DetailMoreContract
 
     public static final String KEY_PHOTO_ID = "photoId";
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @BindView(R.id.img_view)
     ImageView imgView;
 
@@ -42,6 +46,8 @@ public class DetailMoreActivity extends BasePresenterActivity<DetailMoreContract
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_more);
 
+        setSupportActionBar(toolbar);
+
         String photoId = getIntent().getStringExtra(KEY_PHOTO_ID);
         getPresenter().onLoadPhotoInfo(photoId);
     }
@@ -53,6 +59,8 @@ public class DetailMoreActivity extends BasePresenterActivity<DetailMoreContract
                 .fitCenter()
                 .crossFade()
                 .into(imgView);
+
+        setTitle(photo.owner.username);
 
         tvTitle.setText(photo.title._content);
         tvContent.setText(photo.description._content);
