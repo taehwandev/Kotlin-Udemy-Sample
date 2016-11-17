@@ -4,36 +4,27 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
-## 강의 자료
+`part 14` Retrofit을 이용하여 Flickr을 호출하고, 이를 RecyclerView와 연결하는 예제입니다.
 
-- [01. Kotlin base init](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/01-base-init)
-  - `Part 4` : 코틀린으로 Activity/Fragment/Util 클래스에 대해서 다룹니다.
-- [02. Kotlin Null Safety](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety)
-  - `Part 5/Part 6` : 코틀린의 안전한 null 처리에 대해서 정리한 자료입니다.
-- [03. Kotlin class](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/03-class)
-  - `Part 7/Part 8` : 코틀린 Class에 대하여 일부 일부 정리하였습니다.
-- [04. MVC](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/04-mvc)
-  - `Part 9` : Android MVC 코드로 작성한 예제입니다. RecyclerView를 통한 리스트 뷰로 정리하였습니다.
-- [05. MVP](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/05-mvp)
-  - `Part 10` : Android MVC 코드를 MVP로 변경한 예제입니다.
-- [06. MVP - Model](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/06-mvp-model)
-  - `Part 11` : Android MVP에 Model을 추가로 분환할 예제입니다.
-- [07. RecyclerView](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/07-RecyclerView)
-  - `Part 12` : RecyclerView를 소개합니다.
-- [08. Retrofit Intro](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/08-Retrofit-intro)
-  - `Part 13` : Retrofit 소개
-- [09. Retrofit과 RecyclerView 연결하기](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/09-Retrofit-RecyclerView)
-  - `Part 14` : Retrofit과 RecyclerView 연결하기
+## 포함된 자료
+
+- Java : [Java Retrofit-RecyclerView](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/09-Retrofit-RecyclerView/app-java/src/main)
+- Kotlin : [Kotlin Retrofit-RecyclerView](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/09-Retrofit-RecyclerView/app-kotlin/src/main)
 
 ## Preview
 
 | Java Sample    | Kotlin Sample  |
 |:--------------:|:--------------:|
-| ![java_sample] |![kotlin_sample]|
+| ![sample_java] |![sample_kotlin]|
+
+## Kotlin image load library
+
+![sample_kotlin_anim]
 
 
 ## 이번 장에서 사용한 API
 
+- [Glide](https://github.com/bumptech/glide)
 - [Retrofit 2.0](https://square.github.io/retrofit/)
 - [OkHttp](https://github.com/square/okhttp)
 - [OkHttp Logging Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor)
@@ -103,5 +94,6 @@ limitations under the License.
 [flickr_04]: images/flickr_04.png
 [flickr_05]: images/flickr_05.png
 
-[java_sample]: images/java_sample.png
-[kotlin_sample]: images/kotlin_sample.png
+[sample_java]: images/sample_java.png
+[sample_kotlin]: images/sample_kotlin.png
+[sample_kotlin_anim]: images/sample_kotlin.gif
