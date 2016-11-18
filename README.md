@@ -39,6 +39,8 @@ Intent를 넘길때 putExtra을 사용한 예제와 Kotlin에서 Parcelable을 �
 - [Retrofit 2.0](https://square.github.io/retrofit/)
 - [OkHttp](https://github.com/square/okhttp)
 - [OkHttp Logging Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor)
+- [Thdev Android Base](https://github.com/taehwandev/AndroidBase)
+    - 제가 작성한 Android Base(Kotlin 기반)의 코드를 사용하였습니다.(MVP 패턴으로 작성)
 
 ## 개발 버전에 대한 정보
 - buildToolsVersion = 24.0.3
