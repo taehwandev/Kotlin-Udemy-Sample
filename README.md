@@ -12,6 +12,8 @@ Intent를 넘길때 putExtra을 사용한 예제와 Kotlin에서 Parcelable을 �
 
 - Java : [Java sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/11-Add-Detail-Page/app-java/src/main)
 - Kotlin : [Kotlin sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/11-Add-Detail-Page/app-kotlin/src/main)
+  - [Kotlin putExtra Sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/11-Add-Detail-Page/sample_01_putextra/src/main)
+  - [Kotlin BottomSheet Sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/11-Add-Detail-Page/sample_02_bottomsheet/src/main)
 
 ## Preview Java
 
