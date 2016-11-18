@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // TODO SampleData에 대해서 Parcelable 작성
 //        btn_parcelable.setOnClickListener {
 //            val data = SampleData("Arc de Triomphe",
 //                    "The Arc de Triomphe de l'Étoile (French pronunciation: [aʁk də tʁijɔ̃f də letwal] ( listen), " +

@@ -5,6 +5,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.*
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
+import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 
 /**
  * Created by tae-hwan on 11/13/16.
@@ -33,7 +34,7 @@ class ImagePresenterTest {
             it
         }.`when`(view).showLoadSuccess()
 
-        presenter.getRecentImageSample()
+        presenter.getRecentImageSample(ImageAdapter.VIEW_TYPE_GLIDE)
 
         await().until {
             while (!finish) {
