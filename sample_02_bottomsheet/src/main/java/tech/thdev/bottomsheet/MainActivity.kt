@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
-import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         // rl_bottom_sheet을 BottomSheetBehavior에 등록한다
-        val bottomSheetBehavior = BottomSheetBehavior.from<RelativeLayout>(rl_bottom_sheet)
+        val bottomSheetBehavior = BottomSheetBehavior.from(rl_bottom_sheet)
         // 높이 설정
         bottomSheetBehavior.peekHeight = TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 200f, resources.displayMetrics).toInt()
