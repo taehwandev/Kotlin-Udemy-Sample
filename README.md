@@ -4,8 +4,8 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
-`part 16` 상세 페이지 예제
-`part 17` BottomSheet 예제
+- `part 16` 상세 페이지 예제
+- `part 17` BottomSheet 예제
 
 Intent를 넘길때 putExtra을 사용한 예제와 Kotlin에서 Parcelable을 추가하는 예제입니다.
 
