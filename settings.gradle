@@ -1,1 +1,1 @@
-include ':app-kotlin', ':app-java'
+include ':app-kotlin', ':app-java', ':sample_putextra'
