@@ -35,7 +35,8 @@ class ImageFragment : Fragment(), ImageContract.View {
 
     private var imageAdapter: ImageAdapter? = null
 
-    private var presenter: ImageContract.Presenter? = null
+    var presenter: ImageContract.Presenter? = null
+        private set
 
     /**
      * Load 완료 여부 정의
@@ -143,7 +144,7 @@ class ImageFragment : Fragment(), ImageContract.View {
         if (!activity.isFinishing) {
             Toast.makeText(context, "Load success", Toast.LENGTH_SHORT).show()
         }
-        isLoading = true
+        isLoading = false
     }
 
     override fun showLoadFail() {
