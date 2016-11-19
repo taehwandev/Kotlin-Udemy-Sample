@@ -31,11 +31,12 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 - [12. Android UI Test](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/12-UI-Test)
   - `Part 18/Parg 19` : Android UI Test
 
-## Preview Java
+## Sample
 
-| Java Sample       |                 |
-|:-----------------:|:---------------:|
-| ![sample_java_01] |![sample_java_02]|
+- [Main page test - kotlin](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/12-UI-Test/app-kotlin/src/androidTest/java/tech/thdev/kotlin_udemy_sample/view/image/ImageFragmentTest.kt)
+- [Detail page test - kotlin](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/12-UI-Test/app-kotlin/src/androidTest/java/tech/thdev/kotlin_udemy_sample/view/detail/DetailMoreActivityTest.kt)
+
+- [Android Espresso test - java](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/12-UI-Test/app-kotlin/src/androidTest/java/tech/thdev/kotlin_udemy_sample/view/image/ImageActivityTest.java)
 
 ## Preview Kotlin
 
@@ -72,6 +73,8 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 - [UI Testing with Espresso](https://guides.codepath.com/android/UI-Testing-with-Espresso)
 
 - [androidTest-JUnit4, Espresso를 이용한 테스트](http://thdev.tech/androiddev/2016/05/04/Android-Test-Example.html)
+
+- [Espresso Example](https://github.com/vgrec/EspressoExamples)
 
 ## 이번 장에서 사용한 API
 
