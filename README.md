@@ -31,12 +31,11 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 - [12. Android UI Test](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/12-UI-Test)
   - `Part 18/Parg 19` : Android UI Test
 
-## Sample
+## Preview Java
 
-- [Main page test - kotlin](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/12-UI-Test/app-kotlin/src/androidTest/java/tech/thdev/kotlin_udemy_sample/view/image/ImageFragmentTest.kt)
-- [Detail page test - kotlin](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/12-UI-Test/app-kotlin/src/androidTest/java/tech/thdev/kotlin_udemy_sample/view/detail/DetailMoreActivityTest.kt)
-
-- [Android Espresso test - java](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/12-UI-Test/app-kotlin/src/androidTest/java/tech/thdev/kotlin_udemy_sample/view/image/ImageActivityTest.java)
+| Java Sample       |                 |
+|:-----------------:|:---------------:|
+| ![sample_java_01] |![sample_java_02]|
 
 ## Preview Kotlin
 
