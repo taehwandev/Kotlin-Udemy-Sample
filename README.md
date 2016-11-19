@@ -4,30 +4,7 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
-## 강의 자료
-
-- [01. Kotlin base init](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/01-base-init)
-  - `Part 4` : 코틀린으로 Activity/Fragment/Util 클래스에 대해서 다룹니다.
-- [02. Kotlin Null Safety](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/02-null-safety)
-  - `Part 5/Part 6` : 코틀린의 안전한 null 처리에 대해서 정리한 자료입니다.
-- [03. Kotlin class](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/03-class)
-  - `Part 7/Part 8` : 코틀린 Class에 대하여 일부 일부 정리하였습니다.
-- [04. MVC](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/04-mvc)
-  - `Part 9` : Android MVC 코드로 작성한 예제입니다. RecyclerView를 통한 리스트 뷰로 정리하였습니다.
-- [05. MVP](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/05-mvp)
-  - `Part 10` : Android MVC 코드를 MVP로 변경한 예제입니다.
-- [06. MVP - Model](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/06-mvp-model)
-  - `Part 11` : Android MVP에 Model을 추가로 분환할 예제입니다.
-- [07. RecyclerView](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/07-RecyclerView)
-  - `Part 12` : RecyclerView를 소개합니다.
-- [08. Retrofit Intro](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/08-Retrofit-intro)
-  - `Part 13` : Retrofit 소개
-- [09. Retrofit과 RecyclerView 연결하기](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/09-Retrofit-RecyclerView)
-  - `Part 14` : Retrofit과 RecyclerView 연결하기
-- [10. Image Load Library Sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/10-Image-Library)
-  - `Part 15` : Image Load Library을 설명하고, AsyncTask, Thread, Glide을 다룬다.
-- [11. 추가 페이지 제작](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/11-Add-Detail-Page)
-  - `Part 15` : 새로운 페이지를 생성하고, Parcelable을 사용한 예제를 살펴본다.
+`part 18/part 19`의 Android UI Test 관련 자료입니다
 
 ## Preview Java
 
@@ -46,6 +23,30 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
 ![sample_kotlin_anim]
 
+## UI Test
+
+- RecyclerView item click test
+
+![ui_test_03]
+
+- Test RecyclerView and Detail page
+
+![ui_test_01]
+
+- Menu test
+
+![ui_test_02]
+
+## UI Test References
+
+- [Android Testing Support Library](https://google.github.io/android-testing-support-library/)
+- [Kotlin testing](https://medium.com/@sergii/using-kotlin-for-tests-in-android-6d4a0c818776#.ios8lnr1u)
+
+- [Android user interface testing with Espresso - Tutorial](http://www.vogella.com/tutorials/AndroidTestingEspresso/article.html)
+- [Android Testing Codelab](https://codelabs.developers.google.com/codelabs/android-testing/#0)
+- [UI Testing with Espresso](https://guides.codepath.com/android/UI-Testing-with-Espresso)
+
+- [androidTest-JUnit4, Espresso를 이용한 테스트](http://thdev.tech/androiddev/2016/05/04/Android-Test-Example.html)
 
 ## 이번 장에서 사용한 API
 
@@ -127,3 +128,7 @@ limitations under the License.
 [sample_kotlin_03]: images/sample_kotlin_03.png
 [sample_kotlin_04]: images/sample_kotlin_04.png
 [sample_kotlin_anim]: images/sample_kotlin_anim.gif
+
+[ui_test_01]: images/ui_test_01.gif
+[ui_test_02]: images/ui_test_02.gif
+[ui_test_03]: images/ui_test_03.gif
