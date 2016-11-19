@@ -93,7 +93,7 @@ class ImageFragmentTest {
         /*
          * recycler_image에 item의 title을 포함하는지 체크
          */
-        onView(nthChildOf(withId(R.id.recycler_image), 2))
+        onView(nthChildOf(withId(R.id.recycler_image), 0))
                 .check(ViewAssertions.matches(hasDescendant(withText(item?.title))))
 
         /*
