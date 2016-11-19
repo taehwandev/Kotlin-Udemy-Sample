@@ -13,12 +13,6 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
 - [Android Espresso test - java](https://github.com/taehwandev/Kotlin-Udemy-Sample/blob/12-UI-Test/app-kotlin/src/androidTest/java/tech/thdev/kotlin_udemy_sample/view/image/ImageActivityTest.java)
 
-## Preview Java
-
-| Java Sample       |                 |
-|:-----------------:|:---------------:|
-| ![sample_java_01] |![sample_java_02]|
-
 ## Preview Kotlin
 
 | Kotlin Sample       |                 |
