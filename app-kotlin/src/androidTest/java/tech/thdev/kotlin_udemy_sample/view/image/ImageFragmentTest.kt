@@ -26,6 +26,15 @@ import tech.thdev.kotlin_udemy_sample.view.image.adapter.holder.ImageGlideViewHo
  * Kotlin Test를 위해서는 코틀린 junit test을 추가해야 함
  *
  * androidTestCompile "org.jetbrains.kotlin:kotlin-test-junit:1.0.5"
+ *
+ * kotlin testing 참고 자료
+ * https://medium.com/@sergii/using-kotlin-for-tests-in-android-6d4a0c818776#.ios8lnr1u
+ *
+ * Espresso – Testing RecyclerViews at Specific Positions
+ * https://spin.atomicobject.com/2016/04/15/espresso-testing-recyclerviews/
+ *
+ * Android user interface testing with Espresso - Tutorial
+ * http://www.vogella.com/tutorials/AndroidTestingEspresso/article.html
  */
 class ImageFragmentTest {
 
@@ -38,7 +47,7 @@ class ImageFragmentTest {
     fun setUp() {
         fragment = rule.activity.supportFragmentManager.findFragmentById(R.id.frame_layout) as ImageFragment
 
-        awaitItemLoaded()
+        awaitItemLoad()
     }
 
     /**
@@ -64,7 +73,7 @@ class ImageFragmentTest {
 
         onView(withId(R.id.fab)).perform(click())
 
-        awaitItemLoaded()
+        awaitItemLoad()
 
         onView(withId(R.id.recycler_image))
                 .check(ViewAssertions.matches(withItemSize(199)))
@@ -162,7 +171,7 @@ class ImageFragmentTest {
     /**
      * Waiting to load items
      */
-    fun awaitItemLoaded() {
+    fun awaitItemLoad() {
         Awaitility.await().until<Boolean> {
             var finish = false
             while (!finish) {
