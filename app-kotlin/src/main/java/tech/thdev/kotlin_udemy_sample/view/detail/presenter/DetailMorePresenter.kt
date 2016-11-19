@@ -35,8 +35,13 @@ class DetailMorePresenter : AbstractPresenter<DetailMoreContract.View>(), Detail
                             if (response?.isSuccessful ?: false) {
                                 response?.body()?.let {
                                     flickrInfo = it
-                                    view?.updateToolbarItem(it.photo.owner.getBuddyIcons(), it.photo.owner.username, it.photo.getImageUrl(), it.photo.title._content)
-                                    view?.updateItem(it.photo)
+                                }
+                                view?.updateToolbarItem(flickrInfo?.photo?.owner?.getBuddyIcons() ?: "",
+                                        flickrInfo?.photo?.owner?.username ?: "",
+                                        flickrInfo?.photo?.getImageUrl() ?: "",
+                                        flickrInfo?.photo?.title?._content ?: "")
+                                flickrInfo?.photo?.let {
+                                    view?.updateItem(it)
                                 }
                             }
                         }

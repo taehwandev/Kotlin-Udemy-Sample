@@ -29,7 +29,7 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
 
     private var selectionPagerAdapter: SectionsPagerAdapter? = null
 
-    private val bottomSheet by lazy {
+    val bottomSheet by lazy {
         BottomSheetBehavior.from(rl_sheet_view)
     }
 
@@ -41,6 +41,8 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
      * Info icon showing
      */
     private var isShowInfoIcon = false
+
+    var isLoading = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +69,7 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
 
         onCreateView()
 
+        isLoading = true
         presenter?.loadPhotoInfo(currentPosition)
     }
 
@@ -172,6 +175,8 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
         tv_date.text = photo.dates.lastupdate.getDate("MM-dd-yyyy hh:mm")
         tv_viewer_count.text = photo.views.decimalFormat()
         tv_comment_count.text = photo.comments._content.decimalFormat()
+
+        isLoading = false
     }
 
     override fun showShareUrl(photoPageUrl: String) {
