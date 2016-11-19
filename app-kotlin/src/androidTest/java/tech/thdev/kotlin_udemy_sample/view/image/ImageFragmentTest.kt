@@ -1,26 +1,26 @@
 package tech.thdev.kotlin_udemy_sample.view.image
 
-import android.support.test.espresso.Espresso.onData
-import android.support.test.espresso.Espresso.onView
+import android.support.test.InstrumentationRegistry.getInstrumentation
+import android.support.test.espresso.Espresso.*
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.contrib.RecyclerViewActions
-import android.support.test.espresso.matcher.BoundedMatcher
-import android.support.test.espresso.matcher.ViewMatchers.withId
-import android.support.test.espresso.matcher.ViewMatchers.withText
+import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
-import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import com.jayway.awaitility.Awaitility
 import org.hamcrest.BaseMatcher
 import org.hamcrest.Description
 import org.hamcrest.Matcher
-import org.hamcrest.Matchers.*
+import org.hamcrest.Matchers.allOf
+import org.hamcrest.TypeSafeMatcher
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import tech.thdev.kotlin_udemy_sample.R
-import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.holder.ImageGlideViewHolder
+
 
 /**
  * Kotlin Test를 위해서는 코틀린 junit test을 추가해야 함
@@ -46,10 +46,12 @@ class ImageFragmentTest {
      */
     @Test
     fun testAdapterItemClickTest() {
+        val item = fragment?.presenter?.adapterModel?.getItem(0)
+
         onView(withId(R.id.recycler_image))
             .perform(RecyclerViewActions.actionOnItemAtPosition<ImageGlideViewHolder>(0, click()))
 
-        onView(withId(R.id.tv_title)).check(ViewAssertions.matches(withText("Perfection in purple")))
+        onView(withId(R.id.tv_title)).check(ViewAssertions.matches(withText(item?.title)))
     }
 
     /**
@@ -69,24 +71,53 @@ class ImageFragmentTest {
     }
 
     @Test
-    fun testShowingDetailPage() {
-//        onData(allOf(withTitle("avvv"))).perform(click())
+    fun testScrollToPosition() {
+        // Perform click on an element with a specific text
+        val position = 98
 
-//        onView(withId(R.id.tv_title)).check(matches(withText("Flat")))
-//        onData(allOf(withTitle("Flat"))).inAdapterView(withId(R.id.recycler_image)).atPosition(0).perform(click());
-        onData(withTitle("Flat")).perform(click())
+        onView(withId(R.id.recycler_image))
+                .perform(RecyclerViewActions.scrollToPosition<ImageGlideViewHolder>(position))
+
+        val item = fragment?.presenter?.adapterModel?.getItem(position)
+
+        onView(withId(R.id.recycler_image)).perform(RecyclerViewActions.actionOnItem<ImageGlideViewHolder>(
+                hasDescendant(withText(item?.title)), click()))
+
+        onView(withId(R.id.tv_title)).check(ViewAssertions.matches(withText(item?.title)))
     }
 
-    fun withTitle(title: String): Matcher<RecentPhotoItem> {
-        return object : BoundedMatcher<RecentPhotoItem, RecentPhotoItem>(RecentPhotoItem::class.java) {
-            override fun matchesSafely(item: RecentPhotoItem?): Boolean {
-                return item?.title?.equals(title) ?: false
-            }
+    @Test
+    fun testCheckListViewItem() {
+        val item = fragment?.presenter?.adapterModel?.getItem(2)
 
-            override fun describeTo(description: Description?) {
-                description?.appendText(title)
-            }
-        }
+        /*
+         * recycler_image에 item의 title을 포함하는지 체크
+         */
+        onView(nthChildOf(withId(R.id.recycler_image), 2))
+                .check(ViewAssertions.matches(hasDescendant(withText(item?.title))))
+
+        /*
+         * recycler_image에 포함된 ImageGrlidViewHolder에 item.title을 포함하고 있을 경우 click 발생
+         */
+        onView(withId(R.id.recycler_image)).perform(RecyclerViewActions.actionOnItem<ImageGlideViewHolder>(
+                hasDescendant(withText(item?.title)), click()))
+
+        /*
+         * tv_title에 item.title이 정상적으로 표시되고 있는지 Test
+         */
+        onView(allOf(withId(R.id.tv_title), withText(item?.title))).check(ViewAssertions.matches(isDisplayed()))
+    }
+
+    @Test
+    fun testMenuChange() {
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
+
+        onView(withText("Image Loader")).perform(click())
+        onView(withText("Thread")).perform(click())
+
+        Thread.sleep(1000)
+
+        onData(allOf(withText("Thread")))
     }
 
     /**
@@ -99,12 +130,31 @@ class ImageFragmentTest {
         return object : BaseMatcher<Any>() {
 
             override fun matches(item: Any?): Boolean {
-                Log.d("TAG", "itemSize $itemSize, item $item , fragmentSize ${fragment?.presenter?.adapterModel?.getItems()?.size}")
                 return itemSize == fragment?.presenter?.adapterModel?.getItems()?.size ?: 0
             }
 
             override fun describeTo(description: Description?) {
 
+            }
+        }
+    }
+
+    /**
+     * <a href="https://medium.com/@_rpiel/recyclerview-and-espresso-a-complicated-story-3f6f4179652e#.mlzxziks7">RecyclerView and espresso, a complicated story</a>
+     */
+    fun nthChildOf(parentMatcher: Matcher<View>, childPosition: Int): Matcher<View> {
+        return object : TypeSafeMatcher<View>() {
+
+            override fun matchesSafely(item: View?): Boolean {
+                if (item?.parent !is ViewGroup) {
+                    return parentMatcher.matches(item?.parent)
+                }
+
+                return parentMatcher.matches(item?.parent) && (item?.parent as ViewGroup).getChildAt(childPosition) == item
+            }
+
+            override fun describeTo(description: Description?) {
+                description?.appendText("with $childPosition child view of type parentMatcher")
             }
         }
     }
