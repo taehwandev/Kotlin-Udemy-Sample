@@ -39,7 +39,7 @@ import tech.thdev.kotlin_udemy_sample.view.image.adapter.holder.ImageGlideViewHo
 class ImageFragmentTest {
 
     @get:Rule
-    val rule: ActivityTestRule<ImageActivity> = ActivityTestRule(ImageActivity::class.java, true, true)
+    val rule: ActivityTestRule<ImageActivity> = ActivityTestRule(ImageActivity::class.java)
 
     private var fragment: ImageFragment? = null
 
@@ -69,7 +69,7 @@ class ImageFragmentTest {
     @Test
     fun testItemCountCheck() {
         onView(withId(R.id.recycler_image))
-                .check(ViewAssertions.matches(withItemSize(99)))
+                .check(ViewAssertions.matches(withItemSize(100)))
 
         onView(withId(R.id.fab)).perform(click())
 
@@ -92,6 +92,7 @@ class ImageFragmentTest {
         onView(withId(R.id.recycler_image)).perform(RecyclerViewActions.actionOnItem<ImageGlideViewHolder>(
                 hasDescendant(withText(item?.title)), click()))
 
+        // DetailMoreActivity Test.
         onView(withId(R.id.tv_title)).check(ViewAssertions.matches(withText(item?.title)))
     }
 
@@ -102,7 +103,7 @@ class ImageFragmentTest {
         /*
          * recycler_image에 item의 title을 포함하는지 체크
          */
-        onView(nthChildOf(withId(R.id.recycler_image), 0))
+        onView(nthChildOf(withId(R.id.recycler_image), 2))
                 .check(ViewAssertions.matches(hasDescendant(withText(item?.title))))
 
         /*
