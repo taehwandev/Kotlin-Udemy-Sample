@@ -38,6 +38,11 @@ class ImageFragment : Fragment(), ImageContract.View {
     private var presenter: ImageContract.Presenter? = null
 
     /**
+     * Load 완료 여부 정의
+     */
+    var isLoading = true
+
+    /**
      * ViewType 정의
      */
     private var mViewType = ImageAdapter.VIEW_TYPE_GLIDE
@@ -69,6 +74,7 @@ class ImageFragment : Fragment(), ImageContract.View {
         recycler_image.adapter = imageAdapter
 
         fab.setOnClickListener {
+            isLoading = true
             presenter?.getRecentImageSample(mViewType)
         }
 
@@ -137,9 +143,11 @@ class ImageFragment : Fragment(), ImageContract.View {
         if (!activity.isFinishing) {
             Toast.makeText(context, "Load success", Toast.LENGTH_SHORT).show()
         }
+        isLoading = true
     }
 
     override fun showLoadFail() {
+        isLoading = false
         if (!activity.isFinishing) {
             Toast.makeText(context, "Load fail", Toast.LENGTH_SHORT).show()
         }
