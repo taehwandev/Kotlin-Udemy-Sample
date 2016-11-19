@@ -49,6 +49,8 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
 - [androidTest-JUnit4, Espresso를 이용한 테스트](http://thdev.tech/androiddev/2016/05/04/Android-Test-Example.html)
 
+- [Espresso Example](https://github.com/vgrec/EspressoExamples)
+
 ## 이번 장에서 사용한 API
 
 - [Glide](https://github.com/bumptech/glide)
