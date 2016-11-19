@@ -27,7 +27,7 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 - [10. Image Load Library Sample](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/10-Image-Library)
   - `Part 15` : Image Load Library을 설명하고, AsyncTask, Thread, Glide을 다룬다.
 - [11. 추가 페이지 제작](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/11-Add-Detail-Page)
-  - `Part 15` : 새로운 페이지를 생성하고, Parcelable을 사용한 예제를 살펴본다.
+  - `Part 16/Part 17` : 새로운 페이지를 생성하고, Parcelable/BottomSheet을 사용한 예제를 살펴본다.
 
 ## Preview Java
 
@@ -53,6 +53,8 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 - [Retrofit 2.0](https://square.github.io/retrofit/)
 - [OkHttp](https://github.com/square/okhttp)
 - [OkHttp Logging Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor)
+- [Thdev Android Base](https://github.com/taehwandev/AndroidBase)
+    - 제가 작성한 Android Base(Kotlin 기반)의 코드를 사용하였습니다.(MVP 패턴으로 작성)
 
 ## 개발 버전에 대한 정보
 - buildToolsVersion = 24.0.3
