@@ -22,7 +22,7 @@ interface ImageViewAdapterContract {
      */
     interface Model {
 
-        fun addItem(item: RecentPhotoItem)
+        fun addItem(item: RecentPhotoItem?)
 
         fun getItems(): ArrayList<RecentPhotoItem>
 

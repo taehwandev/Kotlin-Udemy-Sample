@@ -48,8 +48,8 @@ class ImageAdapter(private val context: Context) :
      */
     override fun getItemCount() = itemList.size
 
-    override fun addItem(item: RecentPhotoItem) {
-        itemList.add(item)
+    override fun addItem(item: RecentPhotoItem?) {
+        item?.let { itemList.add(it) }
     }
 
     override fun getItems() = itemList

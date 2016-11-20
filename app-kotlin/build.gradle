@@ -59,10 +59,10 @@ dependencies {
     compile 'tech.thdev.support:base:1.0.4'
 
 
-    testCompile 'com.crittercism.dexmaker:dexmaker-mockito:1.4'
+    testCompile 'org.mockito:mockito-core:2.2.21'
     testCompile 'com.jayway.awaitility:awaitility:1.7.0'
-    androidTestCompile 'com.jayway.awaitility:awaitility:1.7.0'
 
+    androidTestCompile 'com.jayway.awaitility:awaitility:1.7.0'
     androidTestCompile "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.ext.kotlin_version"
     androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

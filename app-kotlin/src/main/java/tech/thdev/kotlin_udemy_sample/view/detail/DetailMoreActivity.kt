@@ -170,7 +170,7 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
     }
 
     override fun updateItem(photo: FlickrPhoto) {
-        tv_title.text = photo.title.toString()
+        tv_title.text = photo.title._content
         tv_content.text = Html.fromHtml(photo.description._content)
         tv_date.text = photo.dates.lastupdate.getDate("MM-dd-yyyy hh:mm")
         tv_viewer_count.text = photo.views.decimalFormat()
