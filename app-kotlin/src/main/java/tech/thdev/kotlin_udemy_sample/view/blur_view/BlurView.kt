@@ -44,7 +44,8 @@ class BlurView : CoordinatorLayout {
 
     override fun setVisibility(visibility: Int) {
         super.setVisibility(visibility)
-        rl_view.visibility = visibility
+        rl_blur_container.visibility = visibility
+        rl_item_view.visibility = visibility
         img_blur_over_view.visibility = visibility
         tv_title.visibility = visibility
     }
