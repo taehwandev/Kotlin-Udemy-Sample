@@ -2,17 +2,24 @@ package tech.thdev.kotlin_udemy_sample.view.image
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.GlideDrawable
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.fragment_image_sample.*
+import tech.thdev.base.util.createBlurImage
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
 import tech.thdev.kotlin_udemy_sample.util.createDetailIntent
+import tech.thdev.kotlin_udemy_sample.view.blur_view.BlurView
 import tech.thdev.kotlin_udemy_sample.view.detail_photo_id.DetailPhotoIdActivity
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageContract
@@ -23,6 +30,17 @@ import java.util.*
  * Created by tae-hwan on 10/3/16.
  */
 class ImageFragment : Fragment(), ImageContract.View {
+
+    /**
+     * Root view
+     */
+    private val rootContainer by lazy {
+        activity.findViewById(R.id.root_container) as CoordinatorLayout
+    }
+
+    private val rlBlurView by lazy {
+        activity.findViewById(R.id.blur_view) as BlurView
+    }
 
     private val fab by lazy {
         activity.findViewById(R.id.fab) as FloatingActionButton
@@ -141,7 +159,7 @@ class ImageFragment : Fragment(), ImageContract.View {
     }
 
     override fun showLoadSuccess() {
-        if (!activity.isFinishing) {
+        if (!(activity?.isFinishing ?: false)) {
             Toast.makeText(context, "Load success", Toast.LENGTH_SHORT).show()
         }
         isLoading = false
@@ -155,7 +173,6 @@ class ImageFragment : Fragment(), ImageContract.View {
     }
 
     override fun showDetailMore(item: ArrayList<RecentPhotoItem>, position: Int) {
-        // TODO put extra 구현
         startActivity(context.createDetailIntent(item, position))
     }
 
@@ -164,9 +181,49 @@ class ImageFragment : Fragment(), ImageContract.View {
     }
 
     override fun showExtraDetail(id: String) {
-        // TODO put extra 구현
         val intent = Intent(context, DetailPhotoIdActivity::class.java)
         intent.putExtra(Constant.KEY_PHOTO_DATA, id)
         startActivity(intent)
+    }
+
+    override fun showBlurView(item: RecentPhotoItem) {
+        activity.runOnUiThread {
+            rlBlurView.visibility = View.GONE
+            drawBackgroundImage()
+
+            Glide.with(context)
+                    .load(item.getImageUrl())
+                    .listener(object : RequestListener<String, GlideDrawable> {
+                        override fun onException(e: Exception?, model: String?, target: Target<GlideDrawable>?, isFirstResource: Boolean): Boolean {
+                            return false
+                        }
+
+                        override fun onResourceReady(resource: GlideDrawable?, model: String?, target: Target<GlideDrawable>?, isFromMemoryCache: Boolean, isFirstResource: Boolean): Boolean {
+                            recycler_image.visibility = View.GONE
+                            rlBlurView.visibility = View.VISIBLE
+                            return false
+                        }
+                    })
+                    .placeholder(0)
+                    .centerCrop()
+                    .into(rlBlurView.getImageView())
+        }
+    }
+
+    override fun hideBlurView() {
+        recycler_image.visibility = View.VISIBLE
+        rlBlurView.visibility = View.GONE
+    }
+
+    /**
+     * RootView capture...
+     */
+    private fun drawBackgroundImage() {
+        rootContainer.isDrawingCacheEnabled = true
+        rootContainer.buildDrawingCache(true)
+        rootContainer.drawingCache.createBlurImage(context)?.let {
+            rlBlurView.setImageView(it)
+        }
+        rootContainer.isDrawingCacheEnabled = false
     }
 }

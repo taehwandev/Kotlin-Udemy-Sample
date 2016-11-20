@@ -39,6 +39,16 @@ interface ImageContract {
          * Extra string
          */
         fun  showExtraDetail(id: String)
+
+        /**
+         * Blur show
+         */
+        fun  showBlurView(item: RecentPhotoItem)
+
+        /**
+         * Blur hide
+         */
+        fun hideBlurView()
     }
 
     interface Presenter {
@@ -62,5 +72,7 @@ interface ImageContract {
          * Flickr image을 불러온다
          */
         fun getRecentImageSample(viewType: Int)
+
+        fun destroy()
     }
 }

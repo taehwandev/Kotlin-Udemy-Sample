@@ -1,7 +1,8 @@
 package tech.thdev.kotlin_udemy_sample.view.image.adapter.model
 
+import android.view.MotionEvent
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
-import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
+import tech.thdev.kotlin_udemy_sample.listener.OnItemTouchListener
 import java.util.*
 
 /**
@@ -12,7 +13,12 @@ interface ImageViewAdapterContract {
 
     interface View {
 
-        var onItemClickListener: OnItemClickListener?
+        /**
+         * ItemTouch event
+         */
+        val onItemTouchListener: OnItemTouchListener?
+
+        fun setOnItemTouchListener(onTouch: (MotionEvent?, Int) -> Boolean)
 
         fun reload()
     }

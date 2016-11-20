@@ -3,10 +3,11 @@ package tech.thdev.kotlin_udemy_sample.view.image.adapter
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.MotionEvent
 import android.view.ViewGroup
 import tech.thdev.kotlin_udemy_sample.base.adapter.BaseViewHolder
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
-import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
+import tech.thdev.kotlin_udemy_sample.listener.OnItemTouchListener
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.holder.ImageAsyncViewHolder
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.holder.ImageGlideViewHolder
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.holder.ImageThreadViewHolder
@@ -29,12 +30,21 @@ class ImageAdapter(private val context: Context) :
 
     val itemList: ArrayList<RecentPhotoItem> = ArrayList()
 
-    override var onItemClickListener: OnItemClickListener? = null
+    override var onItemTouchListener: OnItemTouchListener? = null
+
+    override fun setOnItemTouchListener(onTouch: (MotionEvent?, Int) -> Boolean) {
+        onItemTouchListener = object : OnItemTouchListener {
+
+            override fun onItemTouch(motionEvent: MotionEvent?, position: Int): Boolean {
+                return onTouch(motionEvent, position)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = when (viewType) {
-        VIEW_TYPE_ASYNC -> ImageAsyncViewHolder(context, parent, onItemClickListener)
-        VIEW_TYPE_THREAD -> ImageThreadViewHolder(context, parent, onItemClickListener)
-        else -> ImageGlideViewHolder(context, parent, onItemClickListener)
+        VIEW_TYPE_ASYNC -> ImageAsyncViewHolder(context, parent, onItemTouchListener)
+        VIEW_TYPE_THREAD -> ImageThreadViewHolder(context, parent, onItemTouchListener)
+        else -> ImageGlideViewHolder(context, parent, onItemTouchListener)
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<RecentPhotoItem>?, position: Int) {

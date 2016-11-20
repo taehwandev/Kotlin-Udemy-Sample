@@ -1,12 +1,15 @@
 package tech.thdev.kotlin_udemy_sample.view.image.presenter
 
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
+import android.view.MotionEvent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoResponse
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
-import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.model.ImageViewAdapterContract
 
@@ -22,33 +25,16 @@ class ImagePresenter : ImageContract.Presenter {
 
     override var itemSelectType: Int = Constant.TYPE_DETAIL_MULTI
 
+    private val handler = Handler(Looper.getMainLooper())
+    private var isShowBlur = false
+
     override var adapterModel: ImageViewAdapterContract.Model? = null
     override var adapterView: ImageViewAdapterContract.View? = null
         set(value) {
             field = value
 
-            // Object을 이용한 onItemClickListener 정의
-            field?.onItemClickListener = object : OnItemClickListener {
-
-                override fun onItemClick(position: Int) {
-                    when (itemSelectType) {
-                        Constant.TYPE_DETAIL_MULTI -> {
-                            adapterModel?.getItems()?.let {
-                                view?.showDetailMore(it, position)
-                            }
-                        }
-                        Constant.TYPE_DETAIL_SINGLE -> {
-                            adapterModel?.getItem(position)?.let {
-                                view?.showDetail(it)
-                            }
-                        }
-                        Constant.TYPE_DETAIL_EXTRA -> {
-                            adapterModel?.getItem(position)?.let {
-                                view?.showExtraDetail(it.id)
-                            }
-                        }
-                    }
-                }
+            field?.setOnItemTouchListener { motionEvent, i ->
+                onItemTouchEvent(motionEvent, i)
             }
         }
 
@@ -95,5 +81,59 @@ class ImagePresenter : ImageContract.Presenter {
                         view?.showLoadFail()
                     }
                 })
+    }
+
+    private fun onAdapterClick(position: Int) {
+        when (itemSelectType) {
+            Constant.TYPE_DETAIL_MULTI -> {
+                adapterModel?.getItems()?.let {
+                    view?.showDetailMore(it, position)
+                }
+            }
+            Constant.TYPE_DETAIL_SINGLE -> {
+                adapterModel?.getItem(position)?.let {
+                    view?.showDetail(it)
+                }
+            }
+            Constant.TYPE_DETAIL_EXTRA -> {
+                adapterModel?.getItem(position)?.let {
+                    view?.showExtraDetail(it.id)
+                }
+            }
+        }
+    }
+
+    private fun onItemTouchEvent(motionEvent: MotionEvent?, position: Int): Boolean {
+        when (motionEvent?.action) {
+            MotionEvent.ACTION_DOWN -> {
+                handler.removeCallbacksAndMessages(null)
+                handler.postDelayed({
+                    Log.i("TAG", "500!!!!")
+                    val item = adapterModel?.getItem(position)
+                    item?.let {
+                        view?.showBlurView(it)
+                    }
+                    isShowBlur = true
+                }, 500)
+            }
+            MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
+                Log.i("TAG", "action_cancel/action_up")
+                handler.removeCallbacksAndMessages(null)
+                handler.postDelayed({
+                    view?.hideBlurView()
+                }, 500)
+
+                if (!isShowBlur) {
+                    onAdapterClick(position)
+                }
+                isShowBlur = false
+            }
+        }
+        return true
+    }
+
+    override fun destroy() {
+        handler.removeCallbacksAndMessages(null)
+        isShowBlur = false
     }
 }
