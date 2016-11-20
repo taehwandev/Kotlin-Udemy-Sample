@@ -103,7 +103,7 @@ class ImagePresenterTest {
             object : OnItemClickListener {
                 override fun onItemClick(position: Int) {
                     presenter.adapterModel?.getItems()?.let {
-                        view.showDetailMore(it, 2)
+                        view.showDetailMore(it, 0)
                     }
                 }
             }
