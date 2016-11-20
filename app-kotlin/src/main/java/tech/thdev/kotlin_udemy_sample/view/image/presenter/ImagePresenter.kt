@@ -103,6 +103,8 @@ class ImagePresenter : ImageContract.Presenter {
         }
     }
 
+    var posX: Float = 0.0f
+    var posY: Float = 0.0f
     private fun onItemTouchEvent(motionEvent: MotionEvent?, position: Int): Boolean {
         when (motionEvent?.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -114,18 +116,29 @@ class ImagePresenter : ImageContract.Presenter {
                         view?.showBlurView(it)
                     }
                     isShowBlur = true
-                }, 500)
+                }, Constant.BLUR_TIME_OUT)
+                posX = motionEvent?.x ?: 0f
+                posY = motionEvent?.y ?: 0f
             }
             MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
                 Log.i("TAG", "action_cancel/action_up")
                 handler.removeCallbacksAndMessages(null)
                 handler.postDelayed({
                     view?.hideBlurView()
-                }, 500)
+                }, Constant.BLUR_TIME_OUT)
 
-                if (!isShowBlur) {
-                    onAdapterClick(position)
+                motionEvent?.let {
+                    if (((posX >= it.x && posX <= it.x + 10)
+                            || posX <= it.x && posX >= it.x - 10)
+                                && ((posY >= it.y && posY <= it.y + 10)
+                                        || posY <= it.y  && posY >= it.y -10)) {
+                        if (!isShowBlur) {
+                            onAdapterClick(position)
+                            return false
+                        }
+                    }
                 }
+
                 isShowBlur = false
             }
         }

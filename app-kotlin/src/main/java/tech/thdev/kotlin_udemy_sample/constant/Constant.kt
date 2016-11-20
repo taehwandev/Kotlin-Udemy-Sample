@@ -6,6 +6,8 @@ package tech.thdev.kotlin_udemy_sample.constant
 
 object Constant {
 
+    val BLUR_TIME_OUT = 400L
+
     val KEY_PHOTO_DATA = "key-photo_data"
 
     val KEY_SHOW_POSITION = "key-show-position"
