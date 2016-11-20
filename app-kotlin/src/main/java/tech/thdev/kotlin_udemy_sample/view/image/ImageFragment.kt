@@ -98,6 +98,11 @@ class ImageFragment : Fragment(), ImageContract.View {
         }
 
         presenter?.getRecentImageSample(mViewType)
+
+        rlBlurView.setOnTouchListener { view, motionEvent ->
+            hideBlurView()
+            false
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -199,13 +204,14 @@ class ImageFragment : Fragment(), ImageContract.View {
                         }
 
                         override fun onResourceReady(resource: GlideDrawable?, model: String?, target: Target<GlideDrawable>?, isFromMemoryCache: Boolean, isFirstResource: Boolean): Boolean {
+                            rlBlurView.setTitle(item.title)
                             recycler_image.visibility = View.GONE
                             rlBlurView.visibility = View.VISIBLE
                             return false
                         }
                     })
                     .placeholder(0)
-                    .centerCrop()
+                    .fitCenter()
                     .into(rlBlurView.getImageView())
         }
     }

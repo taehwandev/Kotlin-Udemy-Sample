@@ -3,19 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="Title"
-        android:textStyle="bold" />
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/tv_title"
+        android:layout_height="240dp"
         android:scaleType="centerCrop"
         android:src="@drawable/loading" />
 

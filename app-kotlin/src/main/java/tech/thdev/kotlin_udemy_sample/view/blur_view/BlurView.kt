@@ -46,5 +46,10 @@ class BlurView : CoordinatorLayout {
         super.setVisibility(visibility)
         rl_view.visibility = visibility
         img_blur_over_view.visibility = visibility
+        tv_title.visibility = visibility
+    }
+
+    fun setTitle(title: String) {
+        tv_title.text = title
     }
 }

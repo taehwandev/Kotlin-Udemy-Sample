@@ -21,7 +21,6 @@ class ImageAsyncViewHolder(context: Context, parent: ViewGroup?,
         itemView?.let {
             // kotlin extensions 이용 view 사용
             with(it) {
-                tv_title.text = item?.title
                 ImageDownloadAsync.loadImage(R.drawable.loading, image, item?.getImageUrl())
             }
 

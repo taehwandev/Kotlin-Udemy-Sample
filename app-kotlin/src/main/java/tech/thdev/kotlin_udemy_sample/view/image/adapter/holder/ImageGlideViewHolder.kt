@@ -1,7 +1,6 @@
 package tech.thdev.kotlin_udemy_sample.view.image.adapter.holder
 
 import android.content.Context
-import android.util.Log
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_image_view.view.*
@@ -22,8 +21,6 @@ class ImageGlideViewHolder(context: Context, parent: ViewGroup?,
         itemView?.let {
             // kotlin extensions 이용 view 사용
             with(it) {
-                Log.d("TAG", "item ${item?.title}")
-                tv_title.text = item?.title
                 Glide.with(context)
                         .load(item?.getImageUrl())
                         .centerCrop()

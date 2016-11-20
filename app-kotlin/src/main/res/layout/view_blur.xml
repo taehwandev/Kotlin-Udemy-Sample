@@ -10,15 +10,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/img_blur_over_view"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_margin="60dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:visibility="gone" />
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/img_blur_over_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/sample_02"
+                android:minHeight="300dp"
+                android:minWidth="200dp"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/img_blur_over_view"
+                android:background="#88000000"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:lines="1"
+                android:textSize="18sp"
+                android:minWidth="200dp"
+                android:padding="5dp"
+                android:text=""
+                android:textColor="#fff" />
+        </RelativeLayout>
 
     </RelativeLayout>
 
