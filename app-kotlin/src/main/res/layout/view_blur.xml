@@ -25,9 +25,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:background="@drawable/sample_02"
                 android:minHeight="300dp"
                 android:minWidth="200dp"
+                android:scaleType="fitXY"
                 android:visibility="gone" />
 
             <TextView

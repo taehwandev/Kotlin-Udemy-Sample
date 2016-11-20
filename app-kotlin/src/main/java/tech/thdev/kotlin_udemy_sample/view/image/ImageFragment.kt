@@ -192,28 +192,26 @@ class ImageFragment : Fragment(), ImageContract.View {
     }
 
     override fun showBlurView(item: RecentPhotoItem) {
-        activity.runOnUiThread {
-            rlBlurView.visibility = View.GONE
-            drawBackgroundImage()
+        rlBlurView.visibility = View.GONE
+        drawBackgroundImage()
 
-            Glide.with(context)
-                    .load(item.getImageUrl())
-                    .listener(object : RequestListener<String, GlideDrawable> {
-                        override fun onException(e: Exception?, model: String?, target: Target<GlideDrawable>?, isFirstResource: Boolean): Boolean {
-                            return false
-                        }
+        Glide.with(context)
+                .load(item.getImageUrl())
+                .listener(object : RequestListener<String, GlideDrawable> {
+                    override fun onException(e: Exception?, model: String?, target: Target<GlideDrawable>?, isFirstResource: Boolean): Boolean {
+                        return false
+                    }
 
-                        override fun onResourceReady(resource: GlideDrawable?, model: String?, target: Target<GlideDrawable>?, isFromMemoryCache: Boolean, isFirstResource: Boolean): Boolean {
-                            rlBlurView.setTitle(item.title)
-                            recycler_image.visibility = View.GONE
-                            rlBlurView.visibility = View.VISIBLE
-                            return false
-                        }
-                    })
-                    .placeholder(0)
-                    .fitCenter()
-                    .into(rlBlurView.getImageView())
-        }
+                    override fun onResourceReady(resource: GlideDrawable?, model: String?, target: Target<GlideDrawable>?, isFromMemoryCache: Boolean, isFirstResource: Boolean): Boolean {
+                        rlBlurView.setTitle(item.title)
+                        recycler_image.visibility = View.GONE
+                        rlBlurView.visibility = View.VISIBLE
+                        return false
+                    }
+                })
+                .placeholder(0)
+                .fitCenter()
+                .into(rlBlurView.getImageView())
     }
 
     override fun hideBlurView() {
