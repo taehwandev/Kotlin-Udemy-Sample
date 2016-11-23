@@ -4,6 +4,10 @@
 
 Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 
+## GitHub 페이지
+
+- [Kotlin-Udemy-Sample](http://thdev.tech/Kotlin-Udemy-Sample/)
+
 ## 강의 자료
 
 - [01. Kotlin base init](https://github.com/taehwandev/Kotlin-Udemy-Sample/tree/01-base-init)
