@@ -48,7 +48,7 @@ class SampleAdapter(private val context: Context) : RecyclerView.Adapter<SampleA
 //        }
 
         fun bindView(index: Int) {
-            textView.text = "Index : " + index
+            textView.text = "Index : $index"
         }
     }
 }
