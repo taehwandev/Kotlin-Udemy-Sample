@@ -45,7 +45,7 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support:customtabs:$rootProject.ext.supportLibraryVersion"
 
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.ext.kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$rootProject.ext.kotlin_version"
 
     // Retrofit API
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
