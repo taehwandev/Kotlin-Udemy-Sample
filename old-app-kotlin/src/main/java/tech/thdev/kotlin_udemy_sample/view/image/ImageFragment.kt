@@ -35,15 +35,15 @@ class ImageFragment : Fragment(), ImageContract.View {
      * Root view
      */
     private val rootContainer by lazy {
-        activity.findViewById(R.id.root_container) as CoordinatorLayout
+        activity.findViewById<CoordinatorLayout>(R.id.root_container)
     }
 
     private val rlBlurView by lazy {
-        activity.findViewById(R.id.blur_view) as BlurView
+        activity.findViewById<BlurView>(R.id.blur_view)
     }
 
     private val fab by lazy {
-        activity.findViewById(R.id.fab) as FloatingActionButton
+        activity.findViewById<FloatingActionButton>(R.id.fab)
     }
 
     // Java 식의 static instance

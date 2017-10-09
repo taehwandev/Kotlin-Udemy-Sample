@@ -1,5 +1,6 @@
 package tech.thdev.kotlin_udemy_sample.view.detail_photo_id
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
@@ -17,11 +18,12 @@ import tech.thdev.kotlin_udemy_sample.view.detail_photo_id.presenter.DetailPhoto
 class DetailPhotoIdActivity : BasePresenterActivity<DetailPhotoIdContract.View, DetailPhotoIdContract.Presenter>(), DetailPhotoIdContract.View {
 
     private val imgView by lazy {
-        findViewById(R.id.img_view) as ImageView
+        findViewById<ImageView>(R.id.img_view)
     }
 
     override fun onCreatePresenter() = DetailPhotoIdPresenter()
 
+    @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_photo_id)

@@ -9,7 +9,7 @@ import tech.thdev.kotlin_udemy_sample.util.replaceFragmentToActivity
 class ImageActivity : AppCompatActivity() {
 
     private val toolbar by lazy {
-        findViewById(R.id.toolbar) as Toolbar
+        findViewById<Toolbar>(R.id.toolbar)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

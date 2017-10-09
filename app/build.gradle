@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "tech.thdev.app"
-        minSdkVersion rootProject.ext.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "2.0.0"

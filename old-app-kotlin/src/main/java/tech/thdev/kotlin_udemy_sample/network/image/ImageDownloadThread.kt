@@ -93,7 +93,7 @@ object ImageDownloadThread {
             Handler(Looper.getMainLooper()).post {
                 val imageView = weakReferenceImageView.get()
                 if (!TextUtils.isEmpty(resourceUrl) &&
-                        imageView.tag != null &&
+                        imageView?.tag != null &&
                         imageView.tag == resourceUrl &&
                         cache.get(resourceUrl) != null &&
                         cache.get(resourceUrl).get() != null) {
