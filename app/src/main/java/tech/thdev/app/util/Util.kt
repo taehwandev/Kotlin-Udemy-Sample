@@ -1,12 +1,11 @@
 package tech.thdev.app.util
 
-import android.support.v4.app.Fragment
+import android.support.annotation.IdRes
 import android.support.v7.app.AppCompatActivity
 
 /**
- * Created by record-tae on 10/10/17.
+ * Created by record-tae on 10/21/17.
  */
-
-fun AppCompatActivity.replace(containerViewId: Int, fragment: Fragment, tag: String?) {
-    supportFragmentManager.beginTransaction().replace(containerViewId, fragment, tag).commitAllowingStateLoss()
+fun AppCompatActivity.replace(@IdRes frameId: Int, fragment: android.support.v4.app.Fragment, tag: String? = null) {
+    supportFragmentManager.beginTransaction().replace(frameId, fragment, tag).commit()
 }
