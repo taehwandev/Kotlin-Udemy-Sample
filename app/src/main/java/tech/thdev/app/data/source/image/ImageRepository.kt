@@ -1,5 +1,7 @@
 package tech.thdev.app.data.source.image
 
+import tech.thdev.app.data.ImageData
+
 /**
  * Created by record-tae on 10/21/17.
  */
@@ -9,7 +11,7 @@ object ImageRepository : ImageDataSource {
         ImageLocalData()
     }
 
-    override fun loadImageFileName(fileName: (String) -> Unit) {
-        imageLocalData.loadImageFileName(fileName)
+    override fun loadImageList(imageDataList: (List<ImageData>) -> Unit, size: Int) {
+        imageLocalData.loadImageList(imageDataList, size)
     }
 }
