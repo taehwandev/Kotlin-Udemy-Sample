@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_home.*
 import tech.thdev.app.R
 import tech.thdev.app.data.source.image.ImageRepository
+import tech.thdev.app.view.main.home.adapter.ImageRecyclerAdapter
 import tech.thdev.app.view.main.home.presenter.HomeContract
 import tech.thdev.app.view.main.home.presenter.HomePresenter
 
@@ -19,7 +20,11 @@ import tech.thdev.app.view.main.home.presenter.HomePresenter
 class HomeFragment : Fragment(), HomeContract.View {
 
     private val homePresenter: HomePresenter by lazy {
-        HomePresenter(this@HomeFragment, ImageRepository)
+        HomePresenter(this@HomeFragment, ImageRepository, imageRecyclerAdapter)
+    }
+
+    private val imageRecyclerAdapter: ImageRecyclerAdapter by lazy {
+        ImageRecyclerAdapter(this@HomeFragment.context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -31,15 +36,16 @@ class HomeFragment : Fragment(), HomeContract.View {
         homePresenter.loadImage()
 
         recycler_view.run {
-//            adapter =
+            adapter = imageRecyclerAdapter
             layoutManager = GridLayoutManager(this@HomeFragment.context, 3)
-//            addOnScrollListener()
+            addOnScrollListener(recyclerViewOnScrollListener)
         }
     }
 
-//    override fun showImage(imageName: String) {
-//        imageView.setImageResource(resources.getIdentifier(imageName, "drawable", context.packageName))
-//    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        recycler_view?.removeOnScrollListener(recyclerViewOnScrollListener)
+    }
 
     override fun hideProgress() {
         progressBar.visibility = View.GONE
@@ -54,9 +60,13 @@ class HomeFragment : Fragment(), HomeContract.View {
         override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
 
-//            val visibleItemCount = recyclerView?.childCount as Int
-//            val totalItemCount = adapter?.itemCount as Int
-//            var firstVisibleItem = (recyclerView.layoutManager as? GridLayoutManager)?.findFirstVisibleItemPosition()
+            val visibleItemCount = recyclerView?.childCount as Int
+            val totalItemCount = imageRecyclerAdapter.itemCount
+            val firstVisibleItem = (recyclerView.layoutManager as? GridLayoutManager)?.findFirstVisibleItemPosition() ?: 0
+
+            if (!homePresenter.isLoading && (firstVisibleItem + visibleItemCount) >= totalItemCount - 7) {
+                homePresenter.loadImage()
+            }
         }
     }
 }
