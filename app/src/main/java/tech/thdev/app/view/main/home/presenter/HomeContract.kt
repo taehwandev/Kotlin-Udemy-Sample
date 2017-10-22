@@ -7,7 +7,6 @@ interface HomeContract {
 
     interface View {
 
-        fun showImage(imageName: String)
         fun hideProgress()
         fun showProgress()
     }

@@ -28,12 +28,11 @@ class HomePresenter(val view: HomeContract.View,
 
         override fun onPostExecute(result: Unit?) {
             super.onPostExecute(result)
+//            imageRepository.loadImageFileName {
+//                view.showImage(it)
+//            }
 
             view.hideProgress()
-
-            imageRepository.loadImageFileName {
-                view.showImage(it)
-            }
         }
     }
 }

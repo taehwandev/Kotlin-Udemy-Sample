@@ -2,6 +2,8 @@ package tech.thdev.app.view.main.home
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,11 +29,17 @@ class HomeFragment : Fragment(), HomeContract.View {
         super.onViewCreated(view, savedInstanceState)
 
         homePresenter.loadImage()
+
+        recycler_view.run {
+//            adapter =
+            layoutManager = GridLayoutManager(this@HomeFragment.context, 3)
+//            addOnScrollListener()
+        }
     }
 
-    override fun showImage(imageName: String) {
-        imageView.setImageResource(resources.getIdentifier(imageName, "drawable", context.packageName))
-    }
+//    override fun showImage(imageName: String) {
+//        imageView.setImageResource(resources.getIdentifier(imageName, "drawable", context.packageName))
+//    }
 
     override fun hideProgress() {
         progressBar.visibility = View.GONE
@@ -39,5 +47,16 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     override fun showProgress() {
         progressBar.visibility = View.VISIBLE
+    }
+
+    private val recyclerViewOnScrollListener = object : RecyclerView.OnScrollListener() {
+
+        override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+//            val visibleItemCount = recyclerView?.childCount as Int
+//            val totalItemCount = adapter?.itemCount as Int
+//            var firstVisibleItem = (recyclerView.layoutManager as? GridLayoutManager)?.findFirstVisibleItemPosition()
+        }
     }
 }
