@@ -28,7 +28,6 @@ class HomePresenter(val view: HomeContract.View,
                     imageRecyclerModel.addItem(it)
                 }
             }, 10)
-            Thread.sleep(1000)
         }
 
         override fun onPreExecute() {

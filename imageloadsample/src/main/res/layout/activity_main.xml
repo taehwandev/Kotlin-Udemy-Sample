@@ -3,32 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
-    android:background="#000">
+    android:layout_height="match_parent"
+    android:background="#000"
+    tools:context="tech.thdev.imageloadsample.MainActivity">
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:padding="10dp"
         android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/img_view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="ImageName" />
+        tools:text="LoadType" />
 
-    <tech.thdev.app.view.custom.GlideImageLoadImageView
-        android:id="@+id/img_view"
+
+    <ImageView
+        android:id="@+id/image_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        tools:src="@drawable/sample_01" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
