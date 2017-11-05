@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="ImageName" />
 
-    <ImageView
+    <tech.thdev.app.view.custom.GlideImageLoadImageView
         android:id="@+id/img_view"
         android:layout_width="0dp"
         android:layout_height="0dp"

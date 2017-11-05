@@ -64,7 +64,7 @@ class HomeFragment : Fragment(), HomeContract.View {
             val totalItemCount = imageRecyclerAdapter.itemCount
             val firstVisibleItem = (recyclerView.layoutManager as? GridLayoutManager)?.findFirstVisibleItemPosition() ?: 0
 
-            if (!homePresenter.isLoading && (firstVisibleItem + visibleItemCount) >= totalItemCount - 7) {
+            if (!homePresenter.isLoading && (firstVisibleItem + visibleItemCount) >= totalItemCount - 3) {
                 homePresenter.loadImage()
             }
         }

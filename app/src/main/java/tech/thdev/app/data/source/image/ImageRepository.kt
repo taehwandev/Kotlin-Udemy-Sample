@@ -7,11 +7,11 @@ import tech.thdev.app.data.ImageData
  */
 object ImageRepository : ImageDataSource {
 
-    private val imageLocalData: ImageLocalData by lazy {
-        ImageLocalData()
+    private val IMAGE_REMOTE_DATA: ImageRemoteData by lazy {
+        ImageRemoteData()
     }
 
     override fun loadImageList(imageDataList: (List<ImageData>) -> Unit, size: Int) {
-        imageLocalData.loadImageList(imageDataList, size)
+        IMAGE_REMOTE_DATA.loadImageList(imageDataList, size)
     }
 }
