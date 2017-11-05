@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_home.*
 import tech.thdev.app.R
+import tech.thdev.app.data.source.flickr.FlickrRepository
 import tech.thdev.app.data.source.image.ImageRepository
 import tech.thdev.app.view.main.home.adapter.ImageRecyclerAdapter
 import tech.thdev.app.view.main.home.presenter.HomeContract
@@ -20,7 +21,10 @@ import tech.thdev.app.view.main.home.presenter.HomePresenter
 class HomeFragment : Fragment(), HomeContract.View {
 
     private val homePresenter: HomePresenter by lazy {
-        HomePresenter(this@HomeFragment, ImageRepository, imageRecyclerAdapter)
+        HomePresenter(this@HomeFragment,
+                FlickrRepository,
+                ImageRepository,
+                imageRecyclerAdapter)
     }
 
     private val imageRecyclerAdapter: ImageRecyclerAdapter by lazy {
@@ -34,6 +38,7 @@ class HomeFragment : Fragment(), HomeContract.View {
         super.onViewCreated(view, savedInstanceState)
 
         homePresenter.loadImage()
+        homePresenter.loadFlickrImage()
 
         recycler_view.run {
             adapter = imageRecyclerAdapter
