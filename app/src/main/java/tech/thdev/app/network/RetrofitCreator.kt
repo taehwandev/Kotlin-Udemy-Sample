@@ -10,13 +10,12 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 
 fun <T> createRetrofit(cls: Class<T>, baseUrl: String): T {
-    val retrofit: Retrofit = Retrofit.Builder()
+    return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .client(createOkHttpClient())
             .build()
-
-    return retrofit.create(cls)
+            .create(cls)
 }
 
 /**

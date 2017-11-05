@@ -20,7 +20,7 @@ class HomePresenter(val view: HomeContract.View,
     var isLoading = false
 
     private val perPage = 50
-    private var page = -1
+    private var page = 0
 
     override fun loadFlickrImage() {
         flickrRepository.getRecentPhoto(++page, perPage)
