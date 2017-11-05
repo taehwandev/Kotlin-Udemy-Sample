@@ -1,11 +1,13 @@
 package tech.thdev.imageloadsample
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import android.support.annotation.DrawableRes
 import android.support.v4.util.LruCache
 import android.widget.ImageView
+import android.widget.TextView
 import java.io.BufferedInputStream
 import java.io.IOException
 import java.lang.ref.WeakReference
@@ -21,7 +23,7 @@ object ImageDownloadAsync {
      */
     private val cache = LruCache<String, WeakReference<Bitmap>>(5 * 1024 * 1024) // 5MiB
 
-    fun loadImage(@DrawableRes loadingImageRes: Int, imageView: ImageView, url: String?): Boolean {
+    fun loadImage(@DrawableRes loadingImageRes: Int, imageView: ImageView, url: String?, textView: TextView, randNumber: Int): Boolean {
         imageView.setImageResource(loadingImageRes)
         url?.let { imageUrl ->
             cache.get(imageUrl)?.get()?.let {
@@ -29,18 +31,15 @@ object ImageDownloadAsync {
                 return true
             } ?: let {
                 // 이미지 뷰 동기화를 위해서 tag 추가
-                imageView.tag = url
-                ImageAsync(imageView).execute(url)
+                ImageAsync(imageUrl, WeakReference(imageView), WeakReference(textView), randNumber).execute(url)
             }
         }
         return false
     }
 
-    private class ImageAsync(imageView: ImageView) : AsyncTask<String, String, String>() {
+    private class ImageAsync(val tag: String, val imageView: WeakReference<ImageView>?, val textView: WeakReference<TextView>?, val randNumber: Int) : AsyncTask<String, String, String>() {
 
-        private val weakReferenceImageView: WeakReference<ImageView> = WeakReference(imageView)
-
-        internal var bufferedInputStream: BufferedInputStream? = null
+        private var bufferedInputStream: BufferedInputStream? = null
 
         override fun doInBackground(vararg resourceUrl: String): String? {
             try {
@@ -71,14 +70,16 @@ object ImageDownloadAsync {
 
         }
 
+        @SuppressLint("SetTextI18n")
         override fun onPostExecute(url: String) {
             super.onPostExecute(url)
             if (isCancelled) {
                 return
             }
-            weakReferenceImageView.get()?.takeIf { it.tag == url }?.let { imageView ->
+            if (tag == url) {
                 cache.get(url)?.get()?.let {
-                    imageView.setImageBitmap(it)
+                    imageView?.get()?.setImageBitmap(it)
+                    textView?.get()?.text = "ACTION_ASYNC cacheLoad : false - $randNumber"
                 }
             }
         }
