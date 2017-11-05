@@ -5,6 +5,7 @@ import android.support.annotation.DrawableRes
 import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import tech.thdev.app.R
 
 /**
@@ -14,7 +15,10 @@ class GlideImageLoadImageView @JvmOverloads constructor(context: Context?, attrs
     : AppCompatImageView(context, attrs, defStyleAttr) {
 
     fun loadImage(url: String?, @DrawableRes loadingImageRes: Int = R.drawable.ic_bubble_chart_white_50dp) {
-        this.setImageResource(loadingImageRes)
-        Glide.with(context).load(url).into(this)
+        Glide
+                .with(this)
+                .applyDefaultRequestOptions(RequestOptions.placeholderOf(loadingImageRes))
+                .load(url)
+                .into(this)
     }
 }
