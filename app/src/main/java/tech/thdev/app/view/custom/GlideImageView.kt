@@ -9,16 +9,15 @@ import com.bumptech.glide.request.RequestOptions
 import tech.thdev.app.R
 
 /**
- * Created by taehwankwon on 05/11/2017.
+ * Created by record-tae on 11/5/17.
  */
-class GlideImageLoadImageView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-    : AppCompatImageView(context, attrs, defStyleAttr) {
+class GlideImageView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+        AppCompatImageView(context, attrs, defStyleAttr) {
 
     fun loadImage(url: String?, @DrawableRes loadingImageRes: Int = R.drawable.ic_bubble_chart_white_50dp) {
-        Glide
-                .with(this)
-                .applyDefaultRequestOptions(RequestOptions.placeholderOf(loadingImageRes))
+        Glide.with(this)
                 .load(url)
+                .apply(RequestOptions.placeholderOf(loadingImageRes).centerCrop())
                 .into(this)
     }
 }

@@ -1,5 +1,6 @@
 package tech.thdev.imageloadsample
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Handler
@@ -7,12 +8,11 @@ import android.os.Looper
 import android.support.annotation.DrawableRes
 import android.support.v4.util.LruCache
 import android.widget.ImageView
+import android.widget.TextView
 import java.io.BufferedInputStream
 import java.io.IOException
-import java.io.InputStream
 import java.lang.ref.WeakReference
 import java.net.URL
-import java.net.URLConnection
 
 /**
  * Created by taehwankwon on 05/11/2017.
@@ -23,7 +23,7 @@ object ImageDownloadThread {
      */
     private val cache = LruCache<String, WeakReference<Bitmap>>(5 * 1024 * 1024) // 5MiB
 
-    fun loadImage(@DrawableRes loadingImageRes: Int, imageView: ImageView, url: String?): Boolean {
+    fun loadImage(@DrawableRes loadingImageRes: Int, imageView: ImageView, url: String?, textView: TextView, randNumber: Int): Boolean {
         imageView.setImageResource(loadingImageRes)
 
         url?.let { imageUrl ->
@@ -32,27 +32,27 @@ object ImageDownloadThread {
                 return true
             } ?: let {
                 imageView.tag = url
-                Thread(DownloadThread(imageView, imageUrl)).start()
+                Thread(DownloadThread(imageView, imageUrl, textView, randNumber)).start()
             }
         }
         return false
     }
 
-    private class DownloadThread(imageView: ImageView, private val resourceUrl: String) : Runnable {
+    private class DownloadThread(imageView: ImageView, private val imageUrl: String, textView: TextView, randNumber: Int) : Runnable {
 
-        private val weakReferenceImageView: WeakReference<ImageView> = WeakReference(imageView)
+        private val weakReferenceImageView: WeakReference<Data> = WeakReference(Data(imageUrl, imageView, textView, randNumber))
 
         private var bufferedInputStream: BufferedInputStream? = null
 
         override fun run() {
             try {
-                URL(resourceUrl).run { openConnection() }.run {
+                URL(imageUrl).run { openConnection() }.run {
                     connect()
                     this@DownloadThread.bufferedInputStream = BufferedInputStream(this.getInputStream())
                 }
                 val options = BitmapFactory.Options().apply { inSampleSize = 2 }
-                cache.put(resourceUrl, WeakReference(BitmapFactory.decodeStream(bufferedInputStream, null, options)))
-                draw(resourceUrl)
+                cache.put(imageUrl, WeakReference(BitmapFactory.decodeStream(bufferedInputStream, null, options)))
+                draw(imageUrl)
 
             } catch (e: IOException) {
                 closeStream()
@@ -71,11 +71,13 @@ object ImageDownloadThread {
 
         }
 
+        @SuppressLint("SetTextI18n")
         private fun draw(resourceUrl: String) {
             Handler(Looper.getMainLooper()).post {
-                weakReferenceImageView.get()?.takeIf { it.tag == resourceUrl }?.let { imageView ->
+                weakReferenceImageView.get()?.takeIf { it.tag == resourceUrl }?.let { data ->
                     cache.get(resourceUrl)?.get()?.let {
-                        imageView.setImageBitmap(it)
+                        data.imageView.setImageBitmap(it)
+                        data.textView.text = "ACTION_THREAD cacheLoad : false - ${data.randNumber}"
                     }
                 }
             }

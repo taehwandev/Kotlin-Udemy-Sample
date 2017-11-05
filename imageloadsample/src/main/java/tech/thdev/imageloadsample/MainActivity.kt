@@ -67,12 +67,14 @@ class MainActivity : AppCompatActivity() {
         val randNumber = (1..imageList.size).random()
         when (actionType) {
             ACTION_ASYNC -> {
-                val cacheLoad = ImageDownloadAsync.loadImage(R.drawable.ic_image_black_100dp, image_view, imageList[randNumber + 1])
-                tv_title.text = "ACTION_ASYNC cacheLoad : $cacheLoad - $randNumber"
+                ImageDownloadAsync.loadImage(R.drawable.ic_image_black_100dp, image_view, imageList[randNumber], tv_title, randNumber + 1).takeIf { it }?.let {
+                    tv_title.text = "ACTION_ASYNC cacheLoad : true - $randNumber"
+                }
             }
             ACTION_THREAD -> {
-                val cacheLoad = ImageDownloadThread.loadImage(R.drawable.ic_image_black_100dp, image_view, imageList[randNumber + 1])
-                tv_title.text = "ACTION_THREAD cacheLoad : $cacheLoad - $randNumber"
+                ImageDownloadThread.loadImage(R.drawable.ic_image_black_100dp, image_view, imageList[randNumber], tv_title, randNumber + 1).takeIf { it }?.let {
+                    tv_title.text = "ACTION_THREAD cacheLoad : true - $randNumber"
+                }
             }
         }
     }
