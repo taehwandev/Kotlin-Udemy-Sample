@@ -14,5 +14,7 @@ interface HomeContract {
     interface Presenter {
 
         fun loadImage()
+
+        fun loadFlickrImage()
     }
 }

@@ -13,5 +13,6 @@ interface FlickrServiceInterface {
 
     @POST("?method=flickr.interestingness.getList&format=json&nojsoncallback=1&api_key=" + BuildConfig.FLICKR_API_KEY)
     fun getFlickrRecentPhotos(
-            @Query("page") page: Int): Call<PhotoResponse>
+            @Query("page") page: Int,
+            @Query("per_page") perPage: Int): Call<PhotoResponse>
 }
