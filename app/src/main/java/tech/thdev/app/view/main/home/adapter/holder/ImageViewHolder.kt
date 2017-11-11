@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_image_view.view.*
 import tech.thdev.app.R
-import tech.thdev.app.data.ImageData
+import tech.thdev.app.data.Photo
 
 /**
  * Created by record-tae on 10/22/17.
@@ -15,13 +15,11 @@ import tech.thdev.app.data.ImageData
 class ImageViewHolder(context: Context, parent: ViewGroup?)
     : RecyclerView.ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_image_view, parent, false)) {
 
-    fun onBind(item: ImageData) {
+    fun onBind(item: Photo) {
         itemView.onBind(item)
     }
 
-    private fun View.onBind(item: ImageData) {
-        tv_title.text = item.name
-//        img_view.setImageResource(resources.getIdentifier(item.fileName, "drawable", context.packageName))
-        img_view.loadImage(item.fileName)
+    private fun View.onBind(item: Photo) {
+        img_view.loadImage(item.getImageUrl())
     }
 }

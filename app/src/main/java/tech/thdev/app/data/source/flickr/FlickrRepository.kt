@@ -7,5 +7,6 @@ object FlickrRepository : FlickrDataSource {
 
     private val flickrRemoteData = FlickrRemoteData()
 
-    override fun getRecentPhoto(page: Int, perPage: Int) = flickrRemoteData.getRecentPhoto(page, perPage)
+    override fun getSearchPhoto(keyword: String, page: Int, perPage: Int)
+            = flickrRemoteData.getSearchPhoto(keyword, page, perPage)
 }
