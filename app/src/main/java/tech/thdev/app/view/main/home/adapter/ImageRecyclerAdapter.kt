@@ -14,6 +14,8 @@ class ImageRecyclerAdapter(private val context: Context) : RecyclerView.Adapter<
 
     private val list = mutableListOf<Photo>()
 
+    override var onClick: ((Int) -> Unit)? = null
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         (holder as? ImageViewHolder)?.onBind(list[position])
     }
@@ -21,11 +23,15 @@ class ImageRecyclerAdapter(private val context: Context) : RecyclerView.Adapter<
     override fun getItemCount() = list.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        return ImageViewHolder(context, parent)
+        return ImageViewHolder(onClick, context, parent)
     }
 
     override fun addItem(imageData: Photo) {
         list.add(imageData)
+    }
+
+    override fun getItem(position: Int): Photo {
+        return list[position]
     }
 
     override fun notifyDataSetChang() {

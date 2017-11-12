@@ -12,6 +12,8 @@ interface HomeContract {
 
         fun showLoadFail()
         fun showLoadFail(message: String)
+
+        fun showBottomSheetDialog(photoId: String)
     }
 
     interface Presenter {

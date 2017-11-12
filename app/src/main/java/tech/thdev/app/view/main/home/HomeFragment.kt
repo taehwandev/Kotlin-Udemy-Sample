@@ -11,6 +11,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_home.*
 import tech.thdev.app.R
 import tech.thdev.app.data.source.flickr.FlickrRepository
+import tech.thdev.app.view.main.detail.DetailImageBottomSheet
 import tech.thdev.app.view.main.home.adapter.ImageRecyclerAdapter
 import tech.thdev.app.view.main.home.presenter.HomeContract
 import tech.thdev.app.view.main.home.presenter.HomePresenter
@@ -83,5 +84,9 @@ class HomeFragment : Fragment(), HomeContract.View {
         if (isDetached) return
 
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showBottomSheetDialog(photoId: String) {
+        DetailImageBottomSheet.create(photoId).show(activity.supportFragmentManager, "DetailImageBottomSheet")
     }
 }

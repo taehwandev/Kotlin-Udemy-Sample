@@ -1,6 +1,7 @@
 package tech.thdev.app.data.source.flickr
 
 import retrofit2.Call
+import tech.thdev.app.data.PhotoInfo
 import tech.thdev.app.data.PhotoResponse
 
 /**
@@ -9,4 +10,6 @@ import tech.thdev.app.data.PhotoResponse
 interface FlickrDataSource {
 
     fun getSearchPhoto(keyword: String, page: Int, perPage: Int): Call<PhotoResponse>
+
+    fun getPhotoDetail(photoId: String): Call<PhotoInfo>
 }

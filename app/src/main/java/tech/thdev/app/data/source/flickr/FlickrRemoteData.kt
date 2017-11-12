@@ -1,5 +1,7 @@
 package tech.thdev.app.data.source.flickr
 
+import retrofit2.Call
+import tech.thdev.app.data.PhotoInfo
 import tech.thdev.app.network.FlickrServiceInterface
 import tech.thdev.app.network.createRetrofit
 
@@ -19,4 +21,7 @@ class FlickrRemoteData : FlickrDataSource {
             keyword = keyword,
             page = page,
             perPage = perPage)
+
+    override fun getPhotoDetail(photoId: String): Call<PhotoInfo>
+            = flickrServiceInterface.getFlickrPhotoDetail(photoId)
 }
