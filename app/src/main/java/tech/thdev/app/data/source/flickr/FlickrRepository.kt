@@ -9,7 +9,4 @@ object FlickrRepository : FlickrDataSource {
 
     override fun getSearchPhoto(keyword: String, page: Int, perPage: Int)
             = flickrRemoteData.getSearchPhoto(keyword, page, perPage)
-
-    override fun getPhotoDetail(photoId: String)
-            = flickrRemoteData.getPhotoDetail(photoId)
 }
