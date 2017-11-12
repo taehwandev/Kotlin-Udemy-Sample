@@ -50,6 +50,8 @@ class DetailImagePresenter(val view: DetailImageContract.View,
     }
 
     override fun loadFlickrWebPage() {
-        view.showFlickrWebPage(webUrl)
+        if (webUrl.isNotEmpty()) {
+            view.showFlickrWebPage(webUrl)
+        }
     }
 }
