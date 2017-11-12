@@ -43,7 +43,7 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
             val bottomSheet = dialog.findViewById<View>(android.support.design.R.id.design_bottom_sheet)
             BottomSheetBehavior.from(bottomSheet).apply {
                 state = BottomSheetBehavior.STATE_EXPANDED
-                peekHeight = 1000
+                peekHeight = 30
                 setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
                     override fun onSlide(bottomSheet: View, slideOffset: Float) {
                     }

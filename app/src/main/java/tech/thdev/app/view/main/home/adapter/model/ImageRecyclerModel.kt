@@ -15,5 +15,5 @@ interface ImageRecyclerModel {
 
     fun notifyDataSetChang()
 
-    var onClick: ((Int) -> Unit)?
+    var onClick: (Int) -> Unit
 }

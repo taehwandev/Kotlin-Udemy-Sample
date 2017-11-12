@@ -21,15 +21,19 @@ class DetailImagePresenter(val view: DetailImageContract.View,
                     override fun onResponse(call: Call<PhotoInfo>?, response: Response<PhotoInfo>?) {
                         if (response?.isSuccessful == true) {
                             response.body()?.takeIf { it.stat == "ok" }?.let {
+                                // 처리
                                 it.photo.let {
-                                    view.updateItem(it.getImageUrl(),
+                                    view.updateItem(
+                                            it.getImageUrl(),
                                             it.title._content,
                                             it.description._content,
-                                            it.dates.lastupdate.getDate("MM-dd-yyyy hh:mm"),
+                                            it.dates.lastupdate.getDate("MM-dd-yyyy hh:mm:ss"),
                                             it.views.toString().decimalFormat(),
                                             it.comments._content.toString().decimalFormat())
 
-                                    view.updateToolbarItem(it.owner.getBuddyIcons(), it.owner.username)
+                                    view.updateToolbarItem(
+                                            it.owner.getBuddyIcons(),
+                                            it.owner.username)
                                 }
                             }
                         }
