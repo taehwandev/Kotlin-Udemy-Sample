@@ -14,7 +14,7 @@ class ImageRecyclerAdapter(private val context: Context) : RecyclerView.Adapter<
 
     private val list = mutableListOf<Photo>()
 
-    override var onClick: ((Int) -> Unit)? = null
+    override lateinit var onClick: (Int) -> Unit
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         (holder as? ImageViewHolder)?.onBind(list[position])

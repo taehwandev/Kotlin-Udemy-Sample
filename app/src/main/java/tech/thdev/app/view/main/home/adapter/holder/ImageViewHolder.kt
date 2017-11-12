@@ -12,12 +12,12 @@ import tech.thdev.app.data.Photo
 /**
  * Created by record-tae on 10/22/17.
  */
-class ImageViewHolder(onClick: ((Int) -> Unit)?, context: Context, parent: ViewGroup?)
+class ImageViewHolder(onClick: (Int) -> Unit, context: Context, parent: ViewGroup?)
     : RecyclerView.ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_image_view, parent, false)) {
 
     init {
         itemView.setOnClickListener {
-            onClick?.invoke(adapterPosition)
+            onClick(adapterPosition)
         }
     }
 

@@ -21,9 +21,7 @@ class HomePresenter(val view: HomeContract.View,
 
     init {
         imageRecyclerModel.onClick = { position ->
-            imageRecyclerModel.getItem(position).let {
-                view.showBottomSheetDialog(it.id)
-            }
+            view.showBottomSheetDialog(imageRecyclerModel.getItem(position).id)
         }
     }
 

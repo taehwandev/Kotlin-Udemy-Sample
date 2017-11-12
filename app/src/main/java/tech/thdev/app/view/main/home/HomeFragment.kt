@@ -21,6 +21,12 @@ import tech.thdev.app.view.main.home.presenter.HomePresenter
  */
 class HomeFragment : Fragment(), HomeContract.View {
 
+    override fun showBottomSheetDialog(photoId: String) {
+        if (isDetached) return
+
+        DetailImageBottomSheet.create(photoId).show(activity.supportFragmentManager, "DetailImageBottomSheet")
+    }
+
     private val homePresenter: HomePresenter by lazy {
         HomePresenter(this@HomeFragment,
                 FlickrRepository,
@@ -87,7 +93,5 @@ class HomeFragment : Fragment(), HomeContract.View {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun showBottomSheetDialog(photoId: String) {
-        DetailImageBottomSheet.create(photoId).show(activity.supportFragmentManager, "DetailImageBottomSheet")
-    }
+
 }
