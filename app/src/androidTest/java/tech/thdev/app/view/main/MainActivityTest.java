@@ -1,9 +1,12 @@
 package tech.thdev.app.view.main;
 
 
+import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.test.uiautomator.UiDevice;
+import android.support.test.uiautomator.UiSelector;
 import android.test.suitebuilder.annotation.LargeTest;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +37,13 @@ public class MainActivityTest {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+
+    private UiDevice uiDevice;
+
+    @Before
+    public void setUp() {
+        uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+    }
 
     @Test
     public void mainActivityTest() {
@@ -97,6 +108,49 @@ public class MainActivityTest {
                                 withClassName(is("android.support.constraint.ConstraintLayout")),
                                 0)));
         recyclerView.perform(actionOnItemAtPosition(5, click()));
+    }
+
+    @Test
+    public void uiDeviceTest() {
+
+        try {
+            Thread.sleep(1000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction recyclerView = onView(
+                allOf(withId(R.id.recycler_view),
+                        childAtPosition(
+                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                0)));
+        recyclerView.perform(actionOnItemAtPosition(2, click()));
+
+        try {
+            Thread.sleep(1000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction appCompatImageView = onView(
+                allOf(withId(R.id.img_web),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.toolbar),
+                                        0),
+                                3),
+                        isDisplayed()));
+        appCompatImageView.perform(click());
+
+        try {
+            Thread.sleep(1000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        uiDevice.findObject(new UiSelector().description("https://www.flickr.com")).exists();
+        uiDevice.pressBack();
+
+        uiDevice.pressBack();
     }
 
     private static Matcher<View> childAtPosition(
