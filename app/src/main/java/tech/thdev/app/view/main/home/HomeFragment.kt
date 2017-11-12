@@ -39,6 +39,7 @@ class HomeFragment : Fragment(), HomeContract.View {
 
         homePresenter.loadFlickrImage()
 
+
         recycler_view.run {
             adapter = imageRecyclerAdapter
             layoutManager = GridLayoutManager(this@HomeFragment.context, 3)
