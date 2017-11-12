@@ -14,6 +14,8 @@ import tech.thdev.app.util.getDate
 class DetailImagePresenter(val view: DetailImageContract.View,
                            private val repository: FlickrRepository) : DetailImageContract.Presenter {
 
+    private var webUrl: String = ""
+
     override fun loadDetailInfo(photoId: String) {
         repository.getPhotoDetail(photoId)
                 .enqueue(object : Callback<PhotoInfo> {
@@ -30,6 +32,8 @@ class DetailImagePresenter(val view: DetailImageContract.View,
                                             it.comments._content.toString().decimalFormat())
 
                                     view.updateToolbarItem(it.owner.getBuddyIcons(), it.owner.username)
+
+                                    webUrl = it.urls.url.firstOrNull()?._content ?: ""
                                 }
                             }
                         }
@@ -39,5 +43,9 @@ class DetailImagePresenter(val view: DetailImageContract.View,
 
                     }
                 })
+    }
+
+    override fun loadFlickrWebPage() {
+        view.showFlickrWebPage(webUrl)
     }
 }

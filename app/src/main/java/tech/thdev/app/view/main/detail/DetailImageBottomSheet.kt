@@ -1,15 +1,16 @@
 package tech.thdev.app.view.main.detail
 
 import android.app.Dialog
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.support.customtabs.CustomTabsIntent
 import android.support.design.widget.BottomSheetBehavior
 import android.support.design.widget.BottomSheetDialogFragment
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import kotlinx.android.synthetic.main.layout_photo_detail.*
 import tech.thdev.app.R
 import tech.thdev.app.data.source.flickr.FlickrRepository
@@ -94,7 +95,7 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
         }
 
         img_web.setOnClickListener {
-            // Show chrome.
+            detailImagePresenter.loadFlickrWebPage()
         }
 
         detailImagePresenter.loadDetailInfo(arguments.getString(KEY_PHOTO_ID))
@@ -117,5 +118,13 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
         tv_date.text = date
         tv_viewer_count.text = viewCount
         tv_comment_count.text = commentCount
+    }
+
+    override fun showFlickrWebPage(url: String) {
+        CustomTabsIntent.Builder().apply {
+            setToolbarColor(resources.getColor(R.color.colorPrimary))
+        }.build().run {
+            launchUrl(context, Uri.parse(url))
+        }
     }
 }
