@@ -12,7 +12,7 @@ import tech.thdev.app.view.main.home.adapter.model.ImageRecyclerModel
  */
 class ImageRecyclerAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), ImageRecyclerModel {
 
-    private val list = mutableListOf<Photo>()
+    private val list = mutableListOf<Photo?>()
 
     override lateinit var onClick: (Int) -> Unit
 
@@ -26,11 +26,11 @@ class ImageRecyclerAdapter(private val context: Context) : RecyclerView.Adapter<
         return ImageViewHolder(onClick, context, parent)
     }
 
-    override fun addItem(imageData: Photo) {
+    override fun addItem(imageData: Photo?) {
         list.add(imageData)
     }
 
-    override fun getItem(position: Int): Photo {
+    override fun getItem(position: Int): Photo? {
         return list[position]
     }
 
