@@ -21,11 +21,11 @@ class ImageViewHolder(onClick: (Int) -> Unit, context: Context, parent: ViewGrou
         }
     }
 
-    fun onBind(item: Photo) {
+    fun onBind(item: Photo?) {
         itemView.onBind(item)
     }
 
-    private fun View.onBind(item: Photo) {
-        img_view.loadImage(item.getImageUrl())
+    private fun View.onBind(item: Photo?) {
+        img_view.loadImage(item?.getImageUrl())
     }
 }

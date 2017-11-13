@@ -7,9 +7,9 @@ import tech.thdev.app.data.Photo
  */
 interface ImageRecyclerModel {
 
-    fun addItem(imageData: Photo)
+    fun addItem(imageData: Photo?)
 
-    fun getItem(position: Int): Photo
+    fun getItem(position: Int): Photo?
 
     fun getItemCount(): Int
 

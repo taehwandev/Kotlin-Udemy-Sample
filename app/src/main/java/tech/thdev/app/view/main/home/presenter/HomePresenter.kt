@@ -12,7 +12,7 @@ import tech.thdev.app.view.main.home.adapter.model.ImageRecyclerModel
  */
 class HomePresenter(val view: HomeContract.View,
                     private val flickrRepository: FlickrRepository,
-                    private val imageRecyclerModel: ImageRecyclerModel) : HomeContract.Presenter {
+                    val imageRecyclerModel: ImageRecyclerModel) : HomeContract.Presenter {
 
     var isLoading = false
 
@@ -21,7 +21,7 @@ class HomePresenter(val view: HomeContract.View,
 
     init {
         imageRecyclerModel.onClick = { position ->
-            view.showBottomSheetDialog(imageRecyclerModel.getItem(position).id)
+            view.showBottomSheetDialog(imageRecyclerModel.getItem(position)?.id ?: "")
         }
     }
 
