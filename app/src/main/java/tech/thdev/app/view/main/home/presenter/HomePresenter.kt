@@ -20,9 +20,9 @@ class HomePresenter(val view: HomeContract.View,
     private var page = 0
 
     init {
-//        imageRecyclerModel.onClick = { position ->
-//            view.showBottomSheetDialog(imageRecyclerModel.getItem(position)?.id ?: "")
-//        }
+        imageRecyclerModel.onClick = { position ->
+            view.showBottomSheetDialog(imageRecyclerModel.getItem(position)?.id ?: "")
+        }
     }
 
     override fun loadFlickrImage() {

@@ -3,6 +3,7 @@ package tech.thdev.app.view.main.home.presenter
 import com.nhaarman.expect.expect
 import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.mock
+import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.`when`
 import tech.thdev.app.data.Photo
@@ -17,7 +18,12 @@ class ExampleKotlinUnitTest {
     private val view = mock<HomeContract.View>()
     private val imageRecyclerModel = mock<ImageRecyclerModel>()
 
-    private val presenter:HomePresenter = HomePresenter(view, FlickrRepository, imageRecyclerModel)
+    private lateinit var presenter: HomePresenter
+
+    @Before
+    fun setUp() {
+        presenter = HomePresenter(view, FlickrRepository, imageRecyclerModel)
+    }
 
     @Test
     fun testGetItem() {
