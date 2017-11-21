@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="tech.thdev.kotlin_udemy_sample.MainActivity">
+
+    <item
+        android:id="@+id/action_reload"
+        android:icon="@drawable/ic_refresh_black_24dp"
+        android:title="reload"
+        app:showAsAction="ifRoom" />
+
+    <group
+        android:id="@+id/image_load_check_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_async"
+            android:orderInCategory="1"
+            android:title="AsyncTask" />
+        <item
+            android:id="@+id/action_thread"
+            android:orderInCategory="2"
+            android:title="Thread" />
+    </group>
+</menu>
