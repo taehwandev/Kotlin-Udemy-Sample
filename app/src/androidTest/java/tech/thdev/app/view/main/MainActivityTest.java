@@ -7,7 +7,6 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiSelector;
-import android.test.suitebuilder.annotation.LargeTest;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -25,13 +24,13 @@ import tech.thdev.app.R;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
+import static android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 
-@LargeTest
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
@@ -114,17 +113,13 @@ public class MainActivityTest {
     public void uiDeviceTest() {
 
         try {
-            Thread.sleep(1000L);
+            Thread.sleep(2000L);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        ViewInteraction recyclerView = onView(
-                allOf(withId(R.id.recycler_view),
-                        childAtPosition(
-                                withClassName(is("android.support.constraint.ConstraintLayout")),
-                                0)));
-        recyclerView.perform(actionOnItemAtPosition(2, click()));
+        ViewInteraction recyclerView = onView(withId(R.id.recycler_view));
+        recyclerView.perform(scrollToPosition(10), actionOnItemAtPosition(10, click()));
 
         try {
             Thread.sleep(1000L);
@@ -147,9 +142,10 @@ public class MainActivityTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        uiDevice.findObject(new UiSelector().description("https://www.flickr.com")).exists();
-        uiDevice.pressBack();
 
+        uiDevice.findObject(new UiSelector().description("https://www.flickr.com")).exists();
+
+        uiDevice.pressBack();
         uiDevice.pressBack();
     }
 
