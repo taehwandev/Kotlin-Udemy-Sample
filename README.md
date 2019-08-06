@@ -102,19 +102,6 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 - [Thdev Android Base](https://github.com/taehwandev/AndroidBase)
     - 제가 작성한 Android Base(Kotlin 기반)의 코드를 사용하였습니다.(MVP 패턴으로 작성)
 
-## 개발 버전에 대한 정보
-- buildToolsVersion = 24.0.3
-- compile sdk version = 24
-- Target sdk version = 24
-- Min sdk version = 16
-- Android studio = 2.2.2
-
-## 사용한 라이브러리 현황
-- Kotlin library
-    - Kotlin version = 1.0.5
-- [Android support library](https://developer.android.com/topic/libraries/support-library/revisions.html)
-    - support libraryVersion = 24.2.1
-
 ## API Key
 
 - Create Flickr api key.
@@ -144,7 +131,7 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 ## License
 
 ```
-Copyright 2016 Tae-hwan
+Copyright 2016-2019 Tae-hwan
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

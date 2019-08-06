@@ -14,13 +14,13 @@ class ImageRecyclerAdapter(private val context: Context) : RecyclerView.Adapter<
 
     private val list = mutableListOf<Photo>()
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as? ImageViewHolder)?.onBind(list[position])
     }
 
     override fun getItemCount() = list.size
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ImageViewHolder(context, parent)
     }
 
