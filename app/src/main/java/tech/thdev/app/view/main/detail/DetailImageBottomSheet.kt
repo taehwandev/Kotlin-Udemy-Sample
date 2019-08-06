@@ -80,8 +80,8 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
-            = View.inflate(context, R.layout.layout_photo_detail, null)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+            View.inflate(context, R.layout.layout_photo_detail, null)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

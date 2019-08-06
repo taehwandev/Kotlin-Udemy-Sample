@@ -24,7 +24,9 @@ class HomeFragment : Fragment(), HomeContract.View {
     override fun showBottomSheetDialog(photoId: String) {
         if (isDetached) return
 
-        DetailImageBottomSheet.create(photoId).show(requireActivity().supportFragmentManager, "DetailImageBottomSheet")
+        // SDK 최신화로 activity 대신 requireActivity 사용
+        DetailImageBottomSheet.create(photoId)
+                .show(requireActivity().supportFragmentManager, "DetailImageBottomSheet")
     }
 
     private val homePresenter: HomePresenter by lazy {
@@ -33,12 +35,13 @@ class HomeFragment : Fragment(), HomeContract.View {
                 imageRecyclerAdapter)
     }
 
+    // API 최신화로 context 대신 requireContext 사용
     private val imageRecyclerAdapter: ImageRecyclerAdapter by lazy {
         ImageRecyclerAdapter(requireContext())
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
-            = inflater.inflate(R.layout.fragment_home, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+            inflater.inflate(R.layout.fragment_home, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
