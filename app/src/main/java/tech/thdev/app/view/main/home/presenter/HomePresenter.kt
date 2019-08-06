@@ -1,6 +1,7 @@
 package tech.thdev.app.view.main.home.presenter
 
 import android.os.AsyncTask
+import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,11 +27,11 @@ class HomePresenter(val view: HomeContract.View,
         flickrRepository.getRecentPhoto(++page, perPage)
                 .enqueue(object : Callback<PhotoResponse> {
                     override fun onFailure(call: Call<PhotoResponse>?, t: Throwable?) {
-
+                        // 불러오기 실패할 경우
                     }
 
                     override fun onResponse(call: Call<PhotoResponse>?, response: Response<PhotoResponse>?) {
-
+                        // 불러오기 성공할 경우
                     }
                 })
     }

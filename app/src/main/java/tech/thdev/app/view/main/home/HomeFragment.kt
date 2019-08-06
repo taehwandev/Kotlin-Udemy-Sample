@@ -27,14 +27,15 @@ class HomeFragment : Fragment(), HomeContract.View {
                 imageRecyclerAdapter)
     }
 
+    // API 최신화로 context 대신 requireContext 사용
     private val imageRecyclerAdapter: ImageRecyclerAdapter by lazy {
-        ImageRecyclerAdapter(this@HomeFragment.context)
+        ImageRecyclerAdapter(requireContext())
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
-            = inflater?.inflate(R.layout.fragment_home, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+            inflater.inflate(R.layout.fragment_home, container, false)
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         homePresenter.loadImage()
@@ -62,10 +63,10 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     private val recyclerViewOnScrollListener = object : RecyclerView.OnScrollListener() {
 
-        override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
 
-            val visibleItemCount = recyclerView?.childCount as Int
+            val visibleItemCount = recyclerView.childCount
             val totalItemCount = imageRecyclerAdapter.itemCount
             val firstVisibleItem = (recyclerView.layoutManager as? GridLayoutManager)?.findFirstVisibleItemPosition() ?: 0
 
