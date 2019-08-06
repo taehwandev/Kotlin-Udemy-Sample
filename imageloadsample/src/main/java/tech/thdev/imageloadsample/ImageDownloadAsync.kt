@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
+import android.os.Build
 import android.support.annotation.DrawableRes
+import android.support.annotation.RequiresApi
 import android.support.v4.util.LruCache
 import android.widget.ImageView
 import android.widget.TextView
@@ -70,6 +72,7 @@ object ImageDownloadAsync {
 
         }
 
+        @RequiresApi(Build.VERSION_CODES.CUPCAKE)
         @SuppressLint("SetTextI18n")
         override fun onPostExecute(url: String) {
             super.onPostExecute(url)

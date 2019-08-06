@@ -1,3 +1,7 @@
+# 수정 사항
+- 최신 버전으로 업데이트 하면서 첫 번째 강의 내용은 master에서 제거하였습니다.
+
+
 # Udemy에서 진행하는 Kotlin 샘플 자료
 
 [![License](https://img.shields.io/hexpm/l/plug.svg)]()
@@ -103,17 +107,16 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
     - 제가 작성한 Android Base(Kotlin 기반)의 코드를 사용하였습니다.(MVP 패턴으로 작성)
 
 ## 개발 버전에 대한 정보
-- buildToolsVersion = 24.0.3
-- compile sdk version = 24
-- Target sdk version = 24
-- Min sdk version = 16
-- Android studio = 2.2.2
+- compile sdk version = 28
+- Target sdk version = 28
+- Min sdk version = 21
+- Android studio = 3.4.1
 
 ## 사용한 라이브러리 현황
 - Kotlin library
-    - Kotlin version = 1.0.5
+    - Kotlin version = 1.3.41
 - [Android support library](https://developer.android.com/topic/libraries/support-library/revisions.html)
-    - support libraryVersion = 24.2.1
+    - support libraryVersion = 28.0.0
 
 ## API Key
 
