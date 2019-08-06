@@ -19,17 +19,18 @@ class HomeFragment : Fragment(), HomeContract.View {
         HomePresenter(this@HomeFragment)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
-            = inflater?.inflate(R.layout.fragment_home, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+            inflater.inflate(R.layout.fragment_home, container, false)
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         homePresenter.loadImage()
     }
 
+    // 코드 최신화로 context -> requireContext() 변경
     override fun showImage(imageName: String) {
-        imageView.setImageResource(resources.getIdentifier(imageName, "drawable", context.packageName))
+        imageView.setImageResource(resources.getIdentifier(imageName, "drawable", requireContext().packageName))
     }
 
     override fun hideProgress() {
