@@ -27,8 +27,8 @@ class HomePresenter(val view: HomeContract.View,
                 .enqueue(object : Callback<PhotoResponse> {
                     override fun onFailure(call: Call<PhotoResponse>?, t: Throwable?) {
                         // 실패하였을 경우 처리
-                        view.showLoadFail()
                         view.hideProgress()
+                        view.showLoadFail()
 
                         isLoading = false
                     }
@@ -36,14 +36,17 @@ class HomePresenter(val view: HomeContract.View,
                     override fun onResponse(call: Call<PhotoResponse>?, response: Response<PhotoResponse>?) {
                         // 성공하였을 경우 처리
                         if (response?.isSuccessful == true) {
-                            response.body()?.takeIf { it.stat == "ok" }?.let {
+                            response.body().takeIf { it?.stat == "ok" }?.let {
+                                // 성공한 경우만 adapter item. 추가하도록
                                 page = it.photos.page
+
                                 it.photos.photo.forEach {
                                     imageRecyclerModel.addItem(it)
                                 }
                                 imageRecyclerModel.notifyDataSetChang()
+
                             } ?: let {
-                                view.showLoadFail("Code ${response.body()?.code}, Message ${response.body()?.message}")
+                                view.showLoadFail("Code ${response.body()?.code} message : ${response.body()?.message}")
                             }
                         } else {
                             view.showLoadFail()
