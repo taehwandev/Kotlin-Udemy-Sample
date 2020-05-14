@@ -1,7 +1,6 @@
 package tech.thdev.kotlin_udemy_sample.view.main
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import tech.thdev.kotlin_udemy_sample.R
 
 /**
@@ -27,17 +27,21 @@ class MainFragment : Fragment() {
         fun getInstance() = MainFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
-            = inflater?.inflate(R.layout.fragment_main, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
+        inflater.inflate(R.layout.fragment_main, container, false)
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etNumberTwo = view?.findViewById(R.id.number_two) as EditText
+        etNumberTwo = view.findViewById(R.id.number_two) as EditText
 
         // TODO Text Message 변경
-        val textView = view?.findViewById(R.id.text) as TextView
-        val button = view?.findViewById(R.id.button) as Button
+        val textView = view.findViewById(R.id.text) as TextView
+        val button = view.findViewById(R.id.button) as Button
         button.setOnClickListener {
             textView.text = getSum().toString()
         }

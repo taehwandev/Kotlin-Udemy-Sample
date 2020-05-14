@@ -1,8 +1,10 @@
 package tech.thdev.kotlin_udemy_sample.view.main;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import tech.thdev.kotlin_udemy_sample.R;
 import tech.thdev.kotlin_udemy_sample.util.ActivityUtilKt;
@@ -19,6 +21,9 @@ public class SampleActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         ActivityUtilKt.replaceFragmentToActivity(this, MainFragment.Companion.getInstance(), R.layout.activity_main);
     }
