@@ -1,6 +1,6 @@
 package tech.thdev.java_udemy_sample.null_safety_01;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import org.junit.Test;
 
