@@ -1,21 +1,23 @@
 package tech.thdev.java_udemy_sample.view.image;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
-import tech.thdev.java_udemy_sample.view.image.adapter.PhotoViewAdapter;
 import tech.thdev.java_udemy_sample.data.source.image.ImageRepository;
+import tech.thdev.java_udemy_sample.view.image.adapter.PhotoViewAdapter;
 import tech.thdev.java_udemy_sample.view.image.presenter.PhotoViewPresenter;
 import tech.thdev.java_udemy_sample.view.image.presenter.PhotoViewPresenterImpl;
 

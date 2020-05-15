@@ -1,8 +1,11 @@
 package tech.thdev.java_udemy_sample.view.image.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -22,8 +25,9 @@ public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewViewHolder> 
         this.context = context;
     }
 
+    @NotNull
     @Override
-    public PhotoViewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PhotoViewViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         return new PhotoViewViewHolder(context, parent);
     }
 
