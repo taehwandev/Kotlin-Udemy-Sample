@@ -1,10 +1,10 @@
 package tech.thdev.kotlin_udemy_sample.view.sample
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.RecyclerView
 import android.view.*
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_image_sample.*
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.adapter.sample_one.SampleOneAdapter
@@ -19,7 +19,7 @@ import tech.thdev.kotlin_udemy_sample.view.sample.presenter.SamplePresenter
 class SampleFragment : Fragment(), SampleContract.View {
 
     private val recyclerViewOne by lazy {
-        view?.findViewById(R.id.recycler_view_one) as RecyclerView
+        view?.findViewById<RecyclerView>(R.id.recycler_view_one)
     }
 
     // Java 식의 static instance
@@ -38,10 +38,14 @@ class SampleFragment : Fragment(), SampleContract.View {
         setHasOptionsMenu(true)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
-            = inflater?.inflate(R.layout.fragment_image_sample, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
+        inflater.inflate(R.layout.fragment_image_sample, container, false)
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // Create presenter
@@ -49,14 +53,14 @@ class SampleFragment : Fragment(), SampleContract.View {
         presenter?.view = this
 
         // Create adapter
-        sampleOneAdapter = SampleOneAdapter(context)
+        sampleOneAdapter = SampleOneAdapter(requireContext())
 
         // Kotlin SAM OnClick lambda
         sampleOneAdapter?.setOnItemClickListener {
             presenter?.adapterOneItemClick(it)
         }
 
-        sampleTwoAdapter = SampleTwoAdapter(context)
+        sampleTwoAdapter = SampleTwoAdapter(requireContext())
 
         // Object 방법으로 정의
         sampleTwoAdapter?.onItemClickListener = object : OnItemClickListener {
@@ -69,7 +73,7 @@ class SampleFragment : Fragment(), SampleContract.View {
         presenter?.sampleOneModel = sampleOneAdapter
         presenter?.sampleTwoModel = sampleTwoAdapter
 
-        recyclerViewOne.adapter = sampleOneAdapter
+        recyclerViewOne?.adapter = sampleOneAdapter
         recycler_view_two.adapter = sampleTwoAdapter
 
         presenter?.loadDefaultItems()
@@ -100,12 +104,12 @@ class SampleFragment : Fragment(), SampleContract.View {
         Toast.makeText(context, "Remove success", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.menu_main, menu)
+        inflater.inflate(R.menu.menu_main, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         presenter?.addSampleImageItem()
         return super.onOptionsItemSelected(item)
     }

@@ -1,10 +1,9 @@
 package tech.thdev.kotlin_udemy_sample.view.basic
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.adapter.TestAdapter
-import java.util.*
 
 /**
  * Created by tae-hwan on 11/8/16.

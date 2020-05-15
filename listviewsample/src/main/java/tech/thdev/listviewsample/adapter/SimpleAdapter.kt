@@ -14,9 +14,9 @@ import tech.thdev.listviewsample.R
  */
 
 class SimpleAdapter(context: Context, resource: Int, objects: List<String>) :
-        ArrayAdapter<String>(context, resource, objects) {
+    ArrayAdapter<String>(context, resource, objects) {
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = LayoutInflater.from(context).inflate(R.layout.item_simple, parent, false)
         val textView = view.findViewById(R.id.tv_message) as TextView
         textView.text = getItem(position)

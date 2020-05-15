@@ -1,11 +1,11 @@
 package tech.thdev.kotlin_udemy_sample.adapter.sample_two.holder
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.data.SampleItem
 import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
@@ -14,8 +14,14 @@ import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
  * Created by tae-hwan on 10/29/16.
  */
 
-class SampleTwoViewHolder(val context: Context, parent: ViewGroup?, val onItemClickListener: OnItemClickListener?) :
-        RecyclerView.ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_text_view, parent, false)) {
+class SampleTwoViewHolder(
+    private val context: Context,
+    parent: ViewGroup?,
+    private val onItemClickListener: OnItemClickListener?
+) :
+    RecyclerView.ViewHolder(
+        LayoutInflater.from(context).inflate(R.layout.item_text_view, parent, false)
+    ) {
 
     private val rlView by lazy {
         itemView?.findViewById(R.id.rl_message_view) as RelativeLayout
@@ -34,7 +40,7 @@ class SampleTwoViewHolder(val context: Context, parent: ViewGroup?, val onItemCl
         /*
          * item select에 따른 색상 변경
          */
-        if (sample?.isSelected ?: false) {
+        if (sample?.isSelected == true) {
             rlView.setBackgroundResource(R.color.color_control_highlight)
         } else {
             rlView.setBackgroundResource(0)
