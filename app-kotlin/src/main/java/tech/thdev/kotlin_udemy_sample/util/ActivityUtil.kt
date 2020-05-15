@@ -2,12 +2,12 @@ package tech.thdev.kotlin_udemy_sample.util
 
 import android.content.Context
 import android.content.Intent
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.view.detail.DetailMoreActivity
-import java.util.*
+
 
 /**
  * Created by tae-hwan on 10/3/16.
@@ -26,5 +26,5 @@ fun Context.createDetailIntent(list: ArrayList<RecentPhotoItem>, position: Int):
     }
 }
 
-fun Context.createDetailIntent(item: RecentPhotoItem)
-        = createDetailIntent(arrayListOf(item), 0)
+fun Context.createDetailIntent(item: RecentPhotoItem) =
+    createDetailIntent(arrayListOf(item), 0)

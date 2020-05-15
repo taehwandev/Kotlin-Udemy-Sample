@@ -13,18 +13,17 @@ import tech.thdev.kotlin_udemy_sample.network.image.ImageDownloadThread
  * Created by tae-hwan on 10/29/16.
  */
 
-class ImageThreadViewHolder(context: Context, parent: ViewGroup?, val onItemClickListener: OnItemClickListener?) :
-        BaseViewHolder<RecentPhotoItem>(R.layout.item_image_thread_view, context, parent) {
+class ImageThreadViewHolder(
+    parent: ViewGroup,
+    private val onItemClickListener: OnItemClickListener?
+) : BaseViewHolder<RecentPhotoItem>(R.layout.item_image_thread_view, parent) {
 
-    override fun bindView(item: RecentPhotoItem?, position: Int) {
-        itemView?.let {
-            // kotlin extensions 이용 view 사용
-            with(it) {
-                tv_title.text = item?.title
-                ImageDownloadThread.loadImage(R.drawable.loading, image, item?.getImageUrl())
-            }
+    init {
+        itemView.setOnClickListener { onItemClickListener?.onItemClick(adapterPosition) }
+    }
 
-            it.setOnClickListener { onItemClickListener?.onItemClick(position) }
-        }
+    override fun bindView(item: RecentPhotoItem?) {
+        itemView.tv_title.text = item?.title
+        ImageDownloadThread.loadImage(R.drawable.loading, itemView.image, item?.getImageUrl())
     }
 }

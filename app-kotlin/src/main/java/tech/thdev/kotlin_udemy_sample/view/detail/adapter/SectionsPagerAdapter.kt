@@ -1,8 +1,8 @@
 package tech.thdev.kotlin_udemy_sample.view.detail.adapter
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.view.detail.DetailMoreFragment
 import tech.thdev.kotlin_udemy_sample.view.detail.adapter.model.SectionsPagerModel
@@ -12,7 +12,7 @@ import tech.thdev.kotlin_udemy_sample.view.detail.adapter.model.SectionsPagerMod
  */
 
 class SectionsPagerAdapter(fragmentManager: FragmentManager) :
-        FragmentPagerAdapter(fragmentManager), SectionsPagerModel {
+    FragmentPagerAdapter(fragmentManager), SectionsPagerModel {
 
     override var recentPhotoItemList: List<RecentPhotoItem>? = null
 
@@ -20,9 +20,12 @@ class SectionsPagerAdapter(fragmentManager: FragmentManager) :
         return DetailMoreFragment(getPhotoUrl(position))
     }
 
-    override fun getCount() = recentPhotoItemList?.size ?: 0
+    override fun getCount() =
+        recentPhotoItemList?.size ?: 0
 
-    override fun getPhotoId(position: Int) = recentPhotoItemList?.getOrNull(position)?.id ?: ""
+    override fun getPhotoId(position: Int) =
+        recentPhotoItemList?.getOrNull(position)?.id ?: ""
 
-    override fun getPhotoUrl(position: Int) = recentPhotoItemList?.getOrNull(position)?.getImageUrl() ?: ""
+    override fun getPhotoUrl(position: Int) =
+        recentPhotoItemList?.getOrNull(position)?.getImageUrl() ?: ""
 }

@@ -1,6 +1,6 @@
 package tech.thdev.kotlin_udemy_sample.view.image.presenter
 
-import com.jayway.awaitility.Awaitility.await
+import org.awaitility.Awaitility.await
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers
@@ -57,8 +57,8 @@ class ImagePresenterTest {
         /* Given */
         presenter.getRecentImageSample(ImageAdapter.VIEW_TYPE_GLIDE)
 
-        await().until {
-            while (!finish) {
+        await().untilAsserted {
+            while (finish.not()) {
                 verify(adapterModel, atLeastOnce()).addItem(ArgumentMatchers.any(RecentPhotoItem::class.java))
             }
         }

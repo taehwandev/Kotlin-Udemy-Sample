@@ -1,19 +1,21 @@
 package tech.thdev.kotlin_udemy_sample.view.detail
 
 import android.content.Intent
-import android.support.design.widget.BottomSheetBehavior
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.action.ViewActions.swipeLeft
-import android.support.test.espresso.action.ViewActions.swipeRight
-import android.support.test.espresso.assertion.ViewAssertions
-import android.support.test.espresso.matcher.ViewMatchers.*
-import android.support.test.rule.ActivityTestRule
-import com.jayway.awaitility.Awaitility
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.swipeLeft
+import androidx.test.espresso.action.ViewActions.swipeRight
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.rule.ActivityTestRule
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import org.awaitility.Awaitility
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
@@ -22,6 +24,7 @@ import java.util.*
 /**
  * Created by tae-hwan on 11/20/16.
  */
+@RunWith(AndroidJUnit4::class)
 class DetailMoreActivityTest {
 
     @get:Rule
@@ -31,9 +34,48 @@ class DetailMoreActivityTest {
 
     @Before
     fun setUp() {
-        list.add(RecentPhotoItem("30970646001", "", "554f4e63ac", "5481", 6, "Perfection in purple", 1, 1, 1, 0))
-        list.add(RecentPhotoItem("30982050221", "", "a5bf714923", "5451", 6, "Monument Valley", 1, 1, 1, 0))
-        list.add(RecentPhotoItem("30941531532", "", "a9bd7545d9", "5569", 6, "American Oystercatcher", 1, 1, 1, 0))
+        list.add(
+            RecentPhotoItem(
+                "30970646001",
+                "",
+                "554f4e63ac",
+                "5481",
+                6,
+                "Perfection in purple",
+                1,
+                1,
+                1,
+                0
+            )
+        )
+        list.add(
+            RecentPhotoItem(
+                "30982050221",
+                "",
+                "a5bf714923",
+                "5451",
+                6,
+                "Monument Valley",
+                1,
+                1,
+                1,
+                0
+            )
+        )
+        list.add(
+            RecentPhotoItem(
+                "30941531532",
+                "",
+                "a9bd7545d9",
+                "5569",
+                6,
+                "American Oystercatcher",
+                1,
+                1,
+                1,
+                0
+            )
+        )
 
         val intent = Intent()
         intent.putExtra(Constant.KEY_PHOTO_DATA, list)
@@ -66,7 +108,13 @@ class DetailMoreActivityTest {
 
         Thread.sleep(500)
 
-        onView(allOf(withId(R.id.tv_title), isDisplayed())).check(ViewAssertions.matches(withText(list[0].title)))
+        onView(allOf(withId(R.id.tv_title), isDisplayed())).check(
+            ViewAssertions.matches(
+                withText(
+                    list[0].title
+                )
+            )
+        )
     }
 
     @After
@@ -75,7 +123,7 @@ class DetailMoreActivityTest {
     }
 
     private fun waitLoad() {
-        Awaitility.await().until<Boolean> {
+        Awaitility.await().until {
             var finish = false
             while (!finish) {
                 finish = rule.activity?.let {

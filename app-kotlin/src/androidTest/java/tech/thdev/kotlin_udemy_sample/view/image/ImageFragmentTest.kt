@@ -1,15 +1,15 @@
 package tech.thdev.kotlin_udemy_sample.view.image
 
-import android.support.test.InstrumentationRegistry.getInstrumentation
-import android.support.test.espresso.Espresso.*
-import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.assertion.ViewAssertions
-import android.support.test.espresso.contrib.RecyclerViewActions
-import android.support.test.espresso.matcher.ViewMatchers.*
-import android.support.test.rule.ActivityTestRule
 import android.view.View
 import android.view.ViewGroup
-import com.jayway.awaitility.Awaitility
+import androidx.test.espresso.Espresso.*
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
+import androidx.test.rule.ActivityTestRule
+import org.awaitility.Awaitility
 import org.hamcrest.BaseMatcher
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -45,7 +45,8 @@ class ImageFragmentTest {
 
     @Before
     fun setUp() {
-        fragment = rule.activity.supportFragmentManager.findFragmentById(R.id.frame_layout) as ImageFragment
+        fragment =
+            rule.activity.supportFragmentManager.findFragmentById(R.id.frame_layout) as ImageFragment
 
         awaitItemLoad()
     }
@@ -69,14 +70,14 @@ class ImageFragmentTest {
     @Test
     fun testItemCountCheck() {
         onView(withId(R.id.recycler_image))
-                .check(ViewAssertions.matches(withItemSize(100)))
+            .check(ViewAssertions.matches(withItemSize(100)))
 
         onView(withId(R.id.fab)).perform(click())
 
         awaitItemLoad()
 
         onView(withId(R.id.recycler_image))
-                .check(ViewAssertions.matches(withItemSize(199)))
+            .check(ViewAssertions.matches(withItemSize(199)))
     }
 
     @Test
@@ -85,12 +86,15 @@ class ImageFragmentTest {
         val position = 98
 
         onView(withId(R.id.recycler_image))
-                .perform(RecyclerViewActions.scrollToPosition<ImageGlideViewHolder>(position))
+            .perform(RecyclerViewActions.scrollToPosition<ImageGlideViewHolder>(position))
 
         val item = fragment?.presenter?.adapterModel?.getItem(position)
 
-        onView(withId(R.id.recycler_image)).perform(RecyclerViewActions.actionOnItem<ImageGlideViewHolder>(
-                hasDescendant(withText(item?.title)), click()))
+        onView(withId(R.id.recycler_image)).perform(
+            RecyclerViewActions.actionOnItem<ImageGlideViewHolder>(
+                hasDescendant(withText(item?.title)), click()
+            )
+        )
 
         // DetailMoreActivity Test.
         onView(withId(R.id.tv_title)).check(ViewAssertions.matches(withText(item?.title)))
@@ -104,18 +108,25 @@ class ImageFragmentTest {
          * recycler_image에 item의 title을 포함하는지 체크
          */
         onView(nthChildOf(withId(R.id.recycler_image), 2))
-                .check(ViewAssertions.matches(hasDescendant(withText(item?.title))))
+            .check(ViewAssertions.matches(hasDescendant(withText(item?.title))))
 
         /*
          * recycler_image에 포함된 ImageGrlidViewHolder에 item.title을 포함하고 있을 경우 click 발생
          */
-        onView(withId(R.id.recycler_image)).perform(RecyclerViewActions.actionOnItem<ImageGlideViewHolder>(
-                hasDescendant(withText(item?.title)), click()))
+        onView(withId(R.id.recycler_image)).perform(
+            RecyclerViewActions.actionOnItem<ImageGlideViewHolder>(
+                hasDescendant(withText(item?.title)), click()
+            )
+        )
 
         /*
          * tv_title에 item.title이 정상적으로 표시되고 있는지 Test
          */
-        onView(allOf(withId(R.id.tv_title), withText(item?.title))).check(ViewAssertions.matches(isDisplayed()))
+        onView(allOf(withId(R.id.tv_title), withText(item?.title))).check(
+            ViewAssertions.matches(
+                isDisplayed()
+            )
+        )
     }
 
     @Test
@@ -160,7 +171,9 @@ class ImageFragmentTest {
                     return parentMatcher.matches(item?.parent)
                 }
 
-                return parentMatcher.matches(item?.parent) && (item?.parent as ViewGroup).getChildAt(childPosition) == item
+                return parentMatcher.matches(item?.parent) && (item?.parent as ViewGroup).getChildAt(
+                    childPosition
+                ) == item
             }
 
             override fun describeTo(description: Description?) {
@@ -172,8 +185,8 @@ class ImageFragmentTest {
     /**
      * Waiting to load items
      */
-    fun awaitItemLoad() {
-        Awaitility.await().until<Boolean> {
+    private fun awaitItemLoad() {
+        Awaitility.await().until {
             var finish = false
             while (!finish) {
                 finish = fragment?.let {

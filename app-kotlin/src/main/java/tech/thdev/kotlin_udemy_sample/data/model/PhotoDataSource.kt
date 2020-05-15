@@ -9,7 +9,7 @@ import tech.thdev.kotlin_udemy_sample.network.createRetrofit
 
 object PhotoDataSource {
 
-    val FLICKR_URL = "https://api.flickr.com/services/rest/"
+    private const val FLICKR_URL = "https://api.flickr.com/services/rest/"
 
     private val flickrServiceInterface: FlickrServiceInterface
 
