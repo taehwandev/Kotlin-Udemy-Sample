@@ -13,24 +13,22 @@ import tech.thdev.kotlin_udemy_sample.listener.OnItemTouchListener
  * Created by tae-hwan on 10/29/16.
  */
 
-class ImageGlideViewHolder(context: Context, parent: ViewGroup?,
-                           val onItemTouchListener: OnItemTouchListener?) :
-        BaseViewHolder<RecentPhotoItem>(R.layout.item_image_view, context, parent) {
+class ImageGlideViewHolder(
+    parent: ViewGroup,
+    private val onItemTouchListener: OnItemTouchListener?
+) : BaseViewHolder<RecentPhotoItem>(R.layout.item_image_view, parent) {
 
-    override fun bindView(item: RecentPhotoItem?, position: Int) {
-        itemView?.let {
-            // kotlin extensions 이용 view 사용
-            with(it) {
-                Glide.with(context)
-                        .load(item?.getImageUrl())
-                        .centerCrop()
-                        .placeholder(R.drawable.loading)
-                        .into(image)
-            }
-
-            it.setOnTouchListener { view, motionEvent ->
-                onItemTouchListener?.onItemTouch(motionEvent, position) ?: false
-            }
+    init {
+        itemView.setOnTouchListener { _, motionEvent ->
+            onItemTouchListener?.onItemTouch(motionEvent, adapterPosition) ?: false
         }
+    }
+
+    override fun bindView(item: RecentPhotoItem?) {
+        Glide.with(itemView.context)
+            .load(item?.getImageUrl())
+            .centerCrop()
+            .placeholder(R.drawable.loading)
+            .into(itemView.image)
     }
 }

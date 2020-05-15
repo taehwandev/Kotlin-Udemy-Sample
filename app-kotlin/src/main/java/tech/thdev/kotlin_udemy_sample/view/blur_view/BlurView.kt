@@ -3,9 +3,9 @@ package tech.thdev.kotlin_udemy_sample.view.blur_view
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import android.support.design.widget.CoordinatorLayout
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import kotlinx.android.synthetic.main.view_blur.view.*
 import tech.thdev.kotlin_udemy_sample.R
 

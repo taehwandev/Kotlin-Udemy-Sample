@@ -1,10 +1,9 @@
 package tech.thdev.kotlin_udemy_sample.view.image.adapter
 
-import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.MotionEvent
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import tech.thdev.kotlin_udemy_sample.base.adapter.BaseViewHolder
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.listener.OnItemTouchListener
@@ -18,17 +17,17 @@ import java.util.*
  * Created by tae-hwan on 10/29/16.
  */
 
-class ImageAdapter(private val context: Context) :
+class ImageAdapter :
         RecyclerView.Adapter<BaseViewHolder<RecentPhotoItem>>(),
         ImageViewAdapterContract.View, ImageViewAdapterContract.Model {
 
     companion object {
-        val VIEW_TYPE_ASYNC = 100
-        val VIEW_TYPE_THREAD = 200
-        val VIEW_TYPE_GLIDE = 300
+        const val VIEW_TYPE_ASYNC = 100
+        const val VIEW_TYPE_THREAD = 200
+        const val VIEW_TYPE_GLIDE = 300
     }
 
-    val itemList: ArrayList<RecentPhotoItem> = ArrayList()
+    private val itemList: ArrayList<RecentPhotoItem> = ArrayList()
 
     override var onItemTouchListener: OnItemTouchListener? = null
 
@@ -41,14 +40,17 @@ class ImageAdapter(private val context: Context) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = when (viewType) {
-        VIEW_TYPE_ASYNC -> ImageAsyncViewHolder(context, parent, onItemTouchListener)
-        VIEW_TYPE_THREAD -> ImageThreadViewHolder(context, parent, onItemTouchListener)
-        else -> ImageGlideViewHolder(context, parent, onItemTouchListener)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): BaseViewHolder<RecentPhotoItem> = when (viewType) {
+        VIEW_TYPE_ASYNC -> ImageAsyncViewHolder(parent, onItemTouchListener)
+        VIEW_TYPE_THREAD -> ImageThreadViewHolder(parent, onItemTouchListener)
+        else -> ImageGlideViewHolder(parent, onItemTouchListener)
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder<RecentPhotoItem>?, position: Int) {
-        holder?.bindView(getItem(position), position)
+    override fun onBindViewHolder(holder: BaseViewHolder<RecentPhotoItem>, position: Int) {
+        holder.bindView(getItem(position))
     }
 
     override fun getItemViewType(position: Int) = getItem(position).viewType
