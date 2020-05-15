@@ -11,7 +11,6 @@ import tech.thdev.java_udemy_sample.data.source.image.ImageRepository;
 import tech.thdev.java_udemy_sample.view.image.adapter.model.PhotoViewAdapterContract;
 
 import static org.awaitility.Awaitility.await;
-import static com.jayway.awaitility.Awaitility.await;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.doAnswer;
@@ -81,9 +80,9 @@ public class PhotoViewPresenterImplTest {
         }).when(adapterView).onReload();
 
         presenter.recentPhotoData();
-        await().until(new Runnable() {
+        await().untilAsserted(new ThrowingRunnable() {
             @Override
-            public void run() {
+            public void run() throws Throwable {
                 while (!finish[0]) {
                     verify(adapterModel, atLeastOnce()).addItem((PhotoItem) any());
                 }
