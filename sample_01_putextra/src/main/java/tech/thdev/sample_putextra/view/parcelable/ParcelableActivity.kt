@@ -1,7 +1,7 @@
 package tech.thdev.sample_putextra.view.parcelable
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_sample.*
 import tech.thdev.sample_putextra.R
 import tech.thdev.sample_putextra.constant.Constant

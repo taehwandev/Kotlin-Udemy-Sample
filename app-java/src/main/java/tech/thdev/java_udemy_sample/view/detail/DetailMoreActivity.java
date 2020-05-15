@@ -1,14 +1,18 @@
 package tech.thdev.java_udemy_sample.view.detail;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.bumptech.glide.Glide;
+import com.example.base.ui.BasePresenterActivity;
+
+import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
-import tech.thdev.base.view.BasePresenterActivity;
+import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
 import tech.thdev.java_udemy_sample.data.FlickrPhoto;
 import tech.thdev.java_udemy_sample.data.source.photo_detail.PhotoDetailRepository;
@@ -36,6 +40,7 @@ public class DetailMoreActivity extends BasePresenterActivity<DetailMoreContract
     @BindView(R.id.tv_content)
     TextView tvContent;
 
+    @NotNull
     @Override
     public DetailMoreContract.Presenter onCreatePresenter() {
         return new DetailMorePresenter(PhotoDetailRepository.getInstance());
@@ -45,6 +50,8 @@ public class DetailMoreActivity extends BasePresenterActivity<DetailMoreContract
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_more);
+
+        ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         setTitle("");
@@ -58,7 +65,6 @@ public class DetailMoreActivity extends BasePresenterActivity<DetailMoreContract
         Glide.with(this).load(photo.getUrl())
                 .placeholder(0)
                 .fitCenter()
-                .crossFade()
                 .into(imgView);
 
         setTitle(photo.owner.username);

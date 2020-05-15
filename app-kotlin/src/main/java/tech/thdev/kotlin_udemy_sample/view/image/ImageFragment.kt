@@ -2,11 +2,11 @@ package tech.thdev.kotlin_udemy_sample.view.image
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_image_sample.*
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.constant.Constant
@@ -25,12 +25,13 @@ import java.util.*
 class ImageFragment : Fragment(), ImageContract.View {
 
     private val fab by lazy {
-        activity.findViewById(R.id.fab) as FloatingActionButton
+        requireActivity().findViewById<FloatingActionButton>(R.id.fab)
     }
 
     // Java 식의 static instance
     companion object {
-        fun getInstance() = ImageFragment()
+        fun getInstance() =
+            ImageFragment()
     }
 
     private var imageAdapter: ImageAdapter? = null
@@ -47,16 +48,20 @@ class ImageFragment : Fragment(), ImageContract.View {
         setHasOptionsMenu(true)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
-            = inflater?.inflate(R.layout.fragment_image_sample, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
+        inflater.inflate(R.layout.fragment_image_sample, container, false)
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         presenter = ImagePresenter()
         presenter?.view = this
 
-        imageAdapter = ImageAdapter(context)
+        imageAdapter = ImageAdapter()
 
         /**
          * Model을 생성하여 셋팅한다
@@ -75,13 +80,13 @@ class ImageFragment : Fragment(), ImageContract.View {
         presenter?.getRecentImageSample(mViewType)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.menu_main, menu)
+        inflater.inflate(R.menu.menu_main, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             R.id.action_async -> {
                 changeOptionItemSelected(item)
                 changeViewType(ImageAdapter.VIEW_TYPE_ASYNC)
@@ -124,39 +129,38 @@ class ImageFragment : Fragment(), ImageContract.View {
     }
 
     private fun changeOptionItemSelected(item: MenuItem?) {
-        if (item?.isChecked ?: false) item?.isChecked = false
-        else item?.isChecked = true
+        item?.isChecked = !(item?.isChecked ?: false)
     }
 
     override fun showLoadFailMessage(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-        Log.e("TAG", "Exception : " + message)
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+        Log.e("TAG", "Exception : $message")
     }
 
     override fun showLoadSuccess() {
-        if (!activity.isFinishing) {
-            Toast.makeText(context, "Load success", Toast.LENGTH_SHORT).show()
+        if (!requireActivity().isFinishing) {
+            Toast.makeText(requireContext(), "Load success", Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun showLoadFail() {
-        if (!activity.isFinishing) {
-            Toast.makeText(context, "Load fail", Toast.LENGTH_SHORT).show()
+        if (!requireActivity().isFinishing) {
+            Toast.makeText(requireContext(), "Load fail", Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun showDetailMore(item: ArrayList<RecentPhotoItem>, position: Int) {
         // TODO put extra 구현
-        startActivity(context.createDetailIntent(item, position))
+        startActivity(requireContext().createDetailIntent(item, position))
     }
 
     override fun showDetail(item: RecentPhotoItem) {
-        startActivity(context.createDetailIntent(item))
+        startActivity(requireContext().createDetailIntent(item))
     }
 
     override fun showExtraDetail(id: String) {
         // TODO put extra 구현
-        val intent = Intent(context, DetailPhotoIdActivity::class.java)
+        val intent = Intent(requireContext(), DetailPhotoIdActivity::class.java)
         intent.putExtra(Constant.KEY_PHOTO_DATA, id)
         startActivity(intent)
     }

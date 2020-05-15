@@ -2,7 +2,7 @@ package tech.thdev.sample_putextra
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import tech.thdev.sample_putextra.constant.Constant
 import tech.thdev.sample_putextra.data.SampleData

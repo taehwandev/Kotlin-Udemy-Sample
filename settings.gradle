@@ -1,1 +1,2 @@
+include ':base'
 include ':app-kotlin', ':app-java', ':sample_01_putextra', ':sample_02_bottomsheet'

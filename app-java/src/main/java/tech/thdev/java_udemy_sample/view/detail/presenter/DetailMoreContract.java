@@ -1,7 +1,8 @@
 package tech.thdev.java_udemy_sample.view.detail.presenter;
 
-import tech.thdev.base.presenter.BasePresenter;
-import tech.thdev.base.presenter.BaseView;
+import com.example.base.presenter.BasePresenter;
+import com.example.base.presenter.BaseView;
+
 import tech.thdev.java_udemy_sample.data.FlickrPhoto;
 
 /**

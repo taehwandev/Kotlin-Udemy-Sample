@@ -6,11 +6,11 @@ package tech.thdev.sample_putextra.constant
 
 object Constant {
 
-    val KEY_TITLE = "key-title"
+    const val KEY_TITLE = "key-title"
 
-    val KEY_MESSAGE = "key-message"
+    const val KEY_MESSAGE = "key-message"
 
-    val KEY_PHOTO = "key-photo"
+    const val KEY_PHOTO = "key-photo"
 
-    val KEY_PARCELABLE_DATA = "key-sample-data"
+    const val KEY_PARCELABLE_DATA = "key-sample-data"
 }

@@ -3,17 +3,17 @@ package tech.thdev.kotlin_udemy_sample.view.detail
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.customtabs.CustomTabsIntent
-import android.support.design.widget.BottomSheetBehavior
-import android.support.v4.view.ViewPager
 import android.text.Html
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
+import com.example.base.ui.BasePresenterActivity
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_detail_more.*
 import kotlinx.android.synthetic.main.bottom_sheet_detail_view.*
-import tech.thdev.base.view.BasePresenterActivity
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.FlickrPhoto
@@ -154,7 +154,6 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
         Glide.with(this)
                 .load(buddyIcon)
                 .centerCrop()
-                .crossFade()
                 .into(img_buddy_icon)
 
         tv_toolbar_title.text = imgTitle
@@ -162,7 +161,6 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
         Glide.with(this)
                 .load(imgUrl)
                 .centerCrop()
-                .crossFade()
                 .into(img_small)
     }
 
@@ -188,7 +186,7 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
         val builder = CustomTabsIntent.Builder()
         // Changes the background color for the omnibox. colorInt is an int
         // that specifies a Color.
-        builder.setToolbarColor(resources.getColor(R.color.colorPrimary))
+        builder.setToolbarColor(resources.getColor(R.color.purple700))
 
         val customTabsIntent = builder.build()
         customTabsIntent.launchUrl(this, Uri.parse(photoPageUrl))
