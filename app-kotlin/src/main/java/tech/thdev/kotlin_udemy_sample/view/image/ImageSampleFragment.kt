@@ -62,7 +62,7 @@ class ImageSampleFragment : Fragment(), ImageContract.View {
         presenter?.adapterView = imageAdapter
 
 
-        recyclerView.adapter = imageAdapter
+        recyclerView?.adapter = imageAdapter
         // TODO kotlin extensions 으로 변경해보기
 //        recycler_image.adapter = imageAdapter
 
