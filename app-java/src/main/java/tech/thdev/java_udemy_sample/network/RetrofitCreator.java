@@ -1,5 +1,7 @@
 package tech.thdev.java_udemy_sample.network;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -13,7 +15,7 @@ public class RetrofitCreator {
         return new Retrofit.Builder()
                 .baseUrl("https://api.flickr.com/services/rest/")
                 .addConverterFactory(GsonConverterFactory.create())
-//                .client(createOkHttpClient())
+                .client(createOkHttpClient())
                 .build();
     }
 
@@ -23,11 +25,11 @@ public class RetrofitCreator {
      * <a href="http://square.github.io/okhttp/">OkHttp</a>
      * <a href="https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor">Okhttp</a>
      */
-//    private static OkHttpClient createOkHttpClient() {
-//        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-//        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-//        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//        builder.addInterceptor(interceptor);
-//        return builder.build();
-//    }
+    private static OkHttpClient createOkHttpClient() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        builder.addInterceptor(interceptor);
+        return builder.build();
+    }
 }
