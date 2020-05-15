@@ -1,9 +1,8 @@
 package tech.thdev.kotlin_udemy_sample.view.image.presenter
 
-import com.jayway.awaitility.Awaitility.await
+import org.awaitility.Awaitility.await
 import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.*
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
@@ -57,9 +56,9 @@ class ImagePresenterTest {
         /* Given */
         presenter.getRecentImageSample(ImageAdapter.VIEW_TYPE_GLIDE)
 
-        await().until {
-            while (!finish) {
-                verify(adapterModel, atLeastOnce()).addItem(ArgumentMatchers.any(RecentPhotoItem::class.java))
+        await().untilAsserted {
+            while (finish.not()) {
+                verify(adapterModel, atLeastOnce()).addItem(any(RecentPhotoItem::class.java))
             }
         }
 
@@ -80,9 +79,9 @@ class ImagePresenterTest {
         /* Given */
         presenter.getRecentImageSample(ImageAdapter.VIEW_TYPE_GLIDE)
 
-        await().until {
+        await().untilAsserted {
             while (!finish) {
-                verify(adapterModel, atLeastOnce()).addItem(ArgumentMatchers.any(RecentPhotoItem::class.java))
+                verify(adapterModel, atLeastOnce()).addItem(any(RecentPhotoItem::class.java))
             }
         }
 
@@ -93,9 +92,48 @@ class ImagePresenterTest {
     @Test
     fun testOnItemClick() {
         val list = ArrayList<RecentPhotoItem>()
-        list.add(RecentPhotoItem("30970646001", "", "554f4e63ac", "5481", 6, "Perfection in purple", 1, 1, 1, 0))
-        list.add(RecentPhotoItem("30982050221", "", "a5bf714923", "5451", 6, "Monument Valley", 1, 1, 1, 0))
-        list.add(RecentPhotoItem("30941531532", "", "a9bd7545d9", "5569", 6, "American Oystercatcher", 1, 1, 1, 0))
+        list.add(
+            RecentPhotoItem(
+                "30970646001",
+                "",
+                "554f4e63ac",
+                "5481",
+                6,
+                "Perfection in purple",
+                1,
+                1,
+                1,
+                0
+            )
+        )
+        list.add(
+            RecentPhotoItem(
+                "30982050221",
+                "",
+                "a5bf714923",
+                "5451",
+                6,
+                "Monument Valley",
+                1,
+                1,
+                1,
+                0
+            )
+        )
+        list.add(
+            RecentPhotoItem(
+                "30941531532",
+                "",
+                "a9bd7545d9",
+                "5569",
+                6,
+                "American Oystercatcher",
+                1,
+                1,
+                1,
+                0
+            )
+        )
 
         `when`(presenter.adapterModel?.getItems()).thenReturn(list)
 
@@ -112,6 +150,8 @@ class ImagePresenterTest {
         /* When */
         presenter.adapterView?.onItemClickListener?.onItemClick(0)
 
-        verify(view).showDetailMore(presenter.adapterModel?.getItems() ?: ArrayList<RecentPhotoItem>(), 0)
+        verify(view).showDetailMore(
+            presenter.adapterModel?.getItems() ?: ArrayList<RecentPhotoItem>(), 0
+        )
     }
 }

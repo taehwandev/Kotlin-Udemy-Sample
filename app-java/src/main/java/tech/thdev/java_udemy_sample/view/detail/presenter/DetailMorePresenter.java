@@ -1,6 +1,7 @@
 package tech.thdev.java_udemy_sample.view.detail.presenter;
 
-import tech.thdev.base.presenter.AbstractPresenter;
+import com.example.base.presenter.CommonPresenter;
+
 import tech.thdev.java_udemy_sample.data.FlickrPhoto;
 import tech.thdev.java_udemy_sample.data.source.photo_detail.PhotoDetailRepository;
 import tech.thdev.java_udemy_sample.data.source.photo_detail.PhotoDetailSource;
@@ -9,7 +10,7 @@ import tech.thdev.java_udemy_sample.data.source.photo_detail.PhotoDetailSource;
  * Created by tae-hwan on 11/17/16.
  */
 
-public class DetailMorePresenter extends AbstractPresenter<DetailMoreContract.View>
+public class DetailMorePresenter extends CommonPresenter<DetailMoreContract.View>
         implements DetailMoreContract.Presenter {
 
     private final PhotoDetailRepository photoDetailRepository;

@@ -9,11 +9,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.MyApplication">
         <activity
             android:name=".view.image.ImageActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/Theme.MyApplication.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,11 +22,11 @@
         </activity>
         <activity
             android:name=".view.detail.DetailMoreActivity"
-            android:theme="@style/AppTheme.Black.NoActionBar" />
+            android:theme="@style/Theme.MyApplication.Black.NoActionBar" />
 
         <activity
             android:name=".view.detail_photo_id.DetailPhotoIdActivity"
-            android:theme="@style/AppTheme.Black.NoActionBar" />`
+            android:theme="@style/Theme.MyApplication.Black.NoActionBar" />`
     </application>
 
 </manifest>

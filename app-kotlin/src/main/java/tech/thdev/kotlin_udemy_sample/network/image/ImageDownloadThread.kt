@@ -4,10 +4,10 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Handler
 import android.os.Looper
-import android.support.annotation.DrawableRes
 import android.text.TextUtils
 import android.util.LruCache
 import android.widget.ImageView
+import androidx.annotation.DrawableRes
 
 import java.io.BufferedInputStream
 import java.io.IOException
@@ -93,7 +93,7 @@ object ImageDownloadThread {
             Handler(Looper.getMainLooper()).post {
                 val imageView = weakReferenceImageView.get()
                 if (!TextUtils.isEmpty(resourceUrl) &&
-                        imageView.tag != null &&
+                        imageView?.tag != null &&
                         imageView.tag == resourceUrl &&
                         cache.get(resourceUrl) != null &&
                         cache.get(resourceUrl).get() != null) {

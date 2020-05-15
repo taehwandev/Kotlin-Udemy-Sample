@@ -5,8 +5,8 @@ import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.base.ui.BasePresenterActivity
 import kotlinx.android.synthetic.main.activity_detail_photo_id.*
-import tech.thdev.base.view.BasePresenterActivity
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.FlickrPhoto
@@ -17,7 +17,7 @@ import tech.thdev.kotlin_udemy_sample.view.detail_photo_id.presenter.DetailPhoto
 class DetailPhotoIdActivity : BasePresenterActivity<DetailPhotoIdContract.View, DetailPhotoIdContract.Presenter>(), DetailPhotoIdContract.View {
 
     private val imgView by lazy {
-        findViewById(R.id.img_view) as ImageView
+        findViewById<ImageView>(R.id.img_view)
     }
 
     override fun onCreatePresenter() = DetailPhotoIdPresenter()
@@ -41,14 +41,13 @@ class DetailPhotoIdActivity : BasePresenterActivity<DetailPhotoIdContract.View, 
         Glide.with(this)
                 .load(photo.getImageUrl())
                 .fitCenter()
-                .crossFade()
                 .into(imgView)
 
         title = photo.title.toString()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
                 return true

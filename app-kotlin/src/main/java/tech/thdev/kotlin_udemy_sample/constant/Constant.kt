@@ -6,22 +6,22 @@ package tech.thdev.kotlin_udemy_sample.constant
 
 object Constant {
 
-    val BLUR_TIME_OUT = 300L
+    const val BLUR_TIME_OUT = 300L
 
-    val KEY_PHOTO_DATA = "key-photo_data"
+    const val KEY_PHOTO_DATA = "key-photo_data"
 
-    val KEY_SHOW_POSITION = "key-show-position"
+    const val KEY_SHOW_POSITION = "key-show-position"
 
     /**
      * Detail page
      */
-    val TYPE_DETAIL_PAGE = 100
-    val TYPE_SHARE_URL = 101
+    const val TYPE_DETAIL_PAGE = 100
+    const val TYPE_SHARE_URL = 101
 
     /**
      * Detail page showing option
      */
-    val TYPE_DETAIL_SINGLE = 1000
-    val TYPE_DETAIL_MULTI = 1001
-    val TYPE_DETAIL_EXTRA = 1002
+    const val TYPE_DETAIL_SINGLE = 1000
+    const val TYPE_DETAIL_MULTI = 1001
+    const val TYPE_DETAIL_EXTRA = 1002
 }
