@@ -1,9 +1,9 @@
 package tech.thdev.kotlin_udemy_sample.view.detail_photo_id.presenter
 
+import com.example.base.presenter.CommonPresenter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import tech.thdev.base.presenter.AbstractPresenter
 import tech.thdev.kotlin_udemy_sample.data.FlickrInfo
 import tech.thdev.kotlin_udemy_sample.data.FlickrPhoto
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
@@ -12,7 +12,7 @@ import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
  * Created by tae-hwan on 11/13/16.
  */
 
-class DetailPhotoIdPresenter : AbstractPresenter<DetailPhotoIdContract.View>(), DetailPhotoIdContract.Presenter {
+class DetailPhotoIdPresenter : CommonPresenter<DetailPhotoIdContract.View>(), DetailPhotoIdContract.Presenter {
 
     override var photoDataSource: PhotoDataSource? = null
 

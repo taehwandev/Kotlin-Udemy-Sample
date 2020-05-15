@@ -3,10 +3,10 @@ package tech.thdev.kotlin_udemy_sample.network.image
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
-import android.support.annotation.DrawableRes
 import android.text.TextUtils
 import android.util.LruCache
 import android.widget.ImageView
+import androidx.annotation.DrawableRes
 
 import java.io.BufferedInputStream
 import java.io.IOException

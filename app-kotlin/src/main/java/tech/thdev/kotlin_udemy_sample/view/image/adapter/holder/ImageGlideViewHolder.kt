@@ -1,6 +1,5 @@
 package tech.thdev.kotlin_udemy_sample.view.image.adapter.holder
 
-import android.content.Context
 import android.util.Log
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
@@ -14,23 +13,22 @@ import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
  * Created by tae-hwan on 10/29/16.
  */
 
-class ImageGlideViewHolder(context: Context, parent: ViewGroup?, val onItemClickListener: OnItemClickListener?) :
-        BaseViewHolder<RecentPhotoItem>(R.layout.item_image_view, context, parent) {
+class ImageGlideViewHolder(
+    parent: ViewGroup,
+    private val onItemClickListener: OnItemClickListener?
+) : BaseViewHolder<RecentPhotoItem>(R.layout.item_image_view, parent) {
 
-    override fun bindView(item: RecentPhotoItem?, position: Int) {
-        itemView?.let {
-            // kotlin extensions 이용 view 사용
-            with(it) {
-                Log.d("TAG", "item ${item?.title}")
-                tv_title.text = item?.title
-                Glide.with(context)
-                        .load(item?.getImageUrl())
-                        .centerCrop()
-                        .placeholder(R.drawable.loading)
-                        .into(image)
-            }
+    init {
+        itemView.setOnClickListener { onItemClickListener?.onItemClick(adapterPosition) }
+    }
 
-            it.setOnClickListener { onItemClickListener?.onItemClick(position) }
-        }
+    override fun bindView(item: RecentPhotoItem?) {
+        Log.d("TAG", "item ${item?.title}")
+        itemView.tv_title.text = item?.title
+        Glide.with(itemView.context)
+            .load(item?.getImageUrl())
+            .centerCrop()
+            .placeholder(R.drawable.loading)
+            .into(itemView.image)
     }
 }
