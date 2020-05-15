@@ -32,6 +32,12 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'org.hamcrest:hamcrest-junit:2.0.0.0'
+    }
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(path: ':base')
@@ -60,7 +66,11 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0'
+    androidTestImplementation "org.awaitility:awaitility:$awaitilityVersion"
 
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:$mockitoCore"
