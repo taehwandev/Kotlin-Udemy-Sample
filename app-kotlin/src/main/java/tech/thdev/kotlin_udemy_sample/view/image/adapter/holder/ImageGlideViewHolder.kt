@@ -12,20 +12,15 @@ import tech.thdev.kotlin_udemy_sample.data.PhotoItem
  * Created by tae-hwan on 10/29/16.
  */
 
-class ImageGlideViewHolder(context: Context, parent: ViewGroup?) :
-        BaseViewHolder<PhotoItem>(R.layout.item_image_view, context, parent) {
+class ImageGlideViewHolder(context: Context, parent: ViewGroup) :
+    BaseViewHolder<PhotoItem>(R.layout.item_image_view, context, parent) {
 
     override fun bindView(item: PhotoItem?, position: Int) {
-        itemView?.let {
-            // kotlin extensions 이용 view 사용
-            with(it) {
-                tv_title.text = item?.title
-                Glide.with(context)
-                        .load(item?.getImageUrl())
-                        .centerCrop()
-                        .placeholder(R.drawable.loading)
-                        .into(image)
-            }
-        }
+        itemView.tv_title.text = item?.title
+        Glide.with(context)
+            .load(item?.getImageUrl())
+            .centerCrop()
+            .placeholder(R.drawable.loading)
+            .into(itemView.image)
     }
 }

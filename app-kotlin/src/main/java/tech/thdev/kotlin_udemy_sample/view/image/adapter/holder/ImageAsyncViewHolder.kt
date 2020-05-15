@@ -12,16 +12,11 @@ import tech.thdev.kotlin_udemy_sample.network.image.ImageDownloadAsync
  * Created by tae-hwan on 10/29/16.
  */
 
-class ImageAsyncViewHolder(context: Context, parent: ViewGroup?) :
-        BaseViewHolder<PhotoItem>(R.layout.item_image_async_view, context, parent) {
+class ImageAsyncViewHolder(context: Context, parent: ViewGroup) :
+    BaseViewHolder<PhotoItem>(R.layout.item_image_async_view, context, parent) {
 
     override fun bindView(item: PhotoItem?, position: Int) {
-        itemView?.let {
-            // kotlin extensions 이용 view 사용
-            with(it) {
-                tv_title.text = item?.title
-                ImageDownloadAsync.loadImage(R.drawable.loading, image, item?.getImageUrl())
-            }
-        }
+        itemView.tv_title.text = item?.title
+        ImageDownloadAsync.loadImage(R.drawable.loading, itemView.image, item?.getImageUrl())
     }
 }
