@@ -1,10 +1,13 @@
 package tech.thdev.java_udemy_sample.view.mvp;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -26,8 +29,9 @@ public class MVPAdapter extends RecyclerView.Adapter<MVPAdapter.SampleViewHolder
         this.context = context;
     }
 
+    @NotNull
     @Override
-    public SampleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SampleViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         return new SampleViewHolder(parent);
     }
 
