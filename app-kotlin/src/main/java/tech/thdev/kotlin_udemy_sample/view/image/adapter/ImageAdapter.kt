@@ -42,12 +42,14 @@ class ImageAdapter(private val context: Context) :
     /**
      * Item list의 item을 return
      */
-    private fun getItem(position: Int) = itemList.get(position)
+    private fun getItem(position: Int) =
+        itemList.get(position)
 
     /**
      * Item size를 return
      */
-    override fun getItemCount() = itemList.size
+    override fun getItemCount() =
+        itemList.size
 
     override fun addItem(item: PhotoItem) {
         itemList.add(item)

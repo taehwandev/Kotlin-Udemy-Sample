@@ -1,7 +1,8 @@
 package tech.thdev.kotlin_udemy_sample.util
 
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+
 
 /**
  * Created by tae-hwan on 10/3/16.
