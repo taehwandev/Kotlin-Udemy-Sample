@@ -1,7 +1,6 @@
 package tech.thdev.app.data.source.image
 
 import tech.thdev.app.data.ImageData
-import tech.thdev.app.util.random
 
 /**
  * Created by record-tae on 10/21/17.
