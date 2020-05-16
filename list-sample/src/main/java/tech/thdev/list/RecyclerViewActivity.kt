@@ -1,7 +1,7 @@
 package tech.thdev.list
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  * Created by tae-hwan on 10/22/17.
