@@ -1,8 +1,12 @@
 package tech.thdev.app.util
 
-import android.support.annotation.IdRes
-import android.support.v7.app.AppCompatActivity
+import androidx.annotation.IdRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import java.text.DecimalFormat
+import java.text.SimpleDateFormat
 import java.util.*
+
 
 /**
  * Created by record-tae on 10/21/17.
