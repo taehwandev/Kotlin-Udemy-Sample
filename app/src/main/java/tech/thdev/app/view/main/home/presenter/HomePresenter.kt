@@ -7,9 +7,11 @@ import tech.thdev.app.view.main.home.adapter.model.ImageRecyclerModel
 /**
  * Created by record-tae on 10/21/17.
  */
-class HomePresenter(val view: HomeContract.View,
-                    private val imageRepository: ImageRepository,
-                    private val imageRecyclerModel: ImageRecyclerModel) : HomeContract.Presenter {
+class HomePresenter(
+    private val view: HomeContract.View,
+    private val imageRepository: ImageRepository,
+    private val imageRecyclerModel: ImageRecyclerModel
+) : HomeContract.Presenter {
 
     var isLoading = false
 
@@ -17,10 +19,12 @@ class HomePresenter(val view: HomeContract.View,
         ImageAsyncTask(this, view, imageRepository, imageRecyclerModel).execute()
     }
 
-    class ImageAsyncTask(val homePresenter: HomePresenter,
-                         val view: HomeContract.View,
-                         private val imageRepository: ImageRepository,
-                         private val imageRecyclerModel: ImageRecyclerModel) : AsyncTask<Unit, Unit, Unit>() {
+    class ImageAsyncTask(
+        private val homePresenter: HomePresenter,
+        private val view: HomeContract.View,
+        private val imageRepository: ImageRepository,
+        private val imageRecyclerModel: ImageRecyclerModel
+    ) : AsyncTask<Unit, Unit, Unit>() {
 
         override fun doInBackground(vararg params: Unit?) {
             imageRepository.loadImageList({
