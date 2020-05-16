@@ -44,7 +44,7 @@ class DetailImagePresenter(
                 }
 
                 override fun onFailure(call: Call<PhotoInfo>?, t: Throwable?) {
-
+                    t?.printStackTrace()
                 }
             })
     }
