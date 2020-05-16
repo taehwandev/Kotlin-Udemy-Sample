@@ -1,5 +1,6 @@
 package tech.thdev.app.view.main.home.presenter
 
+import androidx.annotation.VisibleForTesting
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -10,9 +11,11 @@ import tech.thdev.app.view.main.home.adapter.model.ImageRecyclerModel
 /**
  * Created by record-tae on 10/21/17.
  */
-class HomePresenter(val view: HomeContract.View,
-                    private val flickrRepository: FlickrRepository,
-                    val imageRecyclerModel: ImageRecyclerModel) : HomeContract.Presenter {
+class HomePresenter(
+    private val view: HomeContract.View,
+    private val flickrRepository: FlickrRepository,
+    @VisibleForTesting val imageRecyclerModel: ImageRecyclerModel
+) : HomeContract.Presenter {
 
     var isLoading = false
 
@@ -30,38 +33,41 @@ class HomePresenter(val view: HomeContract.View,
         view.showProgress()
 
         flickrRepository.getSearchPhoto("Eiffel Tower", ++page, perPage)
-                .enqueue(object : Callback<PhotoResponse> {
-                    override fun onFailure(call: Call<PhotoResponse>?, t: Throwable?) {
-                        // 실패하였을 경우 처리
-                        view.hideProgress()
-                        view.showLoadFail()
+            .enqueue(object : Callback<PhotoResponse> {
+                override fun onFailure(call: Call<PhotoResponse>?, t: Throwable?) {
+                    // 실패하였을 경우 처리
+                    view.hideProgress()
+                    view.showLoadFail()
 
-                        isLoading = false
-                    }
+                    isLoading = false
+                }
 
-                    override fun onResponse(call: Call<PhotoResponse>?, response: Response<PhotoResponse>?) {
-                        // 성공하였을 경우 처리
-                        if (response?.isSuccessful == true) {
-                            response.body().takeIf { it?.stat == "ok" }?.let {
-                                // 성공한 경우만 adapter item. 추가하도록
-                                page = it.photos.page
+                override fun onResponse(
+                    call: Call<PhotoResponse>?,
+                    response: Response<PhotoResponse>?
+                ) {
+                    // 성공하였을 경우 처리
+                    if (response?.isSuccessful == true) {
+                        response.body().takeIf { it?.stat == "ok" }?.let {
+                            // 성공한 경우만 adapter item. 추가하도록
+                            page = it.photos.page
 
-                                it.photos.photo.forEach {
-                                    imageRecyclerModel.addItem(it)
-                                }
-                                imageRecyclerModel.notifyDataSetChang()
-
-                            } ?: let {
-                                view.showLoadFail("Code ${response.body()?.code} message : ${response.body()?.message}")
+                            it.photos.photo.forEach {
+                                imageRecyclerModel.addItem(it)
                             }
-                        } else {
-                            view.showLoadFail()
+                            imageRecyclerModel.notifyDataSetChang()
+
+                        } ?: let {
+                            view.showLoadFail("Code ${response.body()?.code} message : ${response.body()?.message}")
                         }
-
-                        view.hideProgress()
-
-                        isLoading = false
+                    } else {
+                        view.showLoadFail()
                     }
-                })
+
+                    view.hideProgress()
+
+                    isLoading = false
+                }
+            })
     }
 }
