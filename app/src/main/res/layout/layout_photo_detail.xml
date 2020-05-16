@@ -6,23 +6,23 @@
     android:layout_height="match_parent"
     android:background="#000">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/Theme.MyApplication.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#cc000000"
             app:contentInsetEnd="0dp"
             app:contentInsetStart="0dp"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            app:popupTheme="@style/Theme.MyApplication.PopupOverlay">
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -72,9 +72,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tv_owner_name"
                     app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <tech.thdev.app.view.custom.GlideImageView
         android:id="@+id/img"
@@ -83,7 +83,7 @@
         android:scaleType="fitCenter"
         tools:src="@drawable/sample_01" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/view_content_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -111,8 +111,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:drawablePadding="5dp"
             android:drawableStart="@drawable/ic_date_range_white_24dp"
+            android:drawablePadding="5dp"
             android:textColor="#fff"
             android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -124,8 +124,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:drawablePadding="5dp"
             android:drawableStart="@drawable/ic_comment_white_24dp"
+            android:drawablePadding="5dp"
             android:textColor="#fff"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_date"
@@ -139,8 +139,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
-            android:drawablePadding="5dp"
             android:drawableStart="@drawable/ic_view_white_24dp"
+            android:drawablePadding="5dp"
             android:textColor="#fff"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_comment_count"
@@ -162,6 +162,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_date"
             tools:text="Message test Message test Message test Message testMessage testMessage test Message test Message test Message test Message test Message test Message test Message test Message test Message test Message test Message test Message test Message test Message test Message testMessage test Message test Message test Message test Message test Message test Message test Message test Message test Message test Message test" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>
