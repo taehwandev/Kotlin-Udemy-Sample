@@ -14,7 +14,7 @@ import tech.thdev.app.R
 class CameraFragment : Fragment() {
 
     companion object {
-        val KEY_TITLE = "key-title"
+        const val KEY_TITLE = "key-title"
     }
 
     override fun onCreateView(

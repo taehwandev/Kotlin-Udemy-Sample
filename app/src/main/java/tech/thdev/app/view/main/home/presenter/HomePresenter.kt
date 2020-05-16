@@ -6,13 +6,17 @@ import tech.thdev.app.util.random
 /**
  * Created by record-tae on 10/21/17.
  */
-class HomePresenter(val view: HomeContract.View) : HomeContract.Presenter {
+class HomePresenter(
+    private val view: HomeContract.View
+) : HomeContract.Presenter {
 
     override fun loadImage() {
         ImageAsyncTask(view).execute()
     }
 
-    class ImageAsyncTask(val view: HomeContract.View) : AsyncTask<Unit, Unit, String>() {
+    class ImageAsyncTask(
+        private val view: HomeContract.View
+    ) : AsyncTask<Unit, Unit, String>() {
 
         override fun doInBackground(vararg params: Unit?): String {
             Thread.sleep(1000)

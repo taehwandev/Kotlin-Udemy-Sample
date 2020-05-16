@@ -14,7 +14,7 @@ import tech.thdev.app.R
 class MoreFragment : Fragment() {
 
     companion object {
-        val KEY_TITLE = "key-title"
+        const val KEY_TITLE = "key-title"
     }
 
     override fun onCreateView(
