@@ -2,9 +2,9 @@ package tech.thdev.imageloadsample
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import tech.thdev.imageloadsample.util.random
 
@@ -35,15 +35,15 @@ class MainActivity : AppCompatActivity() {
         loadTest()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.run {
             inflate(R.menu.main_menu, menu)
         }
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
             R.id.action_reload -> {
                 loadTest()
                 true

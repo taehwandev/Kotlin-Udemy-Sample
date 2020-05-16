@@ -5,10 +5,10 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Handler
 import android.os.Looper
-import android.support.annotation.DrawableRes
-import android.support.v4.util.LruCache
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.DrawableRes
+import androidx.collection.LruCache
 import java.io.BufferedInputStream
 import java.io.IOException
 import java.lang.ref.WeakReference
@@ -21,7 +21,7 @@ object ImageDownloadThread {
     /**
      * LruCache를 사용하여 Image를 캐쉬처리
      */
-    private val cache = LruCache<String, WeakReference<Bitmap>>(5 * 1024 * 1024) // 5MiB
+    private val cache = LruCache<String, WeakReference<Bitmap?>>(5 * 1024 * 1024) // 5MiB
 
     fun loadImage(@DrawableRes loadingImageRes: Int, imageView: ImageView, url: String?, textView: TextView, randNumber: Int): Boolean {
         imageView.setImageResource(loadingImageRes)
