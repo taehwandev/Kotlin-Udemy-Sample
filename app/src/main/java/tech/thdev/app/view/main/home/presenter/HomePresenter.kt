@@ -1,5 +1,6 @@
 package tech.thdev.app.view.main.home.presenter
 
+import androidx.annotation.VisibleForTesting
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,7 +14,7 @@ import tech.thdev.app.view.main.home.adapter.model.ImageRecyclerModel
 class HomePresenter(
     private val view: HomeContract.View,
     private val flickrRepository: FlickrRepository,
-    private val imageRecyclerModel: ImageRecyclerModel
+    @VisibleForTesting val imageRecyclerModel: ImageRecyclerModel
 ) : HomeContract.Presenter {
 
     var isLoading = false

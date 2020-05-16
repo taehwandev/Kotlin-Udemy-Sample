@@ -1,8 +1,8 @@
 package tech.thdev.app.view.main.home.presenter
 
 import com.nhaarman.expect.expect
-import com.nhaarman.mockito_kotlin.doReturn
-import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockitokotlin2.doReturn
+import com.nhaarman.mockitokotlin2.mock
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.`when`

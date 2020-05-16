@@ -72,7 +72,8 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     testImplementation "org.mockito:mockito-core:$mockitoCore"
     testImplementation "org.awaitility:awaitility:$awaitilityVersion"
-    testImplementation "com.nhaarman:expect.kt:0.6.2"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    testImplementation 'com.nhaarman:expect.kt:1.0.1'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation "androidx.test:runner:$uiTestVersion"
