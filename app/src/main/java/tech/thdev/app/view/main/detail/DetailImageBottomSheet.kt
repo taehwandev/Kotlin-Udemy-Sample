@@ -4,13 +4,11 @@ import android.app.Dialog
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.support.customtabs.CustomTabsIntent
-import android.support.design.widget.BottomSheetBehavior
-import android.support.design.widget.BottomSheetDialogFragment
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.browser.customtabs.CustomTabsIntent
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.layout_photo_detail.*
@@ -137,9 +135,9 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
 
     override fun showFlickrWebPage(url: String) {
         CustomTabsIntent.Builder().apply {
-            setToolbarColor(resources.getColor(R.color.colorPrimary))
+            setToolbarColor(resources.getColor(R.color.purple700))
         }.build().run {
-            launchUrl(context, Uri.parse(url))
+            launchUrl(requireContext(), Uri.parse(url))
         }
     }
 }

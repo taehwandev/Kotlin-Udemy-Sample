@@ -23,6 +23,7 @@ class DetailImagePresenter(
             .enqueue(object : Callback<PhotoInfo> {
 
                 override fun onResponse(call: Call<PhotoInfo>?, response: Response<PhotoInfo>?) {
+                    android.util.Log.e("TEMP", "onResponse $response")
                     if (response?.isSuccessful == true) {
                         response.body()?.takeIf { it.stat == "ok" }?.let {
                             // 처리
@@ -48,7 +49,7 @@ class DetailImagePresenter(
                 }
 
                 override fun onFailure(call: Call<PhotoInfo>?, t: Throwable?) {
-
+                    android.util.Log.e("TEMP", "onFailure ")
                 }
             })
     }
