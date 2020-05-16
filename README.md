@@ -99,18 +99,6 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 - [OkHttp](https://github.com/square/okhttp)
 - [OkHttp Logging Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor)
 
-## 개발 버전에 대한 정보
-- compile sdk version = 28
-- Target sdk version = 28
-- Min sdk version = 21
-- Android studio = 3.4.1
-
-## 사용한 라이브러리 현황
-- Kotlin library
-    - Kotlin version = 1.3.41
-- [Android support library](https://developer.android.com/topic/libraries/support-library/revisions.html)
-    - support libraryVersion = 28.0.0
-
 ## API Key
 
 - Create Flickr api key.
@@ -173,7 +161,7 @@ Udemy 코틀린 안드로이드 시작하기! 강좌의 샘플 자료입니다.
 ## License
 
 ```
-Copyright 2016-2019 Tae-hwan
+Copyright 2016-2020 Tae-hwan
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
