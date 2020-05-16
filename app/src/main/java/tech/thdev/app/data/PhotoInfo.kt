@@ -93,8 +93,7 @@ data class Tag(
     val author: String, //138147998@N05
     val authorname: String, //illustrationvintage
     val raw: String, //tower
-    val _content: String, //tower
-    val machine_tag: Int //0
+    val _content: String //tower
 )
 
 data class Description(
