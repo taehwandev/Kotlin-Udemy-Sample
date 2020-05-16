@@ -2,17 +2,17 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion compileSdkVersionInfo
+    buildToolsVersion buildToolsVersionInfo
 
     defaultConfig {
         applicationId "tech.thdev.bottomsheetsample"
-        minSdkVersion 21
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion minSdkVerisonInfo
+        targetSdkVersion targetSdkVersionInfo
         versionCode 1
         versionName "2.1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -22,14 +22,22 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
-    implementation "com.android.support:design:$supportLibraryVersion"
-    implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 }
