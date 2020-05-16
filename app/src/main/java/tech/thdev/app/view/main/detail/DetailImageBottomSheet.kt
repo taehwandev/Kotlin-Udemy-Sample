@@ -11,6 +11,8 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.layout_photo_detail.*
 import tech.thdev.app.R
 import tech.thdev.app.data.source.flickr.FlickrRepository
@@ -26,8 +28,7 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
     companion object {
         const val KEY_PHOTO_ID = "key-photo-id"
 
-        fun create(photoId: String): DetailImageBottomSheet
-                = DetailImageBottomSheet().apply {
+        fun create(photoId: String): DetailImageBottomSheet = DetailImageBottomSheet().apply {
             arguments = Bundle().apply {
                 putString(KEY_PHOTO_ID, photoId)
             }
@@ -41,28 +42,31 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.setOnShowListener {
-            val bottomSheet = dialog.findViewById<View>(android.support.design.R.id.design_bottom_sheet)
+            val bottomSheet =
+                dialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
             BottomSheetBehavior.from(bottomSheet).apply {
                 state = BottomSheetBehavior.STATE_EXPANDED
                 peekHeight = 30
-                setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-                    override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    }
-
-                    override fun onStateChanged(bottomSheet: View, newState: Int) {
-                        when (newState) {
-                            BottomSheetBehavior.STATE_COLLAPSED -> {
-                                if (!isRemoving) dismiss()
-                            }
-                            else -> {
-
-                            }
-                        }
-                    }
-                })
+                addBottomSheetCallback(bottomSheetCallback)
             }
         }
         return dialog
+    }
+
+    private val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
+        override fun onSlide(bottomSheet: View, slideOffset: Float) {
+        }
+
+        override fun onStateChanged(bottomSheet: View, newState: Int) {
+            when (newState) {
+                BottomSheetBehavior.STATE_COLLAPSED -> {
+                    if (!isRemoving) dismiss()
+                }
+                else -> {
+
+                }
+            }
+        }
     }
 
     private fun updateToolbarVisibility() {
@@ -80,8 +84,12 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            View.inflate(context, R.layout.layout_photo_detail, null)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
+        inflater.inflate(R.layout.layout_photo_detail, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -106,7 +114,14 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
         tv_owner_name.text = buddyName
     }
 
-    override fun updateItem(imageUrl: String, title: String, content: String, date: String, viewCount: String, commentCount: String) {
+    override fun updateItem(
+        imageUrl: String,
+        title: String,
+        content: String,
+        date: String,
+        viewCount: String,
+        commentCount: String
+    ) {
         img.loadImage(imageUrl)
 
         tv_title.text = title

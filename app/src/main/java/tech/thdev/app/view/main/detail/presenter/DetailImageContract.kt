@@ -9,7 +9,14 @@ interface DetailImageContract {
 
         fun updateToolbarItem(buddyIcon: String, buddyName: String)
 
-        fun updateItem(imageUrl: String, title: String, content: String, date: String, viewCount: String, commentCount: String)
+        fun updateItem(
+            imageUrl: String,
+            title: String,
+            content: String,
+            date: String,
+            viewCount: String,
+            commentCount: String
+        )
 
         fun showFlickrWebPage(url: String)
     }

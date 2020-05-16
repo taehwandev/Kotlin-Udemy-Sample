@@ -11,11 +11,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 fun <T> createRetrofit(cls: Class<T>, baseUrl: String): T {
     return Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(createOkHttpClient())
-            .build()
-            .create(cls)
+        .baseUrl(baseUrl)
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(createOkHttpClient())
+        .build()
+        .create(cls)
 }
 
 /**
