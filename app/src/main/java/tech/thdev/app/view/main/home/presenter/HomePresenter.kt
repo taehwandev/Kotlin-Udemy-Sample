@@ -13,10 +13,12 @@ import tech.thdev.app.view.main.home.adapter.model.ImageRecyclerModel
 /**
  * Created by record-tae on 10/21/17.
  */
-class HomePresenter(val view: HomeContract.View,
-                    private val flickrRepository: FlickrRepository,
-                    private val imageRepository: ImageRepository,
-                    private val imageRecyclerModel: ImageRecyclerModel) : HomeContract.Presenter {
+class HomePresenter(
+    private val view: HomeContract.View,
+    private val flickrRepository: FlickrRepository,
+    private val imageRepository: ImageRepository,
+    private val imageRecyclerModel: ImageRecyclerModel
+) : HomeContract.Presenter {
 
     var isLoading = false
 
@@ -25,25 +27,30 @@ class HomePresenter(val view: HomeContract.View,
 
     override fun loadFlickrImage() {
         flickrRepository.getRecentPhoto(++page, perPage)
-                .enqueue(object : Callback<PhotoResponse> {
-                    override fun onFailure(call: Call<PhotoResponse>?, t: Throwable?) {
-                        // 불러오기 실패할 경우
-                    }
+            .enqueue(object : Callback<PhotoResponse> {
+                override fun onFailure(call: Call<PhotoResponse>?, t: Throwable?) {
+                    // 불러오기 실패할 경우
+                }
 
-                    override fun onResponse(call: Call<PhotoResponse>?, response: Response<PhotoResponse>?) {
-                        // 불러오기 성공할 경우
-                    }
-                })
+                override fun onResponse(
+                    call: Call<PhotoResponse>?,
+                    response: Response<PhotoResponse>?
+                ) {
+                    // 불러오기 성공할 경우
+                }
+            })
     }
 
     override fun loadImage() {
         ImageAsyncTask(this, view, imageRepository, imageRecyclerModel).execute()
     }
 
-    class ImageAsyncTask(val homePresenter: HomePresenter,
-                         val view: HomeContract.View,
-                         private val imageRepository: ImageRepository,
-                         private val imageRecyclerModel: ImageRecyclerModel) : AsyncTask<Unit, Unit, Unit>() {
+    class ImageAsyncTask(
+        private val homePresenter: HomePresenter,
+        private val view: HomeContract.View,
+        private val imageRepository: ImageRepository,
+        private val imageRecyclerModel: ImageRecyclerModel
+    ) : AsyncTask<Unit, Unit, Unit>() {
 
         override fun doInBackground(vararg params: Unit?) {
             imageRepository.loadImageList({
