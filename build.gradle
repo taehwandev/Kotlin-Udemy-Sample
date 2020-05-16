@@ -30,6 +30,7 @@ buildscript {
         // ui test
         uiTestVersion = '1.2.0'
         espressoVersion = '3.2.0'
+        uiautomatorVersion = '2.2.0'
     }
 
     repositories {
