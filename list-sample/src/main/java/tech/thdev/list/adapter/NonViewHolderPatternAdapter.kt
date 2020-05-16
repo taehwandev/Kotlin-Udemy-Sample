@@ -14,7 +14,7 @@ import tech.thdev.list.R
  */
 class NonViewHolderPatternAdapter(context: Context, resource: Int, objects: List<String>) : ArrayAdapter<String>(context, resource, objects) {
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = LayoutInflater.from(context).inflate(R.layout.item_list, parent, false)
         val textView = view.findViewById<TextView>(R.id.tv_message)
         textView.text = getItem(position)

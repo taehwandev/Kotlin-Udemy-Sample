@@ -13,12 +13,12 @@ import tech.thdev.list.R
  * Created by tae-hwan on 10/22/17.
  */
 class ViewHolderPatternAdapter(context: Context, resource: Int, objects: List<String>) :
-        ArrayAdapter<String>(context, resource, objects) {
+    ArrayAdapter<String>(context, resource, objects) {
 
     private lateinit var view: View
     private lateinit var viewHolder: ViewHolder
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         if (convertView == null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_list, parent, false)
             viewHolder = ViewHolder(view)
@@ -35,7 +35,7 @@ class ViewHolderPatternAdapter(context: Context, resource: Int, objects: List<St
         return view
     }
 
-    class ViewHolder(val itemView: View?) {
+    class ViewHolder(private val itemView: View?) {
 
         fun bindView(item: String?) {
             itemView?.tv_message?.text = item ?: ""
