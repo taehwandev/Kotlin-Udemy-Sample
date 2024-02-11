@@ -5,18 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import tech.thdev.kotlin_udemy_sample.R
+import tech.thdev.kotlin_udemy_sample.databinding.FragmentMainBinding
 
 /**
  * Created by tae-hwan on 10/3/16.
  */
 class MainFragment : Fragment() {
-
-    private val recyclerView by lazy {
-        view!!.findViewById<RecyclerView>(R.id.recycler_view)
-    }
 
     private val fab by lazy {
         requireActivity().findViewById<FloatingActionButton>(R.id.fab)
@@ -29,19 +25,22 @@ class MainFragment : Fragment() {
 
     private var sampleAdapter: SampleAdapter? = null
 
+    private lateinit var fragmentMainBinding: FragmentMainBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
+    ): View =
+        FragmentMainBinding.inflate(inflater, container, false).also {
+            fragmentMainBinding = it
+        }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         sampleAdapter = SampleAdapter(requireContext())
-        recyclerView.adapter = sampleAdapter
+        fragmentMainBinding.recyclerView.adapter = sampleAdapter
 
         sampleAdapter?.let {
             addItems(0)

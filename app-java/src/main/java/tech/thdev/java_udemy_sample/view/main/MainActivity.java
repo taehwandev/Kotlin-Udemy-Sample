@@ -3,28 +3,23 @@ package tech.thdev.java_udemy_sample.view.main;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
+import tech.thdev.java_udemy_sample.databinding.ActivityMainBinding;
 import tech.thdev.java_udemy_sample.util.ActivityUtil;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    private ActivityMainBinding activityMainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(activityMainBinding.getRoot());
 
-        // ButterKnife 사용
-        ButterKnife.bind(this);
-
-        toolbar.setTitle(R.string.app_name);
-        setSupportActionBar(toolbar);
+        activityMainBinding.toolbar.setTitle(R.string.app_name);
+        setSupportActionBar(activityMainBinding.toolbar);
 
         ActivityUtil.replaceFragmentToActivity(getSupportFragmentManager(), MainFragment.getInstance(), R.id.frame_layout);
     }
