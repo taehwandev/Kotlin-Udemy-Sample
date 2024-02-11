@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_image_view.view.*
 import tech.thdev.app.R
 import tech.thdev.app.data.Photo
+import tech.thdev.app.view.custom.GlideImageView
 
 /**
  * Created by record-tae on 10/22/17.
@@ -15,11 +15,15 @@ class ImageViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent.context).inflate(R.layout.item_image_view, parent, false)
 ) {
 
+    private val imgView: GlideImageView by lazy {
+        itemView.findViewById(R.id.img_view)
+    }
+
     fun onBind(item: Photo) {
         itemView.onBind(item)
     }
 
     private fun View.onBind(item: Photo) {
-        img_view.loadImage(item.getImageUrl())
+        imgView.loadImage(item.getImageUrl())
     }
 }
