@@ -1,8 +1,4 @@
-package tech.thdev.list.recycler
-
-import android.content.Context
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+package tech.thdev.list_view.recycler
 
 /**
  * Created by tae-hwan on 10/22/17.
