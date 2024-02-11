@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_home.*
-import tech.thdev.app.R
+import tech.thdev.app.databinding.FragmentHomeBinding
 
 /**
  * Created by record-tae on 10/21/17.
@@ -17,11 +16,19 @@ class CameraFragment : Fragment() {
         val KEY_TITLE = "key-title"
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.fragment_home, container, false)
+    private lateinit var fragmentHomeBinding: FragmentHomeBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View =
+        FragmentHomeBinding.inflate(inflater, container, false).also {
+            fragmentHomeBinding = it
+        }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        message.setText(arguments?.getInt(KEY_TITLE) ?: 0)
+        fragmentHomeBinding.message.setText(arguments?.getInt(KEY_TITLE) ?: 0)
     }
 }
