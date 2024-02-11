@@ -61,10 +61,7 @@ class ImageSampleFragment : Fragment(), ImageContract.View {
         presenter?.adapterModel = imageAdapter
         presenter?.adapterView = imageAdapter
 
-
-        fragmentImageSampleBinding.recyclerView.adapter = imageAdapter
-        // TODO kotlin extensions 으로 변경해보기
-//        fragmentImageSampleBinding.recyclerImage.adapter = imageAdapter
+        fragmentImageSampleBinding.recyclerImage.adapter = imageAdapter
 
         fab.setOnClickListener {
             presenter?.getRecentImageSample()
