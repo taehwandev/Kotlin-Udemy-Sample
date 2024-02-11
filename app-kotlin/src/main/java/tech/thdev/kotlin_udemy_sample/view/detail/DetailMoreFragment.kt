@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.base.ui.BaseFragment
-import kotlinx.android.synthetic.main.fragment_detail_more.*
-import tech.thdev.kotlin_udemy_sample.R
+import tech.thdev.kotlin_udemy_sample.databinding.FragmentDetailMoreBinding
 
 /**
  * Created by Tae-hwan on 16/11/2016.
@@ -17,26 +16,30 @@ class DetailMoreFragment(
     private val imageUrl: String
 ) : BaseFragment() {
 
+    private lateinit var fragmentDetailMoreBinding: FragmentDetailMoreBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? =
-        inflater.inflate(R.layout.fragment_detail_more, container, false)
+        FragmentDetailMoreBinding.inflate(inflater, container, false).also {
+            fragmentDetailMoreBinding = it
+        }.root
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        img_large_view.setOnClickListener {
+        fragmentDetailMoreBinding.imgLargeView.setOnClickListener {
             // view visible/gone
         }
 
-        img_large_view?.let {
+        fragmentDetailMoreBinding.imgLargeView.let {
             Glide.with(this)
                 .load(imageUrl)
                 .fitCenter()
-                .into(img_large_view)
+                .into(it)
         }
     }
 }

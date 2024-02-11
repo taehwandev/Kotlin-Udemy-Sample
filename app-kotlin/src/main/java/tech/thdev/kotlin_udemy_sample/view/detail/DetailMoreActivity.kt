@@ -12,25 +12,32 @@ import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.example.base.ui.BasePresenterActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.android.synthetic.main.activity_detail_more.*
-import kotlinx.android.synthetic.main.bottom_sheet_detail_view.*
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.FlickrPhoto
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
+import tech.thdev.kotlin_udemy_sample.databinding.ActivityDetailMoreBinding
+import tech.thdev.kotlin_udemy_sample.databinding.BottomSheetDetailViewBinding
 import tech.thdev.kotlin_udemy_sample.util.decimalFormat
 import tech.thdev.kotlin_udemy_sample.util.getDate
 import tech.thdev.kotlin_udemy_sample.view.detail.adapter.SectionsPagerAdapter
 import tech.thdev.kotlin_udemy_sample.view.detail.presenter.DetailMoreContract
 import tech.thdev.kotlin_udemy_sample.view.detail.presenter.DetailMorePresenter
 
-class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, DetailMoreContract.Presenter>(),
-        ViewPager.OnPageChangeListener, DetailMoreContract.View {
+class DetailMoreActivity :
+    BasePresenterActivity<DetailMoreContract.View, DetailMoreContract.Presenter>(),
+    ViewPager.OnPageChangeListener, DetailMoreContract.View {
 
     private var selectionPagerAdapter: SectionsPagerAdapter? = null
 
+    private lateinit var activityDetailMoreBinding: ActivityDetailMoreBinding
+
+    private val rlSheetView: BottomSheetDetailViewBinding by lazy {
+        activityDetailMoreBinding.rlSheetView
+    }
+
     val bottomSheet by lazy {
-        BottomSheetBehavior.from(rl_sheet_view)
+        BottomSheetBehavior.from(rlSheetView.sheetView)
     }
 
     override fun onCreatePresenter() = DetailMorePresenter()
@@ -46,9 +53,10 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_more)
+        activityDetailMoreBinding = ActivityDetailMoreBinding.inflate(layoutInflater)
+        setContentView(activityDetailMoreBinding.root)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(activityDetailMoreBinding.toolbar)
         title = ""
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -63,9 +71,9 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
 
         currentPosition = intent.getIntExtra(Constant.KEY_SHOW_POSITION, 0)
 
-        container.adapter = selectionPagerAdapter
-        container.addOnPageChangeListener(this)
-        container.setCurrentItem(currentPosition, false)
+        activityDetailMoreBinding.container.adapter = selectionPagerAdapter
+        activityDetailMoreBinding.container.addOnPageChangeListener(this)
+        activityDetailMoreBinding.container.setCurrentItem(currentPosition, false)
 
         onCreateView()
 
@@ -77,16 +85,16 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
         bottomSheet.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 if (slideOffset > 0.9) {
-                    rl_toolbar_user_info.visibility = View.GONE
-                    rl_toolbar_image_info.visibility = View.VISIBLE
-                    tv_title.visibility = View.INVISIBLE
+                    activityDetailMoreBinding.rlToolbarUserInfo.visibility = View.GONE
+                    activityDetailMoreBinding.rlToolbarImageInfo.visibility = View.VISIBLE
+                    rlSheetView.tvTitle.visibility = View.INVISIBLE
 
                     isShowInfoIcon = true
 
                 } else {
-                    rl_toolbar_user_info.visibility = View.VISIBLE
-                    rl_toolbar_image_info.visibility = View.GONE
-                    tv_title.visibility = View.VISIBLE
+                    activityDetailMoreBinding.rlToolbarUserInfo.visibility = View.VISIBLE
+                    activityDetailMoreBinding.rlToolbarImageInfo.visibility = View.GONE
+                    rlSheetView.tvTitle.visibility = View.VISIBLE
 
                     isShowInfoIcon = false
                 }
@@ -100,12 +108,12 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
             }
         })
 
-        fab.setOnClickListener { presenter?.getPhotoDetailUrl(Constant.TYPE_DETAIL_PAGE) }
+        activityDetailMoreBinding.fab.setOnClickListener { presenter?.getPhotoDetailUrl(Constant.TYPE_DETAIL_PAGE) }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        container.removeOnPageChangeListener(this)
+        activityDetailMoreBinding.container.removeOnPageChangeListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -118,14 +126,16 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
         return super.onPrepareOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             R.id.action_share -> {
                 presenter?.getPhotoDetailUrl(Constant.TYPE_SHARE_URL)
             }
+
             R.id.action_info -> {
                 presenter?.getPhotoDetailUrl(Constant.TYPE_DETAIL_PAGE)
             }
+
             android.R.id.home -> {
                 onBackPressed()
                 return true
@@ -148,31 +158,38 @@ class DetailMoreActivity : BasePresenterActivity<DetailMoreContract.View, Detail
         presenter?.loadPhotoInfo(currentPosition)
     }
 
-    override fun updateToolbarItem(buddyIcon: String, buddyName: String, imgUrl: String, imgTitle: String) {
-        rl_toolbar_user_info.visibility = View.VISIBLE
-        rl_toolbar_image_info.visibility = View.GONE
+    override fun updateToolbarItem(
+        buddyIcon: String,
+        buddyName: String,
+        imgUrl: String,
+        imgTitle: String
+    ) {
+        activityDetailMoreBinding.rlToolbarUserInfo.visibility = View.VISIBLE
+        activityDetailMoreBinding.rlToolbarImageInfo.visibility = View.GONE
 
-        tv_buddy_name.text = buddyName
+        activityDetailMoreBinding.tvBuddyName.text = buddyName
         // Buddy icon
         Glide.with(this)
-                .load(buddyIcon)
-                .centerCrop()
-                .into(img_buddy_icon)
+            .load(buddyIcon)
+            .centerCrop()
+            .into(activityDetailMoreBinding.imgBuddyIcon)
 
-        tv_toolbar_title.text = imgTitle
+        activityDetailMoreBinding.tvToolbarTitle.text = imgTitle
         // small image
         Glide.with(this)
-                .load(imgUrl)
-                .centerCrop()
-                .into(img_small)
+            .load(imgUrl)
+            .centerCrop()
+            .into(activityDetailMoreBinding.imgSmall)
     }
 
     override fun updateItem(photo: FlickrPhoto) {
-        tv_title.text = photo.title.toString()
-        tv_content.text = Html.fromHtml(photo.description._content)
-        tv_date.text = photo.dates.lastupdate.getDate("MM-dd-yyyy hh:mm")
-        tv_viewer_count.text = photo.views.decimalFormat()
-        tv_comment_count.text = photo.comments._content.decimalFormat()
+        rlSheetView.run {
+            tvTitle.text = photo.title.toString()
+            tvContent.text = Html.fromHtml(photo.description._content)
+            tvDate.text = photo.dates.lastupdate.getDate("MM-dd-yyyy hh:mm")
+            tvViewerCount.text = photo.views.decimalFormat()
+            tvCommentCount.text = photo.comments._content.decimalFormat()
+        }
 
         isLoading = false
     }

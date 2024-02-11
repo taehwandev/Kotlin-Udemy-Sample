@@ -1,7 +1,8 @@
 package tech.thdev.kotlin_udemy_sample.view.image.adapter.holder
 
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.item_image_view.view.*
+import android.widget.ImageView
+import android.widget.TextView
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.base.adapter.BaseViewHolder
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
@@ -17,6 +18,14 @@ class ImageAsyncViewHolder(
     private val onItemClickListener: OnItemClickListener?
 ) : BaseViewHolder<RecentPhotoItem>(R.layout.item_image_async_view, parent) {
 
+    private val tvTitle: TextView by lazy {
+        itemView.findViewById(R.id.tv_title)
+    }
+
+    private val image: ImageView by lazy {
+        itemView.findViewById(R.id.image)
+    }
+
     init {
         itemView.setOnClickListener {
             onItemClickListener?.onItemClick(adapterPosition)
@@ -24,8 +33,7 @@ class ImageAsyncViewHolder(
     }
 
     override fun bindView(item: RecentPhotoItem?) {
-        // kotlin extensions 이용 view 사용
-        itemView.tv_title.text = item?.title
-        ImageDownloadAsync.loadImage(R.drawable.loading, itemView.image, item?.getImageUrl())
+        tvTitle.text = item?.title
+        ImageDownloadAsync.loadImage(R.drawable.loading, image, item?.getImageUrl())
     }
 }

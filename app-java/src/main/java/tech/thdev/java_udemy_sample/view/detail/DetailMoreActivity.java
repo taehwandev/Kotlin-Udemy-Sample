@@ -1,21 +1,15 @@
 package tech.thdev.java_udemy_sample.view.detail;
 
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.base.ui.BasePresenterActivity;
 
 import org.jetbrains.annotations.NotNull;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import tech.thdev.java_udemy_sample.R;
 import tech.thdev.java_udemy_sample.data.FlickrPhoto;
 import tech.thdev.java_udemy_sample.data.source.photo_detail.PhotoDetailRepository;
+import tech.thdev.java_udemy_sample.databinding.ActivityDetailMoreBinding;
 import tech.thdev.java_udemy_sample.view.detail.presenter.DetailMoreContract;
 import tech.thdev.java_udemy_sample.view.detail.presenter.DetailMorePresenter;
 
@@ -28,17 +22,7 @@ public class DetailMoreActivity extends BasePresenterActivity<DetailMoreContract
 
     public static final String KEY_PHOTO_ID = "photoId";
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    @BindView(R.id.img_view)
-    ImageView imgView;
-
-    @BindView(R.id.tv_title)
-    TextView tvTitle;
-
-    @BindView(R.id.tv_content)
-    TextView tvContent;
+    private ActivityDetailMoreBinding activityDetailMoreBinding;
 
     @NotNull
     @Override
@@ -49,11 +33,10 @@ public class DetailMoreActivity extends BasePresenterActivity<DetailMoreContract
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_more);
+        activityDetailMoreBinding = ActivityDetailMoreBinding.inflate(getLayoutInflater());
+        setContentView(activityDetailMoreBinding.getRoot());
 
-        ButterKnife.bind(this);
-
-        setSupportActionBar(toolbar);
+        setSupportActionBar(activityDetailMoreBinding.toolbar);
         setTitle("");
 
         String photoId = getIntent().getStringExtra(KEY_PHOTO_ID);
@@ -65,11 +48,11 @@ public class DetailMoreActivity extends BasePresenterActivity<DetailMoreContract
         Glide.with(this).load(photo.getUrl())
                 .placeholder(0)
                 .fitCenter()
-                .into(imgView);
+                .into(activityDetailMoreBinding.imgView);
 
         setTitle(photo.owner.username);
 
-        tvTitle.setText(photo.title._content);
-        tvContent.setText(photo.description._content);
+        activityDetailMoreBinding.rlSheetView.tvTitle.setText(photo.title._content);
+        activityDetailMoreBinding.rlSheetView.tvContent.setText(photo.description._content);
     }
 }
