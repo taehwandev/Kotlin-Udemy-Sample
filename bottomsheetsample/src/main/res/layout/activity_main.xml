@@ -21,7 +21,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include
+        android:id="@+id/container"
+        layout="@layout/content_main" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rl_bottom_sheet"

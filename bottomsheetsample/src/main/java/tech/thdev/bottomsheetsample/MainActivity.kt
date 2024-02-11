@@ -6,21 +6,23 @@ import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
+import tech.thdev.bottomsheetsample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var activityMainBinding: ActivityMainBinding
+
     // rl_bottom_sheet을 BottomSheetBehavior에 등록한다
     private val bottomSheetBehavior by lazy {
-        BottomSheetBehavior.from(rl_bottom_sheet)
+        BottomSheetBehavior.from(activityMainBinding.rlBottomSheet)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(activityMainBinding.root)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(activityMainBinding.toolbar)
 
         // 높이 설정
         bottomSheetBehavior.peekHeight = TypedValue.applyDimension(
@@ -29,10 +31,10 @@ class MainActivity : AppCompatActivity() {
 
         bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
 
-        btn_show.setOnClickListener {
+        activityMainBinding.container.btnShow.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
-        btn_hide.setOnClickListener {
+        activityMainBinding.container.btnHide.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         }
     }
