@@ -1,10 +1,12 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
 
 android {
-    compileSdkVersion compileSdkVersionInfo
+    namespace "tech.thdev.app"
+    compileSdk compileSdkVersionInfo
     buildToolsVersion buildToolsVersionInfo
 
     defaultConfig {
@@ -32,28 +34,22 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-}
 
-configurations.all {
-    resolutionStrategy {
-        force 'org.hamcrest:hamcrest-junit:2.0.0.0'
+    buildFeatures {
+        viewBinding true
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.2'
     testImplementation "org.mockito:mockito-core:$mockitoCore"
     testImplementation "org.awaitility:awaitility:$awaitilityVersion"
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation "androidx.test:runner:$uiTestVersion"
     androidTestImplementation "androidx.test:rules:$uiTestVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
