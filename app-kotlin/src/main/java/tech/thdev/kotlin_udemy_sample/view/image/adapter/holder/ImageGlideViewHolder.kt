@@ -20,7 +20,6 @@ class ImageGlideViewHolder(
     private val image: ImageView by lazy {
         itemView.findViewById(R.id.image)
     }
-
     init {
         itemView.setOnTouchListener { _, motionEvent ->
             onItemTouchListener?.onItemTouch(motionEvent, adapterPosition) ?: false

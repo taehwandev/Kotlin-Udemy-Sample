@@ -2,10 +2,10 @@ package tech.thdev.kotlin_udemy_sample.util
 
 import android.content.Context
 import android.graphics.Bitmap
-import androidx.renderscript.Allocation
-import androidx.renderscript.Element
-import androidx.renderscript.RenderScript
-import androidx.renderscript.ScriptIntrinsicBlur
+import android.renderscript.Allocation
+import android.renderscript.Element
+import android.renderscript.RenderScript
+import android.renderscript.ScriptIntrinsicBlur
 
 /**
  * Create blur image - half size
@@ -19,7 +19,12 @@ fun Bitmap?.createBlurImage(context: Context, radius: Float = 25.0f): Bitmap? {
 /**
  * Create blur image
  */
-fun Bitmap?.createBlurImage(context: Context, dstWidth: Int, dstHeight: Int, radius: Float = 25.0f): Bitmap? {
+fun Bitmap?.createBlurImage(
+    context: Context,
+    dstWidth: Int,
+    dstHeight: Int,
+    radius: Float = 25.0f
+): Bitmap? {
     return this?.let {
         val temp = getRadius(radius)
 
@@ -27,10 +32,16 @@ fun Bitmap?.createBlurImage(context: Context, dstWidth: Int, dstHeight: Int, rad
 
         val renderScript: RenderScript = RenderScript.create(context)
 
-        val blurInput: Allocation = Allocation.createFromBitmap(renderScript, bitmap, Allocation.MipmapControl.MIPMAP_NONE, Allocation.USAGE_SCRIPT)
+        val blurInput: Allocation = Allocation.createFromBitmap(
+            renderScript,
+            bitmap,
+            Allocation.MipmapControl.MIPMAP_NONE,
+            Allocation.USAGE_SCRIPT
+        )
         val blurOutput: Allocation = Allocation.createTyped(renderScript, blurInput.type)
 
-        val blur: ScriptIntrinsicBlur = ScriptIntrinsicBlur.create(renderScript, Element.U8_4(renderScript))
+        val blur: ScriptIntrinsicBlur =
+            ScriptIntrinsicBlur.create(renderScript, Element.U8_4(renderScript))
 
         // Set the radius of the Blur. Supported range 0 < radius <= 25
         blur.setRadius(temp)
