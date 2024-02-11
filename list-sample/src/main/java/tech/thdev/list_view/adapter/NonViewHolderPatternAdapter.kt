@@ -1,4 +1,4 @@
-package tech.thdev.list.adapter
+package tech.thdev.list_view.adapter
 
 import android.content.Context
 import android.util.Log
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import tech.thdev.list.R
+import tech.thdev.list_sample.R
 
 /**
  * Created by tae-hwan on 10/22/17.

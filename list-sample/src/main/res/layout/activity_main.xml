@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="tech.thdev.list.MainActivity">
+    tools:context="tech.thdev.list_view.MainActivity">
 
     <TextView
         android:id="@+id/tv_non_view_holder_pattern"

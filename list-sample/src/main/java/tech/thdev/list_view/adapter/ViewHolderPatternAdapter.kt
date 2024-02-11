@@ -1,4 +1,4 @@
-package tech.thdev.list.adapter
+package tech.thdev.list_view.adapter
 
 import android.content.Context
 import android.util.Log
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import kotlinx.android.synthetic.main.item_list.view.*
-import tech.thdev.list.R
+import android.widget.TextView
+import tech.thdev.list_sample.R
 
 /**
  * Created by tae-hwan on 10/22/17.
@@ -37,8 +37,12 @@ class ViewHolderPatternAdapter(context: Context, resource: Int, objects: List<St
 
     class ViewHolder(private val itemView: View?) {
 
+        private val tvMessage: TextView? by lazy {
+            itemView?.findViewById(R.id.tv_message)
+        }
+
         fun bindView(item: String?) {
-            itemView?.tv_message?.text = item ?: ""
+            tvMessage?.text = item ?: ""
         }
     }
 }
