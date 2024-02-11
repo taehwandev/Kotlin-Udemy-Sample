@@ -7,18 +7,16 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.jetbrains.annotations.NotNull;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
 import tech.thdev.java_udemy_sample.adapter.ImageSampleAdapter;
 import tech.thdev.java_udemy_sample.data.ImageItem;
 import tech.thdev.java_udemy_sample.data.source.image.ImageSampleRepository;
+import tech.thdev.java_udemy_sample.databinding.FragmentImageSampleBinding;
 import tech.thdev.java_udemy_sample.view.image.presenter.ImageSamplePresenter;
 import tech.thdev.java_udemy_sample.view.image.presenter.ImageSamplePresenterImpl;
 
@@ -28,8 +26,7 @@ import tech.thdev.java_udemy_sample.view.image.presenter.ImageSamplePresenterImp
 
 public class ImageSampleFragment extends Fragment implements ImageSamplePresenter.View {
 
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    private FragmentImageSampleBinding fragmentImageSampleBinding;
 
     // MVPPresenter 추가
     private ImageSamplePresenterImpl presenter;
@@ -44,19 +41,18 @@ public class ImageSampleFragment extends Fragment implements ImageSamplePresente
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_image_sample, container, false);
+        fragmentImageSampleBinding = FragmentImageSampleBinding.inflate(inflater, container, false);
+        return fragmentImageSampleBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ButterKnife.bind(this, view);
-
         presenter = new ImageSamplePresenterImpl(this, ImageSampleRepository.getInstance());
 
         adapter = new ImageSampleAdapter(getContext());
-        recyclerView.setAdapter(adapter);
+        fragmentImageSampleBinding.recyclerView.setAdapter(adapter);
 
         // Activity의 {@link FloatingActionButton}
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);

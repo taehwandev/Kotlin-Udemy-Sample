@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.adapter.ImageSampleAdapter
 import tech.thdev.kotlin_udemy_sample.data.ImageItem
 import tech.thdev.kotlin_udemy_sample.data.model.ImageSampleData
+import tech.thdev.kotlin_udemy_sample.databinding.FragmentImageSampleBinding
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageSampleContract
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageSamplePresenter
 
@@ -19,13 +19,11 @@ import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageSamplePresenter
  */
 class ImageSampleFragment : Fragment(), ImageSampleContract.View {
 
-    private val recyclerView by lazy {
-        view?.findViewById<RecyclerView>(R.id.recycler_view)
-    }
-
     private val fab by lazy {
         requireActivity().findViewById<FloatingActionButton>(R.id.fab)
     }
+
+    private lateinit var fragmentImageSampleBinding: FragmentImageSampleBinding
 
     // Java 식의 static instance
     companion object {
@@ -40,8 +38,10 @@ class ImageSampleFragment : Fragment(), ImageSampleContract.View {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_image_sample, container, false)
+    ): View =
+        FragmentImageSampleBinding.inflate(layoutInflater, container, false).also {
+            fragmentImageSampleBinding = it
+        }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,7 +55,7 @@ class ImageSampleFragment : Fragment(), ImageSampleContract.View {
         image?.imageSampleData = ImageSampleData()
 
         imageSampleAdapter = ImageSampleAdapter(requireContext())
-        recyclerView?.adapter = imageSampleAdapter
+        fragmentImageSampleBinding.recyclerView.adapter = imageSampleAdapter
 
         fab.setOnClickListener {
             image?.updateImageSample(requireContext())

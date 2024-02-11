@@ -3,11 +3,9 @@ package tech.thdev.java_udemy_sample.view.image;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
+import tech.thdev.java_udemy_sample.databinding.ActivityImageSampleBinding;
 import tech.thdev.java_udemy_sample.util.ActivityUtil;
 
 /**
@@ -16,19 +14,16 @@ import tech.thdev.java_udemy_sample.util.ActivityUtil;
 
 public class ImageSampleActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    private ActivityImageSampleBinding activityImageSampleBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_sample);
+        activityImageSampleBinding = ActivityImageSampleBinding.inflate(getLayoutInflater());
+        setContentView(activityImageSampleBinding.getRoot());
 
-        // ButterKnife 사용
-        ButterKnife.bind(this);
-
-        toolbar.setTitle(R.string.app_name);
-        setSupportActionBar(toolbar);
+        activityImageSampleBinding.toolbar.setTitle(R.string.app_name);
+        setSupportActionBar(activityImageSampleBinding.toolbar);
 
         ActivityUtil.replaceFragmentToActivity(getSupportFragmentManager(), ImageSampleFragment.getInstance(), R.id.frame_layout);
     }
