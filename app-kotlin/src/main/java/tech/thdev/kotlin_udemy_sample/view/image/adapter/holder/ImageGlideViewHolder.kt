@@ -1,9 +1,8 @@
 package tech.thdev.kotlin_udemy_sample.view.image.adapter.holder
 
-import android.content.Context
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_image_view.view.*
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.base.adapter.BaseViewHolder
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
@@ -18,6 +17,10 @@ class ImageGlideViewHolder(
     private val onItemTouchListener: OnItemTouchListener?
 ) : BaseViewHolder<RecentPhotoItem>(R.layout.item_image_view, parent) {
 
+    private val image: ImageView by lazy {
+        itemView.findViewById(R.id.image)
+    }
+
     init {
         itemView.setOnTouchListener { _, motionEvent ->
             onItemTouchListener?.onItemTouch(motionEvent, adapterPosition) ?: false
@@ -29,6 +32,6 @@ class ImageGlideViewHolder(
             .load(item?.getImageUrl())
             .centerCrop()
             .placeholder(R.drawable.loading)
-            .into(itemView.image)
+            .into(image)
     }
 }

@@ -1,7 +1,7 @@
 package tech.thdev.kotlin_udemy_sample.view.image.adapter.holder
 
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.item_image_view.view.*
+import android.widget.ImageView
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.base.adapter.BaseViewHolder
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
@@ -17,6 +17,10 @@ class ImageThreadViewHolder(
     private val onItemTouchListener: OnItemTouchListener?
 ) : BaseViewHolder<RecentPhotoItem>(R.layout.item_image_thread_view, parent) {
 
+    private val image: ImageView by lazy {
+        itemView.findViewById(R.id.image)
+    }
+
     init {
         itemView.setOnTouchListener { _, motionEvent ->
             onItemTouchListener?.onItemTouch(motionEvent, adapterPosition) ?: false
@@ -24,6 +28,6 @@ class ImageThreadViewHolder(
     }
 
     override fun bindView(item: RecentPhotoItem?) {
-        ImageDownloadThread.loadImage(R.drawable.loading, itemView.image, item?.getImageUrl())
+        ImageDownloadThread.loadImage(R.drawable.loading, image, item?.getImageUrl())
     }
 }

@@ -9,7 +9,6 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.fragment_image_sample.*
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.RecentPhotoItem
@@ -18,6 +17,7 @@ import tech.thdev.kotlin_udemy_sample.util.createBlurImage
 import tech.thdev.kotlin_udemy_sample.util.createDetailIntent
 import tech.thdev.kotlin_udemy_sample.view.blur_view.BlurView
 import tech.thdev.kotlin_udemy_sample.view.detail_photo_id.DetailPhotoIdActivity
+import tech.thdev.kotlin_udemy_sample.databinding.FragmentImageSampleBinding
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageContract
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImagePresenter
@@ -63,6 +63,8 @@ class ImageFragment : Fragment(), ImageContract.View {
      */
     private var mViewType = ImageAdapter.VIEW_TYPE_GLIDE
 
+    private lateinit var fragmentImageSampleBinding: FragmentImageSampleBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -72,8 +74,10 @@ class ImageFragment : Fragment(), ImageContract.View {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_image_sample, container, false)
+    ): View =
+        FragmentImageSampleBinding.inflate(inflater, container, false).also {
+            fragmentImageSampleBinding = it
+        }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -91,7 +95,7 @@ class ImageFragment : Fragment(), ImageContract.View {
         presenter?.adapterView = imageAdapter
         presenter?.adapterModel = imageAdapter
 
-        recycler_image.adapter = imageAdapter
+        fragmentImageSampleBinding.recyclerImage.adapter = imageAdapter
 
         fab.setOnClickListener {
             isLoading = true

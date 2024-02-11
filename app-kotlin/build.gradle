@@ -1,10 +1,12 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
 
 android {
-    compileSdkVersion compileSdkVersionInfo
+    namespace "tech.thdev.kotlin_udemy_sample"
+    compileSdk compileSdkVersionInfo
     buildToolsVersion buildToolsVersionInfo
 
     defaultConfig {
@@ -32,10 +34,6 @@ android {
         }
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -43,6 +41,11 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig = true
     }
 }
 
@@ -53,10 +56,7 @@ configurations.all {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(path: ':base')
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
@@ -77,14 +77,14 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     kapt "com.github.bumptech.glide:compiler:$glideVersion"
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test:rules:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.1'
     androidTestImplementation "org.awaitility:awaitility:$awaitilityVersion"
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.2'
     testImplementation "org.mockito:mockito-core:$mockitoCore"
     testImplementation "org.awaitility:awaitility:$awaitilityVersion"
 }
