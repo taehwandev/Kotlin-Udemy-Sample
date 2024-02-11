@@ -6,9 +6,9 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.fragment_image_sample.*
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
+import tech.thdev.kotlin_udemy_sample.databinding.FragmentImageSampleBinding
 import tech.thdev.kotlin_udemy_sample.view.image.adapter.ImageAdapter
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImageContract
 import tech.thdev.kotlin_udemy_sample.view.image.presenter.ImagePresenter
@@ -36,6 +36,8 @@ class ImageSampleFragment : Fragment(), ImageContract.View {
      */
     private var mViewType = ImageAdapter.VIEW_TYPE_GLIDE
 
+    private lateinit var fragmentImageSampleBinding: FragmentImageSampleBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -45,8 +47,10 @@ class ImageSampleFragment : Fragment(), ImageContract.View {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_image_sample, container, false)
+    ): View =
+        FragmentImageSampleBinding.inflate(inflater, container, false).also {
+            fragmentImageSampleBinding = it
+        }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,7 +68,7 @@ class ImageSampleFragment : Fragment(), ImageContract.View {
         presenter?.adapterModel = imageAdapter
         presenter?.adapterView = imageAdapter
 
-        recycler_image.adapter = imageAdapter
+        fragmentImageSampleBinding.recyclerImage.adapter = imageAdapter
 
         fab.setOnClickListener {
             presenter?.getRecentImageSample(mViewType)
@@ -84,14 +88,17 @@ class ImageSampleFragment : Fragment(), ImageContract.View {
                 changeViewType(ImageAdapter.VIEW_TYPE_ASYNC, item)
                 return true
             }
+
             R.id.action_thread -> {
                 changeViewType(ImageAdapter.VIEW_TYPE_THREAD, item)
                 return true
             }
+
             R.id.action_glide -> {
                 changeViewType(ImageAdapter.VIEW_TYPE_GLIDE, item)
                 return true
             }
+
             else -> {
                 return super.onOptionsItemSelected(item)
             }

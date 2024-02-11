@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
 import tech.thdev.java_udemy_sample.data.PhotoItem;
 
@@ -21,11 +19,9 @@ import tech.thdev.java_udemy_sample.data.PhotoItem;
 
 public class PhotoViewViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.image)
-    ImageView imageView;
+    private ImageView imageView;
 
-    @BindView(R.id.tv_title)
-    TextView tvTitle;
+    private TextView tvTitle;
 
     private Context context;
 
@@ -34,7 +30,8 @@ public class PhotoViewViewHolder extends RecyclerView.ViewHolder {
 
         this.context = context;
 
-        ButterKnife.bind(this, itemView);
+        imageView = itemView.findViewById(R.id.image);
+        tvTitle = itemView.findViewById(R.id.tv_title);
     }
 
     public void onBindView(PhotoItem photoItem, int position) {
