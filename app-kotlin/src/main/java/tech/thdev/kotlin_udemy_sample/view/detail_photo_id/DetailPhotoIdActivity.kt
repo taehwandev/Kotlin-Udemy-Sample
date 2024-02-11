@@ -2,38 +2,34 @@ package tech.thdev.kotlin_udemy_sample.view.detail_photo_id
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.base.ui.BasePresenterActivity
-import kotlinx.android.synthetic.main.activity_detail_photo_id.*
-import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.constant.Constant
 import tech.thdev.kotlin_udemy_sample.data.FlickrPhoto
 import tech.thdev.kotlin_udemy_sample.data.model.PhotoDataSource
+import tech.thdev.kotlin_udemy_sample.databinding.ActivityDetailPhotoIdBinding
 import tech.thdev.kotlin_udemy_sample.view.detail_photo_id.presenter.DetailPhotoIdContract
 import tech.thdev.kotlin_udemy_sample.view.detail_photo_id.presenter.DetailPhotoIdPresenter
 
 class DetailPhotoIdActivity : BasePresenterActivity<DetailPhotoIdContract.View, DetailPhotoIdContract.Presenter>(), DetailPhotoIdContract.View {
 
-    private val imgView by lazy {
-        findViewById<ImageView>(R.id.img_view)
-    }
+    private lateinit var activityDetailPhotoIdBinding: ActivityDetailPhotoIdBinding
 
     override fun onCreatePresenter() = DetailPhotoIdPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_photo_id)
+        activityDetailPhotoIdBinding = ActivityDetailPhotoIdBinding.inflate(layoutInflater)
+        setContentView(activityDetailPhotoIdBinding.root)
 
-        presenter?.photoDataSource = PhotoDataSource
+        presenter.photoDataSource = PhotoDataSource
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(activityDetailPhotoIdBinding.toolbar)
         title = ""
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // TODO getString extra 정의
-        val photoId = intent.getStringExtra(Constant.KEY_PHOTO_DATA)
+        val photoId = intent.getStringExtra(Constant.KEY_PHOTO_DATA) ?: ""
         presenter?.loadPhotoInfo(photoId)
     }
 
@@ -41,7 +37,7 @@ class DetailPhotoIdActivity : BasePresenterActivity<DetailPhotoIdContract.View, 
         Glide.with(this)
                 .load(photo.getImageUrl())
                 .fitCenter()
-                .into(imgView)
+                .into(activityDetailPhotoIdBinding.imgView)
 
         title = photo.title.toString()
     }

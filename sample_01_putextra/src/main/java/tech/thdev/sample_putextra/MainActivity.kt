@@ -3,20 +3,21 @@ package tech.thdev.sample_putextra
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import tech.thdev.sample_putextra.constant.Constant
-import tech.thdev.sample_putextra.data.SampleData
+import tech.thdev.sample_putextra.databinding.ActivityMainBinding
 import tech.thdev.sample_putextra.view.extra.ExtraActivity
-import tech.thdev.sample_putextra.view.parcelable.ParcelableActivity
 
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var activityMainBiding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        activityMainBiding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(activityMainBiding.root)
 
-        btn_extra.setOnClickListener {
+        activityMainBiding.btnExtra.setOnClickListener {
             val intent = Intent(this, ExtraActivity::class.java)
             intent.putExtra(Constant.KEY_TITLE, "서울숲")
             intent.putExtra(Constant.KEY_MESSAGE, "서울숲 앞")
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // TODO SampleData에 대해서 Parcelable 작성
-//        btn_parcelable.setOnClickListener {
+//        activityMainBiding.btnParcelable.setOnClickListener {
 //            val data = SampleData("Arc de Triomphe",
 //                    "The Arc de Triomphe de l'Étoile (French pronunciation: [aʁk də tʁijɔ̃f də letwal] ( listen), " +
 //                            "Triumphal Arch of the Star) is one of the most famous monuments in Paris. It stands in " +
