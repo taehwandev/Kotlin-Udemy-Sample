@@ -59,7 +59,7 @@ class MainFragment : Fragment() {
             oneNumber = one.toString().toInt()
         }
         var twoNumber = 0
-        if (two != null && two.length > 0) {
+        if (two.isNullOrEmpty().not()) {
             twoNumber = two.toString().toInt()
         }
 
@@ -83,7 +83,7 @@ class MainFragment : Fragment() {
          * 5, 6강에서 배우는 안전한 널처리 부분을 참고하시면 되겠습니다
          */
         val two = when {
-            etNumberTwo?.text?.isNullOrEmpty() as Boolean -> 0
+            etNumberTwo?.text?.isEmpty() as Boolean -> 0
             else -> etNumberTwo?.text?.toString()?.toInt()
         } ?: 0
 

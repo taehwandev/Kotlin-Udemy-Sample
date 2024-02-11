@@ -15,8 +15,11 @@ public class ActivityUtil {
      * The {@code fragment} is replace to the container view with id {@code frameId}. The operation is
      * performed by the {@code fragmentManager}.
      **/
-    public static void replaceFragmentToActivity(@NonNull FragmentManager fragmentManager,
-                                                 @NonNull Fragment fragment, int frameId) {
+    public static void replaceFragmentToActivity(
+            @NonNull FragmentManager fragmentManager,
+            @NonNull Fragment fragment,
+            int frameId
+    ) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(frameId, fragment);
         transaction.commit();

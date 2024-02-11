@@ -5,18 +5,16 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import org.jetbrains.annotations.NotNull;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import tech.thdev.java_udemy_sample.R;
+import java.util.Locale;
+
+import tech.thdev.java_udemy_sample.databinding.FragmentMainBinding;
 
 /**
  * Created by tae-hwan on 10/5/16.
@@ -24,11 +22,7 @@ import tech.thdev.java_udemy_sample.R;
 
 public class MainFragment extends Fragment {
 
-    @BindView(R.id.number_one)
-    EditText etNumberOne;
-
-    @BindView(R.id.number_two)
-    EditText etNumberTwo;
+    private FragmentMainBinding fragmentMainBinding;
 
     // static instance 생성
     public static MainFragment getInstance() {
@@ -37,23 +31,19 @@ public class MainFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        fragmentMainBinding = FragmentMainBinding.inflate(inflater, container, false);
+        return fragmentMainBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ButterKnife.bind(this, view);
-
-        final TextView textView = (TextView) view.findViewById(R.id.text);
-
-        Button button = (Button) view.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        fragmentMainBinding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView.setText(getSum() + "");
+                fragmentMainBinding.text.setText(String.format(Locale.getDefault(), "%d", getSum()));
             }
         });
     }
@@ -64,8 +54,8 @@ public class MainFragment extends Fragment {
      * 오류가 있습니다. 디버깅하여 수정하세요.
      */
     private int getSum() {
-        int oneNumber = Integer.parseInt(etNumberOne.getText().toString());
-        String two = etNumberTwo.getText().toString();
+        int oneNumber = Integer.parseInt(fragmentMainBinding.numberOne.getText().toString());
+        String two = fragmentMainBinding.numberTwo.getText().toString();
         if (!TextUtils.isEmpty(two)) {
             int twoNumber = Integer.parseInt(two);
 
