@@ -39,7 +39,7 @@ class SampleAdapter(private val context: Context) : RecyclerView.Adapter<SampleA
             RecyclerView.ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_sample, parent, false)) {
 
         private val textView by lazy {
-            itemView?.findViewById(R.id.text) as TextView
+            itemView.findViewById(R.id.text) as TextView
         }
 
 //        init {

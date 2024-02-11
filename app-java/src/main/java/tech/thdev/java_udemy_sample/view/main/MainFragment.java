@@ -7,15 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.jetbrains.annotations.NotNull;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
+import tech.thdev.java_udemy_sample.databinding.FragmentMainBinding;
 
 /**
  * Created by tae-hwan on 10/5/16.
@@ -23,10 +21,9 @@ import tech.thdev.java_udemy_sample.R;
 
 public class MainFragment extends Fragment {
 
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
-
     private SampleAdapter sampleAdapter;
+
+    private FragmentMainBinding fragmentMainBinding;
 
     // static instance 생성
     public static MainFragment getInstance() {
@@ -36,17 +33,16 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        fragmentMainBinding = FragmentMainBinding.inflate(inflater, container, false);
+        return fragmentMainBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ButterKnife.bind(this, view);
-
         sampleAdapter = new SampleAdapter(getContext());
-        recyclerView.setAdapter(sampleAdapter);
+        fragmentMainBinding.recyclerView.setAdapter(sampleAdapter);
 
         addItems(0);
         sampleAdapter.notifyDataSetChanged();
