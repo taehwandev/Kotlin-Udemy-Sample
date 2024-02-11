@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace "tech.thdev.list_sample"
+    namespace "tech.thdev.imageloadsample"
     compileSdk compileSdkVersionInfo
     buildToolsVersion buildToolsVersionInfo
 
