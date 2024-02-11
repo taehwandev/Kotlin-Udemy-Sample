@@ -1,60 +1,36 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-buildscript {
-    ext {
-        // Build SDK version
-        compileSdkVersionInfo = 29
-        buildToolsVersionInfo = "29.0.3"
-        minSdkVerisonInfo = 23
-        targetSdkVersionInfo = 29
-
-        kotlin_version = "1.3.72"
-
-        appcompatVersion = '1.1.0'
-        materialVersion = '1.1.0'
-        constraintLayoutVersion = '1.1.3'
-
-        // Retrofit
-        retrofitVersion = '2.8.1'
-
-        // okhttp
-        okhttpVersion = '4.6.0'
-
-        // glide
-        glideVersion = '4.11.0'
-
-        // test
-        mockitoCore = '1.10.19'
-        awaitilityVersion = '4.0.2'
-
-        // ui test
-        uiTestVersion = '1.2.0'
-        espressoVersion = '3.2.0'
-        uiautomatorVersion = '2.2.0'
-    }
-
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+plugins {
+    id 'com.android.application' version '8.2.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.9.22' apply false
 }
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
-}
+ext {
+    // Build SDK version
+    compileSdkVersionInfo = 34
+    buildToolsVersionInfo = "34.0.0"
+    minSdkVerisonInfo = 28
+    targetSdkVersionInfo = 34
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    appcompatVersion = '1.6.1'
+    materialVersion = '1.11.0'
+    constraintLayoutVersion = '2.1.4'
+
+    // Retrofit
+    retrofitVersion = '2.9.0'
+    // okhttp
+    okhttpVersion = '4.12.0'
+
+    // glide
+    glideVersion = '4.16.0'
+
+    // test
+    mockitoCore = '5.8.0'
+    awaitilityVersion = '4.0.2'
+
+    // ui test
+    uiTestVersion = '1.5.0'
+    espressoVersion = '3.5.1'
+    uiautomatorVersion = '2.2.0'
 }
 
 // FlickrAPI key는 local.properties에 "flickrApiKey="생성한 키""를 등록하면 됩니다
