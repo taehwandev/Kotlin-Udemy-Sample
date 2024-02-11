@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_etc.*
-import tech.thdev.app.R
+import tech.thdev.app.databinding.FragmentEtcBinding
 
 /**
  * Created by record-tae on 10/21/17.
@@ -17,15 +16,19 @@ class CameraFragment : Fragment() {
         const val KEY_TITLE = "key-title"
     }
 
+    private lateinit var fragmentEtcBinding: FragmentEtcBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_etc, container, false)
+    ): View =
+        FragmentEtcBinding.inflate(inflater, container, false).also {
+            fragmentEtcBinding = it
+        }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        message.setText(arguments?.getInt(KEY_TITLE) ?: 0)
+        fragmentEtcBinding.message.setText(arguments?.getInt(KEY_TITLE) ?: 0)
     }
 }
