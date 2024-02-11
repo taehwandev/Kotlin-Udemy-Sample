@@ -5,17 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.jetbrains.annotations.NotNull;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
+import tech.thdev.java_udemy_sample.databinding.FragmentMainBinding;
 import tech.thdev.java_udemy_sample.view.mvp.presenter.MVPPresenter;
 import tech.thdev.java_udemy_sample.view.mvp.presenter.MVPPresenterImpl;
 
@@ -25,11 +24,10 @@ import tech.thdev.java_udemy_sample.view.mvp.presenter.MVPPresenterImpl;
 
 public class MVPFragment extends Fragment implements MVPPresenter.View {
 
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
-
     // MVPPresenter 추가
     private MVPPresenter mvpPresenter;
+
+    private FragmentMainBinding fragmentMainBinding;
 
     private MVPAdapter mvpAdapter;
 
@@ -40,20 +38,19 @@ public class MVPFragment extends Fragment implements MVPPresenter.View {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        fragmentMainBinding = FragmentMainBinding.inflate(inflater, container, false);
+        return fragmentMainBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ButterKnife.bind(this, view);
-
         mvpPresenter = new MVPPresenterImpl(this);
 
         mvpAdapter = new MVPAdapter(getContext());
-        recyclerView.setAdapter(mvpAdapter);
+        fragmentMainBinding.recyclerView.setAdapter(mvpAdapter);
 
         mvpPresenter.getItems(0);
 
