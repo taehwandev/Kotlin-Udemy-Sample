@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_home.*
 import tech.thdev.app.R
 import tech.thdev.app.data.source.flickr.FlickrRepository
 import tech.thdev.app.data.source.image.ImageRepository
+import tech.thdev.app.databinding.FragmentHomeBinding
 import tech.thdev.app.view.main.home.adapter.ImageRecyclerAdapter
 import tech.thdev.app.view.main.home.presenter.HomeContract
 import tech.thdev.app.view.main.home.presenter.HomePresenter
@@ -32,8 +32,16 @@ class HomeFragment : Fragment(), HomeContract.View {
         ImageRecyclerAdapter()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.fragment_home, container, false)
+    private lateinit var fragmentHomeBinding: FragmentHomeBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View =
+        FragmentHomeBinding.inflate(inflater, container, false).also {
+            fragmentHomeBinding = it
+        }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,7 +49,7 @@ class HomeFragment : Fragment(), HomeContract.View {
         homePresenter.loadImage()
         homePresenter.loadFlickrImage()
 
-        recycler_view.run {
+        fragmentHomeBinding.recyclerView.run {
             adapter = imageRecyclerAdapter
             layoutManager = GridLayoutManager(this@HomeFragment.context, 3)
             addOnScrollListener(recyclerViewOnScrollListener)
@@ -50,15 +58,15 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        recycler_view?.removeOnScrollListener(recyclerViewOnScrollListener)
+        fragmentHomeBinding.recyclerView.removeOnScrollListener(recyclerViewOnScrollListener)
     }
 
     override fun hideProgress() {
-        progressBar.visibility = View.GONE
+        fragmentHomeBinding.progressBar.visibility = View.GONE
     }
 
     override fun showProgress() {
-        progressBar.visibility = View.VISIBLE
+        fragmentHomeBinding.progressBar.visibility = View.VISIBLE
     }
 
     private val recyclerViewOnScrollListener = object : RecyclerView.OnScrollListener() {
