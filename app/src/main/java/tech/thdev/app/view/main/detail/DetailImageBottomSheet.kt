@@ -2,7 +2,6 @@ package tech.thdev.app.view.main.detail
 
 import android.app.Dialog
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
@@ -11,6 +10,7 @@ import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import tech.thdev.app.R
 import tech.thdev.app.data.source.flickr.FlickrRepository
 import tech.thdev.app.databinding.LayoutPhotoDetailBinding
 import tech.thdev.app.view.main.detail.presenter.DetailImageContract

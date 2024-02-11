@@ -50,7 +50,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-    implementation 'androidx.browser:browser:1.2.0'
+    implementation 'androidx.browser:browser:1.7.0'
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation "org.mockito:mockito-core:$mockitoCore"
