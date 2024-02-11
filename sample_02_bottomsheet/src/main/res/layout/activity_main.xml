@@ -21,7 +21,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include
+        android:id="@+id/content"
+        layout="@layout/content_main" />
 
     <RelativeLayout
         android:id="@+id/rl_bottom_sheet"
@@ -55,8 +57,8 @@
                 android:id="@+id/tv_message"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
                 android:text="There are two major types of bottom sheets:
 
 Modal bottom sheets are alternatives to menus or simple dialogs. They can also present deep-linked content from other apps. They are primarily for mobile.
@@ -69,8 +71,8 @@ On larger screens, where space is less constrained, using alternative surfaces a
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
-                android:layout_marginLeft="5dp"
                 android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@id/tv_message"
                 android:src="@drawable/components_bottomsheets_usage1" />
         </RelativeLayout>

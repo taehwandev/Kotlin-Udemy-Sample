@@ -52,7 +52,7 @@ data class RecentPhotoItem(
 
     override fun describeContents() = 0
 
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
+    override fun writeToParcel(dest: Parcel, flags: Int) {
         dest?.writeString(id)
         dest?.writeString(owner)
         dest?.writeString(secret)

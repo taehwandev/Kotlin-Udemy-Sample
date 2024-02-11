@@ -2,25 +2,27 @@ package tech.thdev.sample_putextra.view.extra
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_sample.*
-import tech.thdev.sample_putextra.R
 import tech.thdev.sample_putextra.constant.Constant
+import tech.thdev.sample_putextra.databinding.ActivitySampleBinding
 
 /**
  * Created by tae-hwan on 11/18/16.
  */
 class ExtraActivity : AppCompatActivity() {
 
+    private lateinit var activitySampleBinding: ActivitySampleBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sample)
+        activitySampleBinding = ActivitySampleBinding.inflate(layoutInflater)
+        setContentView(activitySampleBinding.root)
 
         intent.getStringExtra(Constant.KEY_TITLE)?.let {
-            tv_title.text = it
+            activitySampleBinding.tvTitle.text = it
         }
         intent.getStringExtra(Constant.KEY_MESSAGE)?.let {
-            tv_message.text = it
+            activitySampleBinding.tvMessage.text = it
         }
-        img_view.setImageResource(intent.getIntExtra(Constant.KEY_PHOTO, 0))
+        activitySampleBinding.imgView.setImageResource(intent.getIntExtra(Constant.KEY_PHOTO, 0))
     }
 }

@@ -8,19 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.jetbrains.annotations.NotNull;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
 import tech.thdev.java_udemy_sample.data.PhotoItem;
 import tech.thdev.java_udemy_sample.data.source.image.ImageRepository;
+import tech.thdev.java_udemy_sample.databinding.FragmentImageSampleBinding;
 import tech.thdev.java_udemy_sample.view.detail.DetailMoreActivity;
 import tech.thdev.java_udemy_sample.view.image.adapter.PhotoViewAdapter;
 import tech.thdev.java_udemy_sample.view.image.presenter.PhotoViewPresenter;
@@ -32,8 +29,7 @@ import tech.thdev.java_udemy_sample.view.image.presenter.PhotoViewPresenterImpl;
 
 public class PhotoViewFragment extends Fragment implements PhotoViewPresenter.View {
 
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    private FragmentImageSampleBinding fragmentImageSampleBinding;
 
     // MVPPresenter 추가
     private PhotoViewPresenterImpl presenter;
@@ -47,25 +43,23 @@ public class PhotoViewFragment extends Fragment implements PhotoViewPresenter.Vi
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_image_sample, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        fragmentImageSampleBinding = FragmentImageSampleBinding.inflate(inflater, container, false);
+        return fragmentImageSampleBinding.getRoot();
     }
 
     @Override
-    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ButterKnife.bind(this, view);
-
         adapter = new PhotoViewAdapter(getContext());
-        recyclerView.setAdapter(adapter);
+        fragmentImageSampleBinding.recyclerView.setAdapter(adapter);
 
         presenter = new PhotoViewPresenterImpl(this, ImageRepository.getInstance());
 
         // Adapter의 View/Model을 셋팅한다
         presenter.setAdapterModel(adapter);
         presenter.setAdapterView(adapter);
-
 
         // Activity의 {@link FloatingActionButton}
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
