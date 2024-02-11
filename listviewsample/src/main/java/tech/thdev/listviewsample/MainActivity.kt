@@ -2,24 +2,26 @@ package tech.thdev.listviewsample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import tech.thdev.listviewsample.adapter.SimpleAdapter
 import tech.thdev.listviewsample.adapter.ViewHolderAdapter
-import java.util.*
+import tech.thdev.listviewsample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private val itemList = ArrayList<String>()
 
+    private lateinit var activityMainBinding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(activityMainBinding.root)
 
         for (index in 0..100) {
             itemList.add("Index : $index")
         }
 
-        list_simple.adapter = SimpleAdapter(this, 0, itemList)
-        list_view_holder.adapter = ViewHolderAdapter(this, 0, itemList)
+        activityMainBinding.listSimple.adapter = SimpleAdapter(this, 0, itemList)
+        activityMainBinding.listViewHolder.adapter = ViewHolderAdapter(this, 0, itemList)
     }
 }

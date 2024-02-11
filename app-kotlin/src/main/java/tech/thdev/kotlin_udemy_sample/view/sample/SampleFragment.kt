@@ -1,14 +1,18 @@
 package tech.thdev.kotlin_udemy_sample.view.sample
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_image_sample.*
 import tech.thdev.kotlin_udemy_sample.R
 import tech.thdev.kotlin_udemy_sample.adapter.sample_one.SampleOneAdapter
 import tech.thdev.kotlin_udemy_sample.adapter.sample_two.SampleTwoAdapter
+import tech.thdev.kotlin_udemy_sample.databinding.FragmentImageSampleBinding
 import tech.thdev.kotlin_udemy_sample.listener.OnItemClickListener
 import tech.thdev.kotlin_udemy_sample.view.sample.presenter.SampleContract
 import tech.thdev.kotlin_udemy_sample.view.sample.presenter.SamplePresenter
@@ -17,10 +21,6 @@ import tech.thdev.kotlin_udemy_sample.view.sample.presenter.SamplePresenter
  * Created by tae-hwan on 10/3/16.
  */
 class SampleFragment : Fragment(), SampleContract.View {
-
-    private val recyclerViewOne by lazy {
-        view?.findViewById<RecyclerView>(R.id.recycler_view_one)
-    }
 
     // Java 식의 static instance
     companion object {
@@ -32,6 +32,8 @@ class SampleFragment : Fragment(), SampleContract.View {
 
     private var presenter: SampleContract.Presenter? = null
 
+    private lateinit var fragmentImageSample: FragmentImageSampleBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,8 +44,10 @@ class SampleFragment : Fragment(), SampleContract.View {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_image_sample, container, false)
+    ): View =
+        FragmentImageSampleBinding.inflate(inflater, container, false).also {
+            fragmentImageSample = it
+        }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,16 +77,16 @@ class SampleFragment : Fragment(), SampleContract.View {
         presenter?.sampleOneModel = sampleOneAdapter
         presenter?.sampleTwoModel = sampleTwoAdapter
 
-        recyclerViewOne?.adapter = sampleOneAdapter
-        recycler_view_two.adapter = sampleTwoAdapter
+        fragmentImageSample.recyclerViewOne.adapter = sampleOneAdapter
+        fragmentImageSample.recyclerViewTwo.adapter = sampleTwoAdapter
 
         presenter?.loadDefaultItems()
 
-        btn_add.setOnClickListener {
+        fragmentImageSample.btnAdd.setOnClickListener {
             presenter?.adapterOneAddItem()
         }
 
-        btn_delete.setOnClickListener {
+        fragmentImageSample.btnDelete.setOnClickListener {
             presenter?.adapterTwoRemoveItem()
         }
     }
@@ -93,7 +97,7 @@ class SampleFragment : Fragment(), SampleContract.View {
 
     override fun onSuccessAddItem(position: Int) {
         Toast.makeText(context, "아이템 추가 완료", Toast.LENGTH_SHORT).show()
-        recycler_view_one.scrollToPosition(position)
+        fragmentImageSample.recyclerViewOne.scrollToPosition(position)
     }
 
     override fun adapterTwoNotify() {
@@ -115,6 +119,6 @@ class SampleFragment : Fragment(), SampleContract.View {
     }
 
     override fun onSuccessImageSample(position: Int) {
-        recycler_view_one.scrollToPosition(position)
+        fragmentImageSample.recyclerViewOne.scrollToPosition(position)
     }
 }

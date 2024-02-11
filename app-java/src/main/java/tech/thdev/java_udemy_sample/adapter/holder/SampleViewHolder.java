@@ -8,8 +8,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import tech.thdev.java_udemy_sample.R;
 import tech.thdev.java_udemy_sample.data.SampleItem;
 
@@ -19,16 +17,15 @@ import tech.thdev.java_udemy_sample.data.SampleItem;
 
 public class SampleViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.image)
-    ImageView imageView;
+    private ImageView imageView;
 
-    @BindView(R.id.tv_title)
-    TextView tvTitle;
+    private TextView tvTitle;
 
     public SampleViewHolder(Context context, ViewGroup parent) {
         super(LayoutInflater.from(context).inflate(R.layout.item_text_view, parent, false));
 
-        ButterKnife.bind(this, itemView);
+        imageView = itemView.findViewById(R.id.image);
+        tvTitle = itemView.findViewById(R.id.tv_title);
     }
 
     public void onBindView(SampleItem imageItem, int position) {

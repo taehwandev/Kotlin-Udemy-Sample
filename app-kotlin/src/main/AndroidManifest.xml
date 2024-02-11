@@ -10,7 +10,7 @@
         android:theme="@style/Theme.MyApplication">
         <activity
             android:name=".view.sample.SampleActivity"
-            android:label="@string/app_name"
+            android:exported="true"
             android:theme="@style/Theme.MyApplication.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.basic.BasicActivity">
+        <activity
+            android:name=".view.basic.BasicActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
