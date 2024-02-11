@@ -2,7 +2,6 @@ package tech.thdev.app.view.main.detail
 
 import android.app.Dialog
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
@@ -11,9 +10,9 @@ import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.layout_photo_detail.*
 import tech.thdev.app.R
 import tech.thdev.app.data.source.flickr.FlickrRepository
+import tech.thdev.app.databinding.LayoutPhotoDetailBinding
 import tech.thdev.app.view.main.detail.presenter.DetailImageContract
 import tech.thdev.app.view.main.detail.presenter.DetailImagePresenter
 
@@ -36,6 +35,8 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
     private val detailImagePresenter: DetailImagePresenter by lazy {
         DetailImagePresenter(this@DetailImageBottomSheet, FlickrRepository)
     }
+
+    private lateinit var layoutPhotoDetailBinding: LayoutPhotoDetailBinding
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
@@ -60,6 +61,7 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
                 BottomSheetBehavior.STATE_COLLAPSED -> {
                     if (!isRemoving) dismiss()
                 }
+
                 else -> {
 
                 }
@@ -68,15 +70,16 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
     }
 
     private fun updateToolbarVisibility() {
-        when (app_bar.visibility) {
+        when (layoutPhotoDetailBinding.appBar.visibility) {
             View.VISIBLE -> {
-                app_bar.visibility = View.INVISIBLE
-                view_content_container.visibility = View.INVISIBLE
+                layoutPhotoDetailBinding.appBar.visibility = View.INVISIBLE
+                layoutPhotoDetailBinding.viewContentContainer.visibility = View.INVISIBLE
                 view?.systemUiVisibility = View.SYSTEM_UI_FLAG_LOW_PROFILE
             }
+
             else -> {
-                app_bar.visibility = View.VISIBLE
-                view_content_container.visibility = View.VISIBLE
+                layoutPhotoDetailBinding.appBar.visibility = View.VISIBLE
+                layoutPhotoDetailBinding.viewContentContainer.visibility = View.VISIBLE
                 view?.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
             }
         }
@@ -86,21 +89,23 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.layout_photo_detail, container, false)
+    ): View =
+        LayoutPhotoDetailBinding.inflate(inflater, container, false).also {
+            layoutPhotoDetailBinding = it
+        }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        img.setOnClickListener {
+        layoutPhotoDetailBinding.img.setOnClickListener {
             updateToolbarVisibility()
         }
 
-        img_close_btn.setOnClickListener {
+        layoutPhotoDetailBinding.imgCloseBtn.setOnClickListener {
             dismiss()
         }
 
-        img_web.setOnClickListener {
+        layoutPhotoDetailBinding.imgWeb.setOnClickListener {
             detailImagePresenter.loadFlickrWebPage()
         }
 
@@ -108,8 +113,8 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
     }
 
     override fun updateToolbarItem(buddyIcon: String, buddyName: String) {
-        img_owner_image.loadImage(buddyIcon)
-        tv_owner_name.text = buddyName
+        layoutPhotoDetailBinding.imgOwnerImage.loadImage(buddyIcon)
+        layoutPhotoDetailBinding.tvOwnerName.text = buddyName
     }
 
     override fun updateItem(
@@ -120,17 +125,14 @@ class DetailImageBottomSheet : BottomSheetDialogFragment(), DetailImageContract.
         viewCount: String,
         commentCount: String
     ) {
-        img.loadImage(imageUrl)
+        layoutPhotoDetailBinding.img.loadImage(imageUrl)
 
-        tv_title.text = title
-        tv_content.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        layoutPhotoDetailBinding.tvTitle.text = title
+        layoutPhotoDetailBinding.tvContent.text =
             Html.fromHtml(content, Html.FROM_HTML_MODE_COMPACT)
-        } else {
-            Html.fromHtml(content)
-        }
-        tv_date.text = date
-        tv_viewer_count.text = viewCount
-        tv_comment_count.text = commentCount
+        layoutPhotoDetailBinding.tvDate.text = date
+        layoutPhotoDetailBinding.tvViewerCount.text = viewCount
+        layoutPhotoDetailBinding.tvCommentCount.text = commentCount
     }
 
     override fun showFlickrWebPage(url: String) {
